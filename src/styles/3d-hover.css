@@ -1,0 +1,12 @@
+/* Card Tilt Effects - Mouse-based card rotation */
+
+.card-3d {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  /* Light shadow on hover for depth */
+  box-shadow: 0 10px 20px rgba(157, 0, 0, 0.314);
+}
