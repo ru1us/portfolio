@@ -24,3 +24,10 @@ body {
 .container {
   @apply max-w-4xl mx-auto px-6;
 }
+
+/* Interactive Gradient Text Effect */
+.gradient-text {
+  color: #000000;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}

@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- Header: Name & Title - Full Width -->
     <div class="w-full text-center mb-20">
       <h1 class="text-8xl font-heading font-bold mb-6">
-        I'm Rufus <span class="text-sm font-normal italic ">(Latin: "red")</span>
+        <span class="gradient-text">I'm Rufus</span> <span class="text-sm font-normal italic ">(Latin: "red")</span>
       </h1>
       <h2 class="text-4xl mb-8">
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
@@ -152,8 +152,58 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
+  // Mouse-tracked Gradient Effect
+  class MouseGradientEffect {
+    private gradientText: HTMLElement;
+    
+    constructor() {
+      this.gradientText = document.querySelector('.gradient-text') as HTMLElement;
+      if (this.gradientText) {
+        this.init();
+      }
+    }
+
+    init() {
+      // Track mouse movement across the entire viewport
+      document.addEventListener('mousemove', (e: MouseEvent) => {
+        const mouseX = e.clientX;
+        const windowWidth = window.innerWidth;
+        
+        // Map mouse position to a ratio (0 to 1)
+        const ratio = mouseX / windowWidth;
+        
+        // Create a bell curve effect - maximum red at center (0.5), black at edges (0 and 1)
+        // Using a parabolic function: intensity peaks at center
+        let intensity;
+        if (ratio <= 0.5) {
+          // Left half: goes from 0 (at 0) to 1 (at 0.5)
+          intensity = ratio * 2;
+        } else {
+          // Right half: goes from 1 (at 0.5) to 0 (at 1)
+          intensity = 2 - (ratio * 2);
+        }
+        
+        // Square the intensity for sharper curve (more black, only center is red)
+        intensity = Math.pow(intensity, 2);
+        
+        // Interpolate from black to red based on intensity
+        const r = Math.round(220 * intensity);
+        const g = Math.round(38 * intensity);
+        const b = Math.round(38 * intensity);
+        
+        this.gradientText.style.color = `rgb(${r}, ${g}, ${b})`;
+      });
+
+      // Reset to black on mouse leave
+      document.addEventListener('mouseleave', () => {
+        this.gradientText.style.color = '#000000';
+      });
+    }
+  }
+
   // Initialize when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
     new CardTiltEffect();
+    new MouseGradientEffect();
   });
 </script>

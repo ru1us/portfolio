@@ -15,13 +15,13 @@ const { title = 'Portfolio' } = Astro.props;
   </head>
   <body>
     <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]">
-      <div class="backdrop-blur-md bg-white/20 border rounded-full px-6 py-3">
+      <div class="backdrop-blur-md border rounded-full px-6 py-3">
         <div class="flex items-center justify-between">
           <a href="/" class="font-extrabold font-heading text-2xl text-red-600">:RED</a>
           <nav class="space-x-6">
             <a href="/blog" class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium">All Projects</a>
             <a href="/about" class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium">About Me</a>
-            <a href="/about" class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium">Contact</a>
+            <a href="#" class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;">Contact</a>
           </nav>
         </div>
       </div>
@@ -31,8 +31,81 @@ const { title = 'Portfolio' } = Astro.props;
       <slot />
     </main>
 
-    <footer class="border-t py-8 text-center text-sm text-slate-500">
-      <div class="container">© {new Date().getFullYear()} • Your Name</div>
+    <!-- Fixed Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button class="backdrop-blur-md border rounded-full transition-all duration-300 cursor-pointer relative grou px-6 py-3 hover:text-red-600 hover:scale-110" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;">
+        <div class="flex items-center gap-3">
+          <span class="font-heading font-medium text-sm">Contact</span>
+          <!-- Arrow Icon -->
+          <div class="w-4 h-4 text-red-500 group-hover:text-red-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="bg-slate-50 border-t py-12">
+      <div class="container text-center">
+        <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">Let's Get in Touch</h2>
+        <p class="text-slate-600 mb-6">I'd love to hear from you.</p>
+        
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+          <!-- Email -->
+          <a href="mailto:plagarufus@gmail.com" 
+             class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center">
+            
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" class="text-slate-600">
+                <path d="M168-192q-29.7 0-50.85-21.15Q96-234.3 96-264v-432q0-29.7 21.15-50.85Q138.3-768 168-768h624q29.7 0 50.85 21.15Q864-725.7 864-696v432q0 29.7-21.15 50.85Q821.7-192 792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179ZM168-611v-85 432-347Z"/>
+              </svg>
+              <div>
+                <div class="font-heading font-bold text-base text-slate-900">Send Email</div>
+                <div class="text-sm text-slate-600">plagarufus@gmail.com</div>
+              </div>
+            </div>
+          </a>
+          
+          <!-- Phone -->
+          <a href="tel:+4915204770398" 
+             class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center">
+            
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" class="text-slate-600">
+                <path d="M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.286 12.857-32.143T165-840h140q14 0 24 10t14 25l27 126q2 14-.5 25.5T359-634L259-533q56 93 125.5 162T542-254l95-98q10-11 23-15t26-1l119 26q15 4 25 16.286T840-300v135q0 19.286-12.857 32.143T795-120Z"/>
+              </svg>
+              <div>
+                <div class="font-heading font-bold text-base text-slate-900">Call Me</div>
+                <div class="text-sm text-slate-600">+49 1520 4770 398</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t py-8 text-center text-slate-500">
+      <div class="container">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <!-- Copyright -->
+          <div class="text-xs">
+            © {new Date().getFullYear()} Rufus Plaga
+          </div>
+          
+          <!-- Contact & Legal -->
+          <div class="flex flex-col md:flex-row items-center gap-4 text-xs">
+            <div class="flex gap-4">
+              <a href="mailto:plagarufus@gmail.com" class="hover:text-red-400 transition-colors">Contact</a>
+              <span class="text-slate-300">•</span>
+              <a href="/privacy" class="hover:text-slate-400 transition-colors">Privacy</a>
+              <span class="text-slate-300">•</span>
+              <a href="/imprint" class="hover:text-slate-400 transition-colors">Imprint</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
