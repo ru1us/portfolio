@@ -13,11 +13,11 @@ html, body {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased font-sans;
+  @apply bg-slate-50 text-slate-900 antialiased font-heading;
 }
 
-/* Headings use Space Grotesk */
-h1, h2, h3, h4, h5, h6 {
+/* All elements use font-heading by default */
+* {
   @apply font-heading;
 }
 
