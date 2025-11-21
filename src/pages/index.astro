@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Portfolio — Overview">
   <!-- Hero Section - Full Width, 80% Height -->
-  <section id="hero" class="w-[80vw] h-[80vh] flex flex-col justify-center mx-auto">
+  <section id="hero" class="w-full h-[80vh] flex flex-col justify-center mx-auto scroll-fade">
     <!-- Header: Name & Title - Full Width -->
     <div class="w-full text-center mb-20">
       <h1 class="text-8xl font-heading font-bold mb-6">
@@ -69,19 +69,13 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Case Study Section -->
-  <section id="case-study" class="py-16 container">
+  <section id="case-study" class="py-16 container scroll-fade">
     <h2 class="text-2xl font-semibold mb-4">Case Study — Project Name</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-white p-6 rounded shadow">Placeholder for Image / Screenshot</div>
-      <div>
-        <p class="text-slate-700 mb-4">Brief description of the challenge, role, results and learnings. Here you can add bullet points or links to separate case study pages.</p>
-        <a href="/blog/sample-project" class="inline-block mt-2 text-blue-600">More about Case Study →</a>
-      </div>
-    </div>
+    
   </section>
 
   <!-- More Projects Section -->
-  <section id="more-projects" class="py-16 container">
+  <section id="more-projects" class="py-16 container scroll-fade">
     <h2 class="text-2xl font-semibold mb-6">More Projects</h2>
     <div class="grid md:grid-cols-3 gap-6">
       <div class="bg-white p-4 rounded shadow">Project A</div>
