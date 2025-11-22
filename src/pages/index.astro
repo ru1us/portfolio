@@ -88,8 +88,9 @@ import Layout from '../layouts/Layout.astro';
 <script>
   // Card Tilt Effect - Only for Index Page
   class CardTiltEffect {
+    cards: any[] = [];
+
     constructor() {
-      this.cards = [];
       this.init();
     }
 
@@ -97,11 +98,11 @@ import Layout from '../layouts/Layout.astro';
       const cardElements = document.querySelectorAll('.card-3d');
       
       cardElements.forEach(card => {
-        this.setupCard(card);
+        this.setupCard(card as HTMLElement);
       });
     }
 
-    setupCard(cardElement) {
+    setupCard(cardElement: HTMLElement) {
       const cardData = {
         element: cardElement,
         maxTilt: 8, // Subtle effect
@@ -110,11 +111,11 @@ import Layout from '../layouts/Layout.astro';
       this.cards.push(cardData);
 
       // Add event listeners
-      cardElement.addEventListener('mousemove', (e) => this.onMouseMove(e, cardData));
-      cardElement.addEventListener('mouseleave', (e) => this.onMouseLeave(e, cardData));
+      cardElement.addEventListener('mousemove', (e: MouseEvent) => this.onMouseMove(e, cardData));
+      cardElement.addEventListener('mouseleave', (e: MouseEvent) => this.onMouseLeave(e, cardData));
     }
 
-    onMouseMove(event, cardData) {
+    onMouseMove(event: MouseEvent, cardData: any) {
       const card = cardData.element;
       const rect = card.getBoundingClientRect();
       
@@ -135,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
       `;
     }
 
-    onMouseLeave(event, cardData) {
+    onMouseLeave(event: MouseEvent, cardData: any) {
       // Return to original position
       cardData.element.style.transform = `
         perspective(1000px) 
