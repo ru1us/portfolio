@@ -6,5 +6,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://ru1us.github.io',
   base: '/portp',
+  trailingSlash: 'ignore',
   integrations: [solid(), tailwind()]
 });

@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// GitHub Pages base path handling
+const isProduction = import.meta.env.PROD;
+const baseURL = isProduction ? '/portp' : '';
 ---
 <Layout title="Portfolio — Overview">
   <!-- Hero Section - Full Width, 80% Height -->
@@ -41,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         
         <!-- 3. About Me Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick="window.location.href='/about'">
+        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick={`window.location.href='${baseURL}/about'`}>
           <!-- Arrow Icon -->
           <div class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
@@ -54,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         
         <!-- 4. All Projects Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick="window.location.href='/projects'">
+        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick={`window.location.href='${baseURL}/projects'`}>
           <!-- Arrow Icon -->
           <div class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
