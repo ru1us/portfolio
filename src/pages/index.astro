@@ -1,21 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // GitHub Pages base path handling
 const isProduction = import.meta.env.PROD;
-const baseURL = isProduction ? '/portp' : '';
+const baseURL = isProduction ? "/portp" : "";
 const BASE_URL = import.meta.env.BASE_URL;
 ---
+
 <Layout title="Portfolio — Overview">
   <!-- Hero Section - Full Width, 80% Height -->
-  <section id="hero" class="w-full h-[80vh] flex flex-col justify-center mx-auto scroll-fade">
+  <section
+    id="hero"
+    class="w-full h-[80vh] flex flex-col justify-center mx-auto scroll-fade"
+  >
     <!-- Header: Name & Title - Full Width -->
     <div class="w-full text-center mb-20">
       <h1 class="text-8xl font-heading font-bold mb-6">
-        <span class="gradient-text">I'm Rufus</span> <span class="text-sm font-normal italic ">(Latin: "red")</span>
+        <span class="gradient-text">I'm Rufus</span>
+        <span class="text-sm font-normal italic">(Latin: "red")</span>
       </h1>
-      <h2 class="text-4xl mb-8">
+      <!-- <h2 class="text-4xl mb-8">
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
+      </h2> -->
+      <h2 class="text-4xl mb-8">
+        The
+        <span class="text-red-600 font-bold">R</span>ufus <span
+          class="text-red-600 font-bold">E</span
+        >xperience <span class="text-red-600 font-bold">D</span>esign
       </h2>
       <h3 class="text-2xl font-heading font-light text-slate-500">
         Mediadesign Student (B.Sc.)
@@ -24,59 +35,113 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     <!-- 4 Boxes in a Row - Full Width -->
     <div class="w-full grid grid-cols-4 gap-6">
-        <!-- 1. Skills Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d">
-          <h3 class="font-heading font-bold text-base mb-3 text-slate-900">Skills</h3>
-          <ul class="text-sm text-slate-700 space-y-2">
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>3D Modeling & Rendering</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>UI/UX Design</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Graphic Design</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Brand Design</li>
-          </ul>
+      <!-- 1. Skills Box -->
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d"
+      >
+        <h3 class="font-heading font-bold text-base mb-3 text-slate-900">
+          Skills
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>3D
+            Modeling & Rendering
+          </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>UI/UX
+            Design
+          </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Graphic
+            Design
+          </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Brand
+            Design
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2. Tools Box -->
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d"
+      >
+        <h3 class="font-heading font-bold text-base mb-3 text-slate-900">
+          Tools
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Adobe CC
+            (Ps, Ai, Id, Pr, Ae, ...)
+          </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Blender
+          </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>SolidWorks
+          </li>
+        </ul>
+      </div>
+
+      <!-- 3. About Me Box -->
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative"
+        onclick={`window.location.href='${baseURL}/about'`}
+      >
+        <!-- Arrow Icon -->
+        <div
+          class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="currentColor"
+          >
+            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+            ></path>
+          </svg>
         </div>
-        
-        <!-- 2. Tools Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d">
-          <h3 class="font-heading font-bold text-base mb-3 text-slate-900">Tools</h3>
-          <ul class="text-sm text-slate-700 space-y-2">
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Adobe CC (Ps, Ai, Id, Pr, Ae, ...)</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Blender</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>SolidWorks</li>
-          </ul>
+
+        <h3 class="font-heading font-bold text-base mb-3 text-slate-900">
+          About Me
+        </h3>
+        <p class="text-sm text-slate-700">
+          Brief description about myself and my background.
+        </p>
+      </div>
+
+      <!-- 4. All Projects Box -->
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative"
+        onclick={`window.location.href='${baseURL}/projects'`}
+      >
+        <!-- Arrow Icon -->
+        <div
+          class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="currentColor"
+          >
+            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+            ></path>
+          </svg>
         </div>
-        
-        <!-- 3. About Me Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick={`window.location.href='${baseURL}/about'`}>
-          <!-- Arrow Icon -->
-          <div class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-            </svg>
-          </div>
-          
-          <h3 class="font-heading font-bold text-base mb-3 text-slate-900">About Me</h3>
-          <p class="text-sm text-slate-700">Brief description about myself and my background.</p>
-        </div>
-        
-        <!-- 4. All Projects Box -->
-        <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative" onclick={`window.location.href='${baseURL}/projects'`}>
-          <!-- Arrow Icon -->
-          <div class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-            </svg>
-          </div>
-          
-          <h3 class="font-heading font-bold text-base mb-3 text-slate-900">All Projects</h3>
-        </div>
+
+        <h3 class="font-heading font-bold text-base mb-3 text-slate-900">
+          All Projects
+        </h3>
       </div>
     </div>
   </section>
-
   <!-- Case Study Section -->
   <section id="case-study" class="py-16 container scroll-fade">
     <h2 class="text-2xl font-semibold mb-4">Case Study — Project Name</h2>
-    
   </section>
 
   <!-- More Projects Section -->
@@ -84,49 +149,91 @@ const BASE_URL = import.meta.env.BASE_URL;
     <h2 class="text-2xl font-heading font-semibold mb-8">More Projects</h2>
     <div class="grid grid-cols-3 gap-6">
       <!-- Project 1: FORMA -->
-      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/forma'`}>
+      <div
+        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
+        onclick={`window.location.href='${baseURL}/projects/forma'`}
+      >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img src={`${BASE_URL}projects/forma/chair1.png`} alt="FORMA Furniture Collections" class="w-full h-full object-cover" />
+          <img
+            src={`${BASE_URL}projects/forma/chair1.png`}
+            alt="FORMA Furniture Collections"
+            class="w-full h-full object-cover"
+          />
         </div>
         <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">FORMA — Furniture Collections</h3>
-          <p class="text-sm text-slate-600 mb-3">Three distinct design philosophies in furniture</p>
+          <h3 class="font-heading font-bold text-base mb-2">
+            FORMA — Furniture Collections
+          </h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Three distinct design philosophies in furniture
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Design</span>
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Furniture</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >3D Design</span
+            >
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >Furniture</span
+            >
           </div>
         </div>
       </div>
 
       <!-- Project 2: KLAPP -->
-      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/klapp-hairdryer'`}>
+      <div
+        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
+        onclick={`window.location.href='${baseURL}/projects/klapp-hairdryer'`}
+      >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img src={`${BASE_URL}projects/klapp/Aseite2.png`} alt="KLAPP Product Design" class="w-full h-full object-cover" />
+          <img
+            src={`${BASE_URL}projects/klapp/Aseite2.png`}
+            alt="KLAPP Product Design"
+            class="w-full h-full object-cover"
+          />
         </div>
         <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">KLAPP — Product Design</h3>
-          <p class="text-sm text-slate-600 mb-3">Innovative folding product design concept</p>
+          <h3 class="font-heading font-bold text-base mb-2">
+            KLAPP — Product Design
+          </h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Innovative folding product design concept
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Product Design</span>
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Modeling</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >Product Design</span
+            >
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >3D Modeling</span
+            >
           </div>
         </div>
       </div>
 
       <!-- Project 3: FoodDecode -->
-      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/fooddecode-ux'`}>
+      <div
+        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
+        onclick={`window.location.href='${baseURL}/projects/fooddecode-ux'`}
+      >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img src={`${BASE_URL}textures/bg.jpg`} alt="FoodDecode UX/UI Design" class="w-full h-full object-cover" />
+          <img
+            src={`${BASE_URL}projects/UX/title.jpg`}
+            alt="FoodDecode UX/UI Design"
+            class="w-full h-full object-cover object-center"
+          />
         </div>
         <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">FoodDecode — UX/UI Design</h3>
-          <p class="text-sm text-slate-600 mb-3">Digital platform for transparent food choices</p>
+          <h3 class="font-heading font-bold text-base mb-2">
+            FoodDecode — UX/UI Design
+          </h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Digital platform for transparent food choices
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">UX/UI</span>
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">User Research</span>
-          </div>
-        </div>
-      </div>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >UX/UI</span
+            >
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+              >User Research</span
+            >
           </div>
         </div>
       </div>
@@ -144,9 +251,9 @@ const BASE_URL = import.meta.env.BASE_URL;
     }
 
     init() {
-      const cardElements = document.querySelectorAll('.card-3d');
-      
-      cardElements.forEach(card => {
+      const cardElements = document.querySelectorAll(".card-3d");
+
+      cardElements.forEach((card) => {
         this.setupCard(card as HTMLElement);
       });
     }
@@ -160,22 +267,26 @@ const BASE_URL = import.meta.env.BASE_URL;
       this.cards.push(cardData);
 
       // Add event listeners
-      cardElement.addEventListener('mousemove', (e: MouseEvent) => this.onMouseMove(e, cardData));
-      cardElement.addEventListener('mouseleave', (e: MouseEvent) => this.onMouseLeave(e, cardData));
+      cardElement.addEventListener("mousemove", (e: MouseEvent) =>
+        this.onMouseMove(e, cardData)
+      );
+      cardElement.addEventListener("mouseleave", (e: MouseEvent) =>
+        this.onMouseLeave(e, cardData)
+      );
     }
 
     onMouseMove(event: MouseEvent, cardData: any) {
       const card = cardData.element;
       const rect = card.getBoundingClientRect();
-      
+
       // Calculate mouse position relative to card (0 to 1)
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
-      
+
       // Convert to rotation values (-1 to 1, then to degrees)
       const rotateY = (x - 0.5) * 2 * cardData.maxTilt;
       const rotateX = (y - 0.5) * -2 * cardData.maxTilt;
-      
+
       // Apply subtle rotation
       card.style.transform = `
         perspective(1000px) 
@@ -199,9 +310,11 @@ const BASE_URL = import.meta.env.BASE_URL;
   // Mouse-tracked Gradient Effect
   class MouseGradientEffect {
     private gradientText: HTMLElement;
-    
+
     constructor() {
-      this.gradientText = document.querySelector('.gradient-text') as HTMLElement;
+      this.gradientText = document.querySelector(
+        ".gradient-text"
+      ) as HTMLElement;
       if (this.gradientText) {
         this.init();
       }
@@ -209,13 +322,13 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     init() {
       // Track mouse movement across the entire viewport
-      document.addEventListener('mousemove', (e: MouseEvent) => {
+      document.addEventListener("mousemove", (e: MouseEvent) => {
         const mouseX = e.clientX;
         const windowWidth = window.innerWidth;
-        
+
         // Map mouse position to a ratio (0 to 1)
         const ratio = mouseX / windowWidth;
-        
+
         // Create a bell curve effect - maximum red at center (0.5), black at edges (0 and 1)
         // Using a parabolic function: intensity peaks at center
         let intensity;
@@ -224,29 +337,29 @@ const BASE_URL = import.meta.env.BASE_URL;
           intensity = ratio * 2;
         } else {
           // Right half: goes from 1 (at 0.5) to 0 (at 1)
-          intensity = 2 - (ratio * 2);
+          intensity = 2 - ratio * 2;
         }
-        
+
         // Square the intensity for sharper curve (more black, only center is red)
         intensity = Math.pow(intensity, 2);
-        
+
         // Interpolate from black to red based on intensity
         const r = Math.round(220 * intensity);
         const g = Math.round(38 * intensity);
         const b = Math.round(38 * intensity);
-        
+
         this.gradientText.style.color = `rgb(${r}, ${g}, ${b})`;
       });
 
       // Reset to black on mouse leave
-      document.addEventListener('mouseleave', () => {
-        this.gradientText.style.color = '#000000';
+      document.addEventListener("mouseleave", () => {
+        this.gradientText.style.color = "#000000";
       });
     }
   }
 
   // Initialize when DOM is loaded
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     new CardTiltEffect();
     new MouseGradientEffect();
   });

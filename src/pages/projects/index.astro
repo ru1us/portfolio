@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 
 // GitHub Pages base path handling
 const isProduction = import.meta.env.PROD;
-const baseURL = isProduction ? '/portp' : '';
+const baseURL = isProduction ? "/portp" : "";
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
@@ -130,9 +130,9 @@ const BASE_URL = import.meta.env.BASE_URL;
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
           <img
-            src="/textures/bg.jpg"
-            alt="FoodDecode UX/UI Design"
-            class="w-full h-full object-cover"
+            src={`${BASE_URL}projects/UX/title.jpg`}
+            alt="UX/UI Design for FoodDecode"
+            class="w-full rounded-lg shadow-lg"
           />
         </div>
 
@@ -171,7 +171,8 @@ const BASE_URL = import.meta.env.BASE_URL;
         </div>
 
         <p class="text-sm text-slate-700 flex-grow">
-          Digital platform empowering healthier food choices through transparent ingredient analysis and intuitive UX design.
+          Digital platform empowering healthier food choices through transparent
+          ingredient analysis and intuitive UX design.
         </p>
       </div>
 

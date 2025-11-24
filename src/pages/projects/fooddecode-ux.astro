@@ -1,20 +1,49 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
 ---
+
 <Layout title="FoodDecode — UX/UI Design">
   <!-- Global Article Title - Left Aligned -->
-  <div class="w-full px-8 mb-8">
-    <h1 class="text-4xl font-heading font-bold text-left">FoodDecode — UX/UI Design</h1>
+  <div class="w-full px-8 mb-4">
+    <h1 class="text-4xl font-heading font-bold text-left">
+      FoodDecode — UX/UI Design
+    </h1>
     <p class="text-sm text-slate-500 mt-2">Oktober 2024</p>
-    <p class="text-sm text-slate-600 mt-1">Team: Rebecca Friedl, Rufus Plaga, Talea Reckleben, Tabea Wagner</p>
+    <p class="text-sm text-slate-600 mt-1">
+      Team: Rebecca Friedl, Rufus Plaga, Talea Reckleben, Tabea Wagner
+    </p>
+  </div>
+
+  <!-- Call-to-Action Button - Right below title -->
+  <div class="w-full px-8 mb-8">
+    <a
+      href={`${BASE_URL}projects/UX/Fooddecode.pdf`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium"
+    >
+      <span>View Full Documentation (PDF)</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="currentColor"
+      >
+        <path
+          d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"
+        ></path>
+      </svg>
+    </a>
   </div>
 
   <!-- Hero Image - Full Width -->
   <div class="w-full mb-12">
-    <img 
-      src="/textures/bg.jpg"
+    <img
+      src={`${BASE_URL}projects/UX/hero.jpg`}
       alt="FoodDecode UX/UI Design"
-      class="w-full h-[50vh] object-cover"
+      class="w-full rounded-lg shadow-lg my-6"
     />
   </div>
 
@@ -28,11 +57,24 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>The goal of the project was to develop a digital product that helps users better understand processed foods — a category that shapes the everyday diet of young adults yet remains widely misunderstood. While processed products offer convenience, their ingredients, nutritional value, and long-term health effects are often unclear or misleading due to marketing strategies and complex labeling.</p>
-          <p>The challenge was twofold: Uncover the real needs, motivations, and struggles users face when trying to make healthier decisions in a fast-paced lifestyle, and design an intuitive, motivating, and trustworthy digital platform that makes nutritional transparency accessible — without overwhelming users with complexity.</p>
+          <p>
+            The goal of the project was to develop a digital product that helps
+            users better understand processed foods — a category that shapes the
+            everyday diet of young adults yet remains widely misunderstood.
+            While processed products offer convenience, their ingredients,
+            nutritional value, and long-term health effects are often unclear or
+            misleading due to marketing strategies and complex labeling.
+          </p>
+          <p>
+            The challenge was twofold: Uncover the real needs, motivations, and
+            struggles users face when trying to make healthier decisions in a
+            fast-paced lifestyle, and design an intuitive, motivating, and
+            trustworthy digital platform that makes nutritional transparency
+            accessible — without overwhelming users with complexity.
+          </p>
         </td>
       </tr>
-      
+
       <tr>
         <td class="heading-cell">Empathize</td>
         <td class="empty-cell"></td>
@@ -40,11 +82,30 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>The project started with extensive research to gain a holistic understanding of the problem, the market, and the target audience.</p>
-          <p>Through surveys, user diaries, competitive analyses, personas, and contextual research, several patterns emerged: Convenience dominates food choices — especially among young adults balancing study, work, and irregular schedules. Users lack nutritional literacy: ingredient lists, additives, and processing levels are difficult to understand.</p>
+          <p>
+            The project started with extensive research to gain a holistic
+            understanding of the problem, the market, and the target audience.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/persona.jpg`}
+            alt="FoodDecode UX/UI Persona"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+          <p>
+            Through surveys, user diaries, competitive analyses, personas, and
+            contextual research, several patterns emerged: Convenience dominates
+            food choices — especially among young adults balancing study, work,
+            and irregular schedules. Users lack nutritional literacy: ingredient
+            lists, additives, and processing levels are difficult to understand.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/stats.jpg`}
+            alt="FoodDecode UX/UI Stats"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
         </td>
       </tr>
-      
+
       <tr>
         <td class="heading-cell">Define</td>
         <td class="empty-cell"></td>
@@ -52,11 +113,21 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p><strong>Problem:</strong> People struggle to recognize how processed their food really is and what health implications it may carry. They lack accessible, trustworthy guidance and easy alternatives that fit into busy routines.</p>
-          <p><strong>Vision:</strong> Empower people to make informed decisions by offering a platform that explains ingredients clearly, highlights health impacts, and suggests practical, healthier alternatives — fast, intuitive, and motivating.</p>
+          <p>
+            <strong>Problem:</strong> People struggle to recognize how processed
+            their food really is and what health implications it may carry. They
+            lack accessible, trustworthy guidance and easy alternatives that fit
+            into busy routines.
+          </p>
+          <p>
+            <strong>Vision:</strong> Empower people to make informed decisions by
+            offering a platform that explains ingredients clearly, highlights health
+            impacts, and suggests practical, healthier alternatives — fast, intuitive,
+            and motivating.
+          </p>
         </td>
       </tr>
-      
+
       <tr>
         <td class="heading-cell">Ideate</td>
         <td class="empty-cell"></td>
@@ -64,11 +135,31 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>With the strategic foundation set, we developed a wide range of solutions through card sorting, information architecture, design patterns, and heuristic evaluation.</p>
-          <p>Core Features: Ingredient & processing analysis (incl. NOVA classification), Product comparisons with clear nutritional breakdowns, Simple, fast recipe alternatives to common convenience foods, Knowledge hub with concise facts and deeper articles, Interactive quiz for playful learning and user engagement.</p>
+          <p>
+            With the strategic foundation set, we developed a wide range of
+            solutions through card sorting, information architecture, design
+            patterns, and heuristic evaluation.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/tree.jpg`}
+            alt="FoodDecode UX/UI Tree"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+          <p>
+            Core Features: Ingredient & processing analysis (incl. NOVA
+            classification), Product comparisons with clear nutritional
+            breakdowns, Simple, fast recipe alternatives to common convenience
+            foods, Knowledge hub with concise facts and deeper articles,
+            Interactive quiz for playful learning and user engagement.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/wireframe.jpg`}
+            alt="FoodDecode UX/UI Wireframe"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
         </td>
       </tr>
-      
+
       <tr>
         <td class="heading-cell">Prototype</td>
         <td class="empty-cell"></td>
@@ -76,12 +167,30 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>We created a high-fidelity interactive prototype that reflects the full user journey. Instead of using typical "healthy green" aesthetics, the visual language takes inspiration from fast-food color palettes, creating a familiar, approachable contrast.</p>
-          <img src="/textures/bg.jpg" alt="FoodDecode UI/UX Design Process" class="w-full rounded-lg shadow-lg my-6" />
-          <p>Key design elements include: A warm, friendly color system, Soft illustrations and a guiding mascot, Modular card structures, Clear product overviews and comparison layouts.</p>
+          <p>
+            We created a high-fidelity interactive prototype that reflects the
+            full user journey. Instead of using typical "healthy green"
+            aesthetics, the visual language takes inspiration from fast-food
+            color palettes, creating a familiar, approachable contrast.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/styleguide.jpg`}
+            alt="FoodDecode UX/UI Styleguide"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+          <p>
+            Key design elements include: A warm, friendly color system, Soft
+            illustrations and a guiding mascot, Modular card structures, Clear
+            product overviews and comparison layouts.
+          </p>
+          <img
+            src={`${BASE_URL}projects/UX/sceens.jpg`}
+            alt="FoodDecode UX/UI Screens"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
         </td>
       </tr>
-      
+
       <tr>
         <td class="heading-cell">Test</td>
         <td class="empty-cell"></td>
@@ -89,8 +198,18 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>To evaluate usability and comprehension, we conducted testing sessions including: Thinking Aloud tests, UEQ (User Experience Questionnaire), ISONORM (DIN 9241-110) evaluation, A/B tests on navigation, layout, and content density.</p>
-          <p>Users understood the overall structure quickly and rated the system as clear, understandable, and enjoyable to use. The quiz and mascot contributed strongly to motivation and positive emotional experience.</p>
+          <p>
+            To evaluate usability and comprehension, we conducted testing
+            sessions including: Thinking Aloud tests, UEQ (User Experience
+            Questionnaire), ISONORM (DIN 9241-110) evaluation, A/B tests on
+            navigation, layout, and content density.
+          </p>
+          <p>
+            Users understood the overall structure quickly and rated the system
+            as clear, understandable, and enjoyable to use. The quiz and mascot
+            contributed strongly to motivation and positive emotional
+            experience.
+          </p>
         </td>
       </tr>
 
@@ -101,8 +220,17 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>The project culminated in FoodDecode — a fully conceptualized digital platform that makes the world of processed foods transparent, understandable, and actionable. FoodDecode demonstrates how UX design can empower healthier everyday decisions by combining clarity, accessibility, and emotional engagement.</p>
-          <p>It shows the ability to translate complex nutritional topics into a structured, motivating, and user-centered digital experience.</p>
+          <p>
+            The project culminated in FoodDecode — a fully conceptualized
+            digital platform that makes the world of processed foods
+            transparent, understandable, and actionable. FoodDecode demonstrates
+            how UX design can empower healthier everyday decisions by combining
+            clarity, accessibility, and emotional engagement.
+          </p>
+          <p>
+            It shows the ability to translate complex nutritional topics into a
+            structured, motivating, and user-centered digital experience.
+          </p>
         </td>
       </tr>
     </table>

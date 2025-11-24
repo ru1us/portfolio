@@ -1,65 +1,100 @@
 ---
-import '../styles/global.css';
-import '../styles/3d-hover.css';
-import '../styles/scroll-fade.css';
-import '../styles/article-layout.css';
-const { title = 'Portfolio' } = Astro.props;
+import "../styles/global.css";
+import "../styles/3d-hover.css";
+import "../styles/scroll-fade.css";
+import "../styles/article-layout.css";
+import "../styles/lightbox.css";
+const { title = "Portfolio" } = Astro.props;
 
 // GitHub Pages base path handling
 const isProduction = import.meta.env.PROD;
-const baseURL = isProduction ? '/portp' : '';
+const baseURL = isProduction ? "/portp" : "";
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <script is:inline>
       // Minimal scroll animation with page load effect
-      document.addEventListener('DOMContentLoaded', function() {
-        const elements = document.querySelectorAll('.scroll-fade');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".scroll-fade");
+
         elements.forEach((element, index) => {
           const rect = element.getBoundingClientRect();
           const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-          
+
           if (isVisible) {
-            setTimeout(() => {
-              element.classList.add('visible');
-            }, 200 + (index * 100));
+            setTimeout(
+              () => {
+                element.classList.add("visible");
+              },
+              200 + index * 100
+            );
           }
         });
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        });
-        
-        elements.forEach(element => {
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        elements.forEach((element) => {
           observer.observe(element);
         });
       });
     </script>
-    <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]">
-      <div class="backdrop-blur-md border rounded-full px-6 py-3">
+    <!-- backdrop-blur-md border rounded-full px-6 py-3 -->
+    <header
+      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]"
+    >
+      <div class="">
         <div class="flex items-center justify-between">
-          <a href={`${baseURL}/`} class="font-extrabold font-heading text-2xl text-red-600">:RED</a>
+          <a
+            href={`${baseURL}/`}
+            class="font-extrabold font-heading text-2xl text-red-600
+            backdrop-blur-md border rounded-full px-6 py-3"
+            >:RED</a
+          >
           <nav class="space-x-6">
-            <a href={`${baseURL}/projects`} class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium">All Projects</a>
-            <a href={`${baseURL}/about`} class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium">About Me</a>
-            <a href="#" class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;">Contact</a>
+            <a
+              href={`${baseURL}/projects`}
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
+              backdrop-blur-md border rounded-full px-6 py-3"
+              >All Projects</a
+            >
+            <a
+              href={`${baseURL}/about`}
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
+              backdrop-blur-md border rounded-full px-6 py-3"
+              >About Me</a
+            >
+            <a
+              href="#"
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
+              backdrop-blur-md border rounded-full px-6 py-3"
+              onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
+              >Contact</a
+            >
           </nav>
         </div>
       </div>
@@ -71,13 +106,25 @@ const baseURL = isProduction ? '/portp' : '';
 
     <!-- Fixed Contact Button -->
     <div class="fixed bottom-6 right-6 z-50">
-      <button class="backdrop-blur-md border rounded-full transition-all duration-300 cursor-pointer relative grou px-6 py-3 hover:text-red-600 hover:scale-110" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;">
+      <button
+        class="backdrop-blur-md border rounded-full transition-all duration-300 cursor-pointer relative grou px-6 py-3 hover:text-red-600 hover:scale-110"
+        onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
+      >
         <div class="flex items-center gap-3">
           <span class="font-heading font-medium text-sm">Contact</span>
           <!-- Arrow Icon -->
-          <div class="w-4 h-4 text-red-500 group-hover:text-red-400 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+          <div
+            class="w-4 h-4 text-red-500 group-hover:text-red-400 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16px"
+              viewBox="0 -960 960 960"
+              width="16px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
             </svg>
           </div>
         </div>
@@ -87,35 +134,63 @@ const baseURL = isProduction ? '/portp' : '';
     <!-- Contact Section -->
     <section class="bg-slate-50 border-t py-12 scroll-fade mt-24">
       <div class="container text-center">
-        <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">Let's Get in Touch</h2>
+        <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">
+          Let's Get in Touch
+        </h2>
         <p class="text-slate-600 mb-6">I'd love to hear from you.</p>
-        
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+
+        <div
+          class="flex flex-col sm:flex-row justify-center items-center gap-6"
+        >
           <!-- Email -->
-          <a href="mailto:plagarufus@gmail.com" 
-             class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center">
-            
+          <a
+            href="mailto:plagarufus@gmail.com"
+            class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center"
+          >
             <div class="flex items-center gap-3">
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" class="text-slate-600">
-                <path d="M168-192q-29.7 0-50.85-21.15Q96-234.3 96-264v-432q0-29.7 21.15-50.85Q138.3-768 168-768h624q29.7 0 50.85 21.15Q864-725.7 864-696v432q0 29.7-21.15 50.85Q821.7-192 792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179ZM168-611v-85 432-347Z"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+                class="text-slate-600"
+              >
+                <path
+                  d="M168-192q-29.7 0-50.85-21.15Q96-234.3 96-264v-432q0-29.7 21.15-50.85Q138.3-768 168-768h624q29.7 0 50.85 21.15Q864-725.7 864-696v432q0 29.7-21.15 50.85Q821.7-192 792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179ZM168-611v-85 432-347Z"
+                ></path>
               </svg>
               <div>
-                <div class="font-heading font-bold text-base text-slate-900">Send Email</div>
+                <div class="font-heading font-bold text-base text-slate-900">
+                  Send Email
+                </div>
                 <div class="text-sm text-slate-600">plagarufus@gmail.com</div>
               </div>
             </div>
           </a>
-          
+
           <!-- Phone -->
-          <a href="tel:+4915204770398" 
-             class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center">
-            
+          <a
+            href="tel:+4915204770398"
+            class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center"
+          >
             <div class="flex items-center gap-3">
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" class="text-slate-600">
-                <path d="M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.286 12.857-32.143T165-840h140q14 0 24 10t14 25l27 126q2 14-.5 25.5T359-634L259-533q56 93 125.5 162T542-254l95-98q10-11 23-15t26-1l119 26q15 4 25 16.286T840-300v135q0 19.286-12.857 32.143T795-120Z"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+                class="text-slate-600"
+              >
+                <path
+                  d="M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.286 12.857-32.143T165-840h140q14 0 24 10t14 25l27 126q2 14-.5 25.5T359-634L259-533q56 93 125.5 162T542-254l95-98q10-11 23-15t26-1l119 26q15 4 25 16.286T840-300v135q0 19.286-12.857 32.143T795-120Z"
+                ></path>
               </svg>
               <div>
-                <div class="font-heading font-bold text-base text-slate-900">Call Me</div>
+                <div class="font-heading font-bold text-base text-slate-900">
+                  Call Me
+                </div>
                 <div class="text-sm text-slate-600">+49 1520 4770 398</div>
               </div>
             </div>
@@ -126,24 +201,69 @@ const baseURL = isProduction ? '/portp' : '';
 
     <footer class="border-t py-8 text-center text-slate-500">
       <div class="container">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
+        >
           <!-- Copyright -->
           <div class="text-xs">
             © {new Date().getFullYear()} Rufus Plaga
           </div>
-          
+
           <!-- Contact & Legal -->
           <div class="flex flex-col md:flex-row items-center gap-4 text-xs">
             <div class="flex gap-4">
-              <a href="mailto:plagarufus@gmail.com" class="hover:text-red-400 transition-colors">Contact</a>
+              <a
+                href="mailto:plagarufus@gmail.com"
+                class="hover:text-red-400 transition-colors">Contact</a
+              >
               <span class="text-slate-300">•</span>
-              <a href={`${baseURL}/privacy`} class="hover:text-slate-400 transition-colors">Privacy</a>
+              <a
+                href={`${baseURL}/privacy`}
+                class="hover:text-slate-400 transition-colors">Privacy</a
+              >
               <span class="text-slate-300">•</span>
-              <a href={`${baseURL}/imprint`} class="hover:text-slate-400 transition-colors">Imprint</a>
+              <a
+                href={`${baseURL}/imprint`}
+                class="hover:text-slate-400 transition-colors">Imprint</a
+              >
             </div>
           </div>
         </div>
       </div>
     </footer>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="Enlarged image" />
+    </div>
+
+    <!-- Lightbox Script -->
+    <script is:inline>
+      function openLightbox(imgSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Add click handler to all images in .content-right
+      document.addEventListener("DOMContentLoaded", function () {
+        const contentImages = document.querySelectorAll(".content-right img");
+        contentImages.forEach((img) => {
+          img.classList.add("lightbox-image");
+          img.onclick = function (e) {
+            e.stopPropagation();
+            openLightbox(this.src);
+          };
+        });
+      });
+    </script>
   </body>
 </html>
