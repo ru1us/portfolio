@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <Layout title="KLAPP Hairdryer — Industrial Design">
@@ -14,7 +15,7 @@ import Layout from "../../layouts/Layout.astro";
   <!-- Hero Image - Full Width -->
   <div class="w-full mb-12">
     <img
-      src="/projects/klapp/Aseite2.png"
+      src={`${BASE_URL}projects/klapp/Aseite2.png`}
       alt="KLAPP Hairdryer Industrial Design"
       class="w-full h-[50vh] object-cover"
     />
@@ -60,7 +61,7 @@ import Layout from "../../layouts/Layout.astro";
             products with a deliberate and honest form language.
           </p>
           <img
-            src="/projects/klapp/IMG_0032.PNG"
+            src={`${BASE_URL}projects/klapp/IMG_0032.PNG`}
             alt="KLAPP Hairdryer Design Process"
             class="w-full rounded-lg shadow-lg my-6"
           />
@@ -72,7 +73,7 @@ import Layout from "../../layouts/Layout.astro";
             surfaces gives the product presence without dominance.
           </p>
           <img
-            src="/projects/klapp/Produkt-7.1.png"
+            src={`${BASE_URL}projects/klapp/Produkt-7.1.png`}
             alt="KLAPP Hairdryer Design Process"
             class="w-full rounded-lg shadow-lg my-6"
           />
@@ -115,7 +116,7 @@ import Layout from "../../layouts/Layout.astro";
         <td class="content-left"></td>
         <td class="content-right">
           <img
-            src="/projects/klapp/main3.png"
+            src={`${BASE_URL}projects/klapp/main3.png`}
             alt="KLAPP Hairdryer Design Process"
             class="w-full rounded-lg shadow-lg my-6"
           />
@@ -125,6 +126,11 @@ import Layout from "../../layouts/Layout.astro";
             visualizations helped refine the graphic character of the air intake
             and evaluate how light interacts with the sharply defined geometry.
           </p>
+          <img
+            src={`${BASE_URL}projects/klapp/hand.png`}
+            alt="KLAPP Hairdryer Design Process"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
         </td>
       </tr>
 

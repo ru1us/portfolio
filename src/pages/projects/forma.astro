@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <Layout title="FORMA — Furniture Design Collections">
@@ -37,10 +38,10 @@ import Layout from "../../layouts/Layout.astro";
   <!-- Hero Video - Full Width -->
   <div class="w-full mb-12">
     <video class="w-full h-[60vh] object-cover" autoplay muted loop playsinline>
-      <source src="/projects/forma/website-demo.mp4" type="video/mp4" />
+      <source src={`${BASE_URL}projects/forma/website-demo.mp4`} type="video/mp4" />
       <!-- Fallback image if video doesn't load -->
       <img
-        src="/projects/forma/chair1.png"
+        src={`${BASE_URL}projects/forma/chair1.png`}
         alt="FORMA Furniture Collections"
         class="w-full h-[60vh] object-cover"
       />
@@ -80,7 +81,7 @@ import Layout from "../../layouts/Layout.astro";
         <td class="content-left"></td>
         <td class="content-right">
           <img
-            src="/projects/forma/luce.png"
+            src={`${BASE_URL}projects/forma/luce.png`}
             alt="Luce & Legno Collection"
             class="w-full rounded-lg shadow-lg my-6"
           />
@@ -94,7 +95,7 @@ import Layout from "../../layouts/Layout.astro";
           </p>
 
           <img
-            src="/projects/forma/raw.png"
+            src={`${BASE_URL}projects/forma/raw.png`}
             alt="RAWLINE Collection"
             class="w-full rounded-lg shadow-lg my-6"
           />

@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 // GitHub Pages base path handling
 const isProduction = import.meta.env.PROD;
 const baseURL = isProduction ? '/portp' : '';
+const BASE_URL = import.meta.env.BASE_URL;
 ---
 <Layout title="Portfolio — Overview">
   <!-- Hero Section - Full Width, 80% Height -->
@@ -85,7 +86,7 @@ const baseURL = isProduction ? '/portp' : '';
       <!-- Project 1: FORMA -->
       <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/forma'`}>
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img src="/projects/forma/chair1.png" alt="FORMA Furniture Collections" class="w-full h-full object-cover" />
+          <img src={`${BASE_URL}projects/forma/chair1.png`} alt="FORMA Furniture Collections" class="w-full h-full object-cover" />
         </div>
         <div class="p-4">
           <h3 class="font-heading font-bold text-base mb-2">FORMA — Furniture Collections</h3>
@@ -97,7 +98,22 @@ const baseURL = isProduction ? '/portp' : '';
         </div>
       </div>
 
-      <!-- Project 2: E-Commerce -->
+      <!-- Project 2: KLAPP -->
+      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/klapp-hairdryer'`}>
+        <div class="w-full h-48 bg-slate-200 overflow-hidden">
+          <img src={`${BASE_URL}projects/klapp/Aseite2.png`} alt="KLAPP Product Design" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h3 class="font-heading font-bold text-base mb-2">KLAPP — Product Design</h3>
+          <p class="text-sm text-slate-600 mb-3">Innovative folding product design concept</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Product Design</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Modeling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: E-Commerce -->
       <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/ecommerce-redesign'`}>
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
           <img src="/textures/bg.jpg" alt="E-Commerce Redesign" class="w-full h-full object-cover" />
@@ -111,18 +127,6 @@ const baseURL = isProduction ? '/portp' : '';
           </div>
         </div>
       </div>
-
-      <!-- Project 3: 3D Visualization -->
-      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/3d-visualization'`}>
-        <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img src="/textures/bg.jpg" alt="3D Product Visualization" class="w-full h-full object-cover" />
-        </div>
-        <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">3D Product Visualization</h3>
-          <p class="text-sm text-slate-600 mb-3">Photorealistic 3D renderings for furniture</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Modeling</span>
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Blender</span>
           </div>
         </div>
       </div>

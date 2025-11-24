@@ -1,121 +1,233 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
 
 // GitHub Pages base path handling
 const isProduction = import.meta.env.PROD;
 const baseURL = isProduction ? '/portp' : '';
+const BASE_URL = import.meta.env.BASE_URL;
 ---
+
 <Layout title="Projects — Overview">
   <div class="w-full mx-auto pt-8">
-    <h1 class="text-4xl font-heading font-bold mb-12 text-left">All Projects</h1>
+    <h1 class="text-4xl font-heading font-bold mb-12 text-left">
+      All Projects
+    </h1>
 
     <div class="grid grid-cols-2 gap-8 w-full">
       <!-- Project 1: FORMA Furniture Collections -->
-      <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade" onclick={`window.location.href='${baseURL}/projects/forma'`}>        
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
+        onclick={`window.location.href='${baseURL}/projects/forma'`}
+      >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
-          <img src="/projects/forma/chair1.png" alt="FORMA Furniture Collections" class="w-full h-full object-cover" />
+          <img
+            src={`${BASE_URL}projects/forma/chair1.png`}
+            alt="FORMA Furniture Collections"
+            class="w-full h-full object-cover"
+          />
         </div>
-        
+
         <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">FORMA — Three Furniture Collections</h3>
+          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">
+            FORMA — Three Furniture Collections
+          </h3>
           <!-- Arrow Icon - aligned with heading -->
-          <div class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+          <div
+            class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
             </svg>
           </div>
         </div>
-        
+
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">3D Design</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">UI/UX</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Web Design</span>
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded"
+            >3D Design</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >UI/UX</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Web Design</span
+          >
         </div>
-        
-        <p class="text-sm text-slate-700 flex-grow">Three distinct furniture collections with unique design philosophies — from Mediterranean warmth to industrial precision.</p>
+
+        <p class="text-sm text-slate-700 flex-grow">
+          Three distinct furniture collections with unique design philosophies —
+          from Mediterranean warmth to industrial precision.
+        </p>
       </div>
 
       <!-- Project 2: KLAPP Hairdryer -->
-      <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade" onclick="window.location.href='/projects/klapp-hairdryer'">        
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
+        onclick={`window.location.href='${baseURL}/projects/klapp-hairdryer'`}
+      >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
-          <img src="/projects/klapp/Aseite2.png" alt="KLAPP Hairdryer Industrial Design" class="w-full h-full object-cover" />
+          <img
+            src={`${BASE_URL}projects/klapp/Aseite2.png`}
+            alt="KLAPP Hairdryer Industrial Design"
+            class="w-full h-full object-cover"
+          />
         </div>
-        
+
         <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">KLAPP Hairdryer — Industrial Design</h3>
+          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">
+            KLAPP Hairdryer — Industrial Design
+          </h3>
           <!-- Arrow Icon - aligned with heading -->
-          <div class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+          <div
+            class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
             </svg>
           </div>
         </div>
-        
+
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">Industrial Design</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Modeling</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Product Design</span>
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded"
+            >Industrial Design</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >3D Modeling</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Product Design</span
+          >
         </div>
-        
-        <p class="text-sm text-slate-700 flex-grow">Architectural clarity meets everyday functionality — a hairdryer with bold geometric language and reduced aesthetics.</p>
+
+        <p class="text-sm text-slate-700 flex-grow">
+          Architectural clarity meets everyday functionality — a hairdryer with
+          bold geometric language and reduced aesthetics.
+        </p>
       </div>
 
       <!-- Project 3: 3D Visualization -->
-      <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade" onclick={`window.location.href='${baseURL}/projects/3d-visualization'`}>        
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
+        onclick={`window.location.href='${baseURL}/projects/3d-visualization'`}
+      >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
-          <img src="/textures/bg.jpg" alt="3D Product Visualization" class="w-full h-full object-cover" />
+          <img
+            src="/textures/bg.jpg"
+            alt="3D Product Visualization"
+            class="w-full h-full object-cover"
+          />
         </div>
-        
+
         <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">3D Produktvisualisierung</h3>
+          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">
+            3D Produktvisualisierung
+          </h3>
           <!-- Arrow Icon - aligned with heading -->
-          <div class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+          <div
+            class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
             </svg>
           </div>
         </div>
-        
+
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">3D Modeling</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Blender</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Rendering</span>
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded"
+            >3D Modeling</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Blender</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Rendering</span
+          >
         </div>
-        
-        <p class="text-sm text-slate-700 flex-grow">Fotorealistische 3D-Renderings für Möbelkollektion mit 40% schnellerer Produktentwicklung.</p>
+
+        <p class="text-sm text-slate-700 flex-grow">
+          Fotorealistische 3D-Renderings für Möbelkollektion mit 40% schnellerer
+          Produktentwicklung.
+        </p>
       </div>
 
       <!-- Project 4: Marketing Campaign -->
-      <div class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade" onclick={`window.location.href='${baseURL}/projects/marketing-campaign'`}>        
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
+        onclick={`window.location.href='${baseURL}/projects/marketing-campaign'`}
+      >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
-          <img src="/textures/bg.jpg" alt="Digital Marketing Campaign" class="w-full h-full object-cover" />
+          <img
+            src="/textures/bg.jpg"
+            alt="Digital Marketing Campaign"
+            class="w-full h-full object-cover"
+          />
         </div>
-        
+
         <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">360° Digital Marketing Kampagne</h3>
+          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">
+            360° Digital Marketing Kampagne
+          </h3>
           <!-- Arrow Icon - aligned with heading -->
-          <div class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+          <div
+            class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
             </svg>
           </div>
         </div>
-        
+
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">Marketing</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Social Media</span>
-          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Campaign</span>
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded"
+            >Marketing</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Social Media</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Campaign</span
+          >
         </div>
-        
-        <p class="text-sm text-slate-700 flex-grow">Integrierte Marketing-Kampagne mit 150% Ziel-Übererfüllung und 0,33€ Cost-per-Acquisition.</p>
+
+        <p class="text-sm text-slate-700 flex-grow">
+          Integrierte Marketing-Kampagne mit 150% Ziel-Übererfüllung und 0,33€
+          Cost-per-Acquisition.
+        </p>
       </div>
     </div>
   </div>
@@ -123,17 +235,17 @@ const baseURL = isProduction ? '/portp' : '';
 
 <script>
   // Card Tilt Effect for Project Cards
-  document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card-3d');
-    
-    cards.forEach(card => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card-3d");
+
+    cards.forEach((card) => {
       const htmlCard = card as HTMLElement;
-      
-      htmlCard.addEventListener('mouseenter', () => {
-        htmlCard.style.transition = 'transform 0.1s ease-out';
+
+      htmlCard.addEventListener("mouseenter", () => {
+        htmlCard.style.transition = "transform 0.1s ease-out";
       });
 
-      htmlCard.addEventListener('mousemove', (e: MouseEvent) => {
+      htmlCard.addEventListener("mousemove", (e: MouseEvent) => {
         const rect = htmlCard.getBoundingClientRect();
         const relativeX = e.clientX - rect.left;
         const relativeY = e.clientY - rect.top;
@@ -146,9 +258,10 @@ const baseURL = isProduction ? '/portp' : '';
         htmlCard.style.transform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(10px)`;
       });
 
-      htmlCard.addEventListener('mouseleave', () => {
-        htmlCard.style.transition = 'transform 0.1s ease-out';
-        htmlCard.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      htmlCard.addEventListener("mouseleave", () => {
+        htmlCard.style.transition = "transform 0.1s ease-out";
+        htmlCard.style.transform =
+          "perspective(700px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
       });
     });
   });
