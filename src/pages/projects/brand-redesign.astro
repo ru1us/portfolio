@@ -1,18 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Brand Redesign Project">
+<Layout title="FORMA — Furniture Design Collections">
   <!-- Global Article Title - Left Aligned -->
   <div class="w-full px-8 mb-8">
-    <h1 class="text-4xl font-heading font-bold text-left">Brand Redesign für Tech Startup</h1>
-    <p class="text-sm text-slate-500 mt-2">21. November 2025</p>
+    <h1 class="text-4xl font-heading font-bold text-left">FORMA — Three Furniture Collections</h1>
+    <p class="text-sm text-slate-500 mt-2">2025</p>
   </div>
 
   <!-- Hero Image - Full Width -->
   <div class="w-full mb-12">
     <img 
-      src="/textures/bg.jpg"
-      alt="Brand Redesign Projekt"
+      src="/projects/forma/chair1.png"
+      alt="FORMA Furniture Collections"
       class="w-full h-[50vh] object-cover"
     />
   </div>
@@ -27,8 +27,8 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>Ein aufstrebendes Tech-Startup benötigte eine komplette Markenidentität, die modern, vertrauenswürdig und technologieorientiert wirkt.</p>
-          <p>Die alte Marke war inkonsistent und sprach die Zielgruppe nicht richtig an.</p>
+          <p>Develop three distinct furniture collections, each with its own unique design philosophy and perspective, while creating a cohesive digital experience to showcase their individuality.</p>
+          <p>The project required bridging traditional furniture design with modern presentation technology, creating an interactive platform that makes each collection's story and character accessible.</p>
         </td>
       </tr>
       
@@ -39,9 +39,16 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>Entwicklung eines minimalistischen Logos mit starker Typografie und einer einheitlichen Farbpalette.</p>
-          <img src="/textures/bg.jpg" alt="Logo Design Process" class="w-full rounded-lg shadow-lg my-6" />
-          <p>Erstellung von Brand Guidelines und Anwendung auf verschiedene Touchpoints.</p>
+          <p><strong>Luce & Legno</strong> — Light and Wood. The Italian-inspired collection unites the tranquility of Apulian landscapes with the depth of the Mediterranean. Two material groups tell a story: "Olivo" features warm olive wood pieces with organic forms reminiscent of old trees and southern sun, while "Mare" translates the movement of the sea into modern forms using deep blue ribbed glass.</p>
+          <img src="/textures/bg.jpg" alt="Luce & Legno Collection" class="w-full rounded-lg shadow-lg my-6" />
+          
+          <p><strong>RAWLINE</strong> — Raw. Honest. Precise. An uncompromising statement for authentic, functional living shaped by industrial directness. Black alloyed steel with visible welds, round constructions reminiscent of industrial pipe systems, and grid elements create a cohesive ensemble. The collection includes "STRUKT" (bar stool), "FERRO" (faucet), and "LUXCORE" (lamp).</p>
+          <img src="/textures/bg.jpg" alt="RAWLINE Collection" class="w-full rounded-lg shadow-lg my-6" />
+          
+          <p><strong>DIS/COMFORT</strong> — Rough. Direct. Unvarnished. This collection plays with expectations by citing familiar forms from public everyday life: surveillance camera, park bench, school locker, trash bin, manhole cover. Instead of distance and functionality, these objects offer warmth, softness, and domesticity. Comfort emerges where you don't expect it.</p>
+          <img src="/textures/bg.jpg" alt="DIS/COMFORT Collection" class="w-full rounded-lg shadow-lg my-6" />
+          
+          <p>Each collection was meticulously rendered in 3D and presented through an interactive website optimized for desktop viewing, allowing users to explore the pieces in detail.</p>
         </td>
       </tr>
       
@@ -52,95 +59,11 @@ import Layout from '../../layouts/Layout.astro';
       <tr>
         <td class="content-left"></td>
         <td class="content-right">
-          <p>Die neue Markenidentität erhöhte die Markenbekanntheit um 40% und verbesserte die Conversion Rate um 25%.</p>
-          <p>Das Startup konnte erfolgreich eine Series A Finanzierung in Höhe von 5 Millionen Euro einwerben.</p>
+          <p>Three complete furniture collections with distinct identities — from Mediterranean warmth to industrial precision to conceptual provocation.</p>
+          <p>A fully functional interactive website that serves as a digital showroom, demonstrating the versatility and unique characteristics of each collection while maintaining their individual narratives.</p>
+          <p>The project successfully demonstrates the ability to develop multiple design languages simultaneously, each with authentic material choices, coherent formal vocabularies, and clear conceptual foundations.</p>
         </td>
       </tr>
     </table>
   </div>
 </Layout>
-
-<style>
-  /* Simple HTML Table Layout */
-  .article-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-  }
-  
-  .article-table td {
-    vertical-align: top;
-  }
-  
-  /* Column widths - 5/13 and 8/13 */
-  .article-table td:first-child {
-    width: 38.46%; /* 5/13 */
-  }
-  
-  .article-table td:last-child {
-    width: 61.54%; /* 8/13 */
-  }
-
-  /* Heading cells - with border bottom */
-  .heading-cell {
-    padding: 1rem 2rem 1rem 0;
-    border-bottom: 1px solid #e2e8f0;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #0f172a;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .empty-cell {
-    padding: 1rem 0;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  /* Content cells - no border */
-  .content-left {
-    padding: 1rem 0;
-  }
-
-  .content-right {
-    padding: 1rem 0 2rem 0;
-  }
-
-  /* Content styling */
-  .content-right p {
-    color: #475569;
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-  
-  .content-right img {
-    width: 100%;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    margin: 1.5rem 0;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .article-table,
-    .article-table tbody,
-    .article-table tr,
-    .article-table td {
-      display: block;
-      width: 100%;
-    }
-    
-    .heading-cell {
-      border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 1rem;
-      padding: 1rem 0;
-    }
-    
-    .empty-cell,
-    .content-left {
-      display: none;
-    }
-    
-    .content-right {
-      padding: 0 0 2rem 0;
-    }
-  }
-</style>

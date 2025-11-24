@@ -79,12 +79,53 @@ const baseURL = isProduction ? '/portp' : '';
   </section>
 
   <!-- More Projects Section -->
-  <section id="more-projects" class="py-16 container scroll-fade">
-    <h2 class="text-2xl font-semibold mb-6">More Projects</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded shadow">Project A</div>
-      <div class="bg-white p-4 rounded shadow">Project B</div>
-      <div class="bg-white p-4 rounded shadow">Project C</div>
+  <section id="more-projects" class="py-16 scroll-fade">
+    <h2 class="text-2xl font-heading font-semibold mb-8">More Projects</h2>
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Project 1: FORMA -->
+      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/forma'`}>
+        <div class="w-full h-48 bg-slate-200 overflow-hidden">
+          <img src="/projects/forma/chair1.png" alt="FORMA Furniture Collections" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h3 class="font-heading font-bold text-base mb-2">FORMA — Furniture Collections</h3>
+          <p class="text-sm text-slate-600 mb-3">Three distinct design philosophies in furniture</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Design</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Furniture</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: E-Commerce -->
+      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/ecommerce-redesign'`}>
+        <div class="w-full h-48 bg-slate-200 overflow-hidden">
+          <img src="/textures/bg.jpg" alt="E-Commerce Redesign" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h3 class="font-heading font-bold text-base mb-2">E-Commerce Redesign</h3>
+          <p class="text-sm text-slate-600 mb-3">Mobile-first platform with 60% conversion boost</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">UI/UX</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Mobile First</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: 3D Visualization -->
+      <div class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer" onclick={`window.location.href='${baseURL}/projects/3d-visualization'`}>
+        <div class="w-full h-48 bg-slate-200 overflow-hidden">
+          <img src="/textures/bg.jpg" alt="3D Product Visualization" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <h3 class="font-heading font-bold text-base mb-2">3D Product Visualization</h3>
+          <p class="text-sm text-slate-600 mb-3">Photorealistic 3D renderings for furniture</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">3D Modeling</span>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Blender</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

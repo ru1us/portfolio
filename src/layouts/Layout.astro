@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 import '../styles/3d-hover.css';
-//import '../styles/scroll-fade.css';
+import '../styles/scroll-fade.css';
+import '../styles/article-layout.css';
 const { title = 'Portfolio' } = Astro.props;
 
 // GitHub Pages base path handling
@@ -19,7 +20,38 @@ const baseURL = isProduction ? '/portp' : '';
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- <script src="/js/scroll-fade.js" is:inline></script> -->
+    <script is:inline>
+      // Minimal scroll animation with page load effect
+      document.addEventListener('DOMContentLoaded', function() {
+        const elements = document.querySelectorAll('.scroll-fade');
+        
+        elements.forEach((element, index) => {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isVisible) {
+            setTimeout(() => {
+              element.classList.add('visible');
+            }, 200 + (index * 100));
+          }
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      });
+    </script>
     <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]">
       <div class="backdrop-blur-md border rounded-full px-6 py-3">
         <div class="flex items-center justify-between">
@@ -105,9 +137,9 @@ const baseURL = isProduction ? '/portp' : '';
             <div class="flex gap-4">
               <a href="mailto:plagarufus@gmail.com" class="hover:text-red-400 transition-colors">Contact</a>
               <span class="text-slate-300">•</span>
-              <a href="/privacy" class="hover:text-slate-400 transition-colors">Privacy</a>
+              <a href={`${baseURL}/privacy`} class="hover:text-slate-400 transition-colors">Privacy</a>
               <span class="text-slate-300">•</span>
-              <a href="/imprint" class="hover:text-slate-400 transition-colors">Imprint</a>
+              <a href={`${baseURL}/imprint`} class="hover:text-slate-400 transition-colors">Imprint</a>
             </div>
           </div>
         </div>

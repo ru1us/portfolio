@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="FORMA — Furniture Design Collections">
+  <!-- Global Article Title - Left Aligned -->
+  <div class="w-full px-8 mb-4">
+    <h1 class="text-4xl font-heading font-bold text-left">FORMA — Three Furniture Collections</h1>
+    <p class="text-sm text-slate-500 mt-2">2025</p>
+  </div>
+
+  <!-- Call-to-Action Button - Right below title -->
+  <div class="w-full px-8 mb-8">
+    <a href="https://ru1us.github.io/forma/" target="_blank" rel="noopener noreferrer" 
+       class="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium">
+      <span>Visit Live Website</span>
+      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Hero Video - Full Width -->
+  <div class="w-full mb-12">
+    <video 
+      class="w-full h-[60vh] object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="/projects/forma/website-demo.mp4" type="video/mp4">
+      <!-- Fallback image if video doesn't load -->
+      <img 
+        src="/projects/forma/chair1.png"
+        alt="FORMA Furniture Collections"
+        class="w-full h-[60vh] object-cover"
+      />
+    </video>
+  </div>
+
+  <!-- Article Content Table -->
+  <div class="w-full px-8">
+    <table class="article-table w-full">
+      <tr>
+        <td class="heading-cell">Challenge</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>Develop three distinct furniture collections, each with its own unique design philosophy and perspective, while creating a cohesive digital experience to showcase their individuality.</p>
+          <p>Beyond the furniture design itself, a key component of the project was building an interactive website that bridges traditional furniture design with modern web technology — creating a digital showroom that makes each collection's story and character accessible.</p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="heading-cell">Design Collections</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p><strong>Luce & Legno</strong> — Light and Wood. The Italian-inspired collection unites the tranquility of Apulian landscapes with the depth of the Mediterranean. Two material groups tell a story: "Olivo" features warm olive wood pieces with organic forms reminiscent of old trees and southern sun, while "Mare" translates the movement of the sea into modern forms using deep blue ribbed glass.</p>
+          <img src="/textures/bg.jpg" alt="Luce & Legno Collection" class="w-full rounded-lg shadow-lg my-6" />
+          
+          <p><strong>RAWLINE</strong> — Raw. Honest. Precise. An uncompromising statement for authentic, functional living shaped by industrial directness. Black alloyed steel with visible welds, round constructions reminiscent of industrial pipe systems, and grid elements create a cohesive ensemble. The collection includes "STRUKT" (bar stool), "FERRO" (faucet), and "LUXCORE" (lamp).</p>
+          <img src="/textures/bg.jpg" alt="RAWLINE Collection" class="w-full rounded-lg shadow-lg my-6" />
+          
+          <p><strong>DIS/COMFORT</strong> — Rough. Direct. Unvarnished. This collection plays with expectations by citing familiar forms from public everyday life: surveillance camera, park bench, school locker, trash bin, manhole cover. Instead of distance and functionality, these objects offer warmth, softness, and domesticity. Comfort emerges where you don't expect it.</p>
+          <img src="/textures/bg.jpg" alt="DIS/COMFORT Collection" class="w-full rounded-lg shadow-lg my-6" />
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="heading-cell">Interactive Website</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>An essential part of the project was developing a custom website to present all three collections in an engaging, interactive format. The website serves as a digital showroom, allowing visitors to explore each collection's unique aesthetic and philosophy.</p>
+          <p>Built with modern web technologies, the site features smooth navigation, high-quality 3D renders, and a clean, minimalist design that lets the furniture pieces take center stage. Each collection has its own dedicated section with detailed information and multiple viewing angles.</p>
+          <p>The website is optimized for desktop viewing to provide the best experience when exploring the detailed 3D visualizations and design concepts.</p>
+          
+          <!-- CTA Button within content -->
+          <div class="my-6">
+            <a href="https://ru1us.github.io/forma/" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 border-2 border-red-600 text-red-600 px-6 py-3 rounded-full hover:bg-red-600 hover:text-white transition-colors font-heading font-medium">
+              <span>Explore the Full Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/>
+              </svg>
+            </a>
+          </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="heading-cell">3D Visualization</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>Each piece was meticulously modeled and rendered in 3D using Blender, creating photorealistic visualizations that showcase materials, textures, and lighting in detail. The renders serve both as marketing material and as a way to explore design concepts before physical production.</p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="heading-cell">Result</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>Three complete furniture collections with distinct identities — from Mediterranean warmth to industrial precision to conceptual provocation.</p>
+          <p>A fully functional interactive website that serves as a digital showroom, demonstrating the versatility and unique characteristics of each collection while maintaining their individual narratives.</p>
+          <p>The project successfully demonstrates the ability to develop multiple design languages simultaneously, each with authentic material choices, coherent formal vocabularies, and clear conceptual foundations.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</Layout>

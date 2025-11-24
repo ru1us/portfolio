@@ -28,5 +28,5 @@ body {
 .gradient-text {
   color: #000000;
   transition: color 0.3s ease;
-  cursor: pointer;
+  cursor: default;
 }
