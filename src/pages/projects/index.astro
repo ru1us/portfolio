@@ -1,9 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-// GitHub Pages base path handling
-const isProduction = import.meta.env.PROD;
-const baseURL = isProduction ? "/portp" : "";
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
@@ -17,7 +14,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 1: FORMA Furniture Collections -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
-        onclick={`window.location.href='${baseURL}/projects/forma'`}
+        onclick={`window.location.href='/projects/forma'`}
       >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
@@ -71,7 +68,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 2: KLAPP Hairdryer -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
-        onclick={`window.location.href='${baseURL}/projects/klapp-hairdryer'`}
+        onclick={`window.location.href='/projects/klapp-hairdryer'`}
       >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
@@ -125,7 +122,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 3: FoodDecode UX/UI -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
-        onclick={`window.location.href='${baseURL}/projects/fooddecode-ux'`}
+        onclick={`window.location.href='/projects/fooddecode-ux'`}
       >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
@@ -179,7 +176,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 4: SOULSGATE -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
-        onclick={`window.location.href='${baseURL}/projects/soulsgate'`}
+        onclick={`window.location.href='/projects/soulsgate'`}
       >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
@@ -233,7 +230,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 5: Motion Design -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade"
-        onclick={`window.location.href='${baseURL}/projects/motion-design'`}
+        onclick={`window.location.href='/projects/motion-design'`}
       >
         <!-- Project Image -->
         <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">

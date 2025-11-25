@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ru1us.github.io',
-  base: import.meta.env.PROD ? '/portp' : '/',
+  base: '/',
   trailingSlash: 'ignore',
   integrations: [solid(), tailwind()]
 });
