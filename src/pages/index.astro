@@ -85,7 +85,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- 3. About Me Box -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative group"
-        onclick={`window.location.href='/about'`}
+        onclick={`window.location.href='${BASE_URL}about'`}
       >
         <!-- Arrow Icon -->
         <div class="absolute top-4 right-4 w-5 h-5 text-red-600">
@@ -113,7 +113,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- 4. All Projects Box -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative group"
-        onclick={`window.location.href='/projects'`}
+        onclick={`window.location.href='${BASE_URL}projects'`}
       >
         <!-- Arrow Icon -->
         <div class="absolute top-4 right-4 w-5 h-5 text-red-600">
@@ -145,7 +145,7 @@ const BASE_URL = import.meta.env.BASE_URL;
   <section id="more-projects" class="py-16 scroll-fade">
     <div
       class="flex items-center gap-3 mb-8 cursor-pointer group"
-      onclick={`window.location.href='/projects'`}
+      onclick={`window.location.href='${BASE_URL}projects'`}
     >
       <h2
         class="text-2xl font-heading font-semibold group-hover:text-red-600 transition-colors"
@@ -166,7 +166,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 1: FORMA -->
       <div
         class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
-        onclick={`window.location.href='/projects/forma'`}
+        onclick={`window.location.href='${BASE_URL}projects/forma'`}
       >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
           <img
@@ -196,7 +196,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 2: KLAPP -->
       <div
         class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
-        onclick={`window.location.href='/projects/klapp-hairdryer'`}
+        onclick={`window.location.href='${BASE_URL}projects/klapp-hairdryer'`}
       >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
           <img
@@ -226,7 +226,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Project 3: FoodDecode -->
       <div
         class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer"
-        onclick={`window.location.href='/projects/fooddecode-ux'`}
+        onclick={`window.location.href='${BASE_URL}projects/fooddecode-ux'`}
       >
         <div class="w-full h-48 bg-slate-200 overflow-hidden">
           <img
