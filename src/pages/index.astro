@@ -23,7 +23,9 @@ const BASE_URL = import.meta.env.BASE_URL;
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
       </h2> -->
       <h2 class="text-4xl mb-8">
-        I do <span class="text-red-600 typing-text"></span><span class="typing-cursor text-red-600">|</span>
+        I do <span class="text-red-600 typing-text"></span><span
+          class="typing-cursor text-red-600">|</span
+        >
       </h2>
       <h3 class="text-2xl font-heading font-light text-slate-500">
         Mediadesign Student (B.Sc.)
@@ -53,7 +55,8 @@ const BASE_URL = import.meta.env.BASE_URL;
             Design
           </li>
           <li class="flex items-center">
-            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Web Development
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Web
+            Development
           </li>
         </ul>
       </div>
@@ -76,23 +79,25 @@ const BASE_URL = import.meta.env.BASE_URL;
           <li class="flex items-center">
             <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>SolidWorks
           </li>
+          <li class="flex items-center">
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Java, JavaScript, HTML, CSS, Dart
+          </li>
         </ul>
       </div>
 
       <!-- 3. About Me Box -->
       <div
-        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative"
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative group"
         onclick={`window.location.href='${baseURL}/about'`}
       >
         <!-- Arrow Icon -->
-        <div
-          class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors"
-        >
+        <div class="absolute top-4 right-4 w-5 h-5 text-red-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20px"
             viewBox="0 -960 960 960"
             width="20px"
+            class="group-hover:scale-125 transition-transform"
             fill="currentColor"
           >
             <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
@@ -110,18 +115,17 @@ const BASE_URL = import.meta.env.BASE_URL;
 
       <!-- 4. All Projects Box -->
       <div
-        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative"
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative group"
         onclick={`window.location.href='${baseURL}/projects'`}
       >
         <!-- Arrow Icon -->
-        <div
-          class="absolute top-4 right-4 w-5 h-5 text-red-600 hover:text-red-700 transition-colors"
-        >
+        <div class="absolute top-4 right-4 w-5 h-5 text-red-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20px"
             viewBox="0 -960 960 960"
             width="20px"
+            class="group-hover:scale-125 transition-transform"
             fill="currentColor"
           >
             <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
@@ -142,7 +146,25 @@ const BASE_URL = import.meta.env.BASE_URL;
 
   <!-- More Projects Section -->
   <section id="more-projects" class="py-16 scroll-fade">
-    <h2 class="text-2xl font-heading font-semibold mb-8">More Projects</h2>
+    <div
+      class="flex items-center gap-3 mb-8 cursor-pointer group"
+      onclick={`window.location.href='${baseURL}/projects'`}
+    >
+      <h2
+        class="text-2xl font-heading font-semibold group-hover:text-red-600 transition-colors"
+      >
+        More Projects
+      </h2>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-red-600 group-hover:translate-x-3 transition-transform"
+        viewBox="0 -960 960 960"
+        fill="currentColor"
+      >
+        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+        ></path>
+      </svg>
+    </div>
     <div class="grid grid-cols-3 gap-6">
       <!-- Project 1: FORMA -->
       <div
@@ -308,15 +330,21 @@ const BASE_URL = import.meta.env.BASE_URL;
     private element: HTMLElement;
     private words: string[];
     private currentWordIndex: number = 0;
-    private currentText: string = '';
+    private currentText: string = "";
     private isDeleting: boolean = false;
     private typingSpeed: number = 100;
     private deletingSpeed: number = 50;
     private pauseDuration: number = 1500;
 
     constructor() {
-      this.element = document.querySelector('.typing-text') as HTMLElement;
-      this.words = ['3D Design', 'UI/UX Design', 'Brand Identity', 'Product Design', 'Web Design'];
+      this.element = document.querySelector(".typing-text") as HTMLElement;
+      this.words = [
+        "3D Design",
+        "UI/UX Design",
+        "Brand Identity",
+        "Product Design",
+        "Web Design",
+      ];
       if (this.element) {
         this.type();
       }
@@ -324,11 +352,17 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     type() {
       const currentWord = this.words[this.currentWordIndex];
-      
+
       if (this.isDeleting) {
-        this.currentText = currentWord.substring(0, this.currentText.length - 1);
+        this.currentText = currentWord.substring(
+          0,
+          this.currentText.length - 1
+        );
       } else {
-        this.currentText = currentWord.substring(0, this.currentText.length + 1);
+        this.currentText = currentWord.substring(
+          0,
+          this.currentText.length + 1
+        );
       }
 
       this.element.textContent = this.currentText;
@@ -338,7 +372,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       if (!this.isDeleting && this.currentText === currentWord) {
         speed = this.pauseDuration;
         this.isDeleting = true;
-      } else if (this.isDeleting && this.currentText === '') {
+      } else if (this.isDeleting && this.currentText === "") {
         this.isDeleting = false;
         this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
         speed = 500;

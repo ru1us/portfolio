@@ -1,0 +1,203 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
+---
+
+<Layout title="Motion Design — Collection">
+  <!-- Global Article Title - Left Aligned -->
+  <div class="w-full px-8 mb-8">
+    <h1 class="text-4xl font-heading font-bold text-left">
+      Motion Design — Collection
+    </h1>
+    <p class="text-sm text-slate-500 mt-2">2023- 2024</p>
+    <p class="mt-4">For this project, I made about 10 short videos in 10 weeks in the field of motion design. Here are 7 of them.</p>
+  </div>
+
+  <!-- Article Content Table -->
+  <div class="w-full px-8">
+    <table class="article-table w-full">
+      <!-- Video 1 -->
+      <tr>
+        <td class="heading-cell">Ventura Highway</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/main.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="mt-4">Ventura Highway - America</p>
+        </td>
+      </tr>
+
+      <!-- Video 2 -->
+      <tr>
+        <td class="heading-cell">Can't Help Myself</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/robot.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="mt-4">Inspiration: Sun Yuan and Peng Yu - Can't Help Myself</p>
+        </td>
+      </tr>
+
+      <!-- Video 3 -->
+      <tr>
+        <td class="heading-cell">Don't miss your train!</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/subway.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Video 4 -->
+      <tr>
+        <td class="heading-cell">Hotel Hopping</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/jump.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Video 5 -->
+      <tr>
+        <td class="heading-cell">Dexter</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/dexter.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Video 6 -->
+      <tr>
+        <td class="heading-cell">Free After All</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/cliff.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">UFO</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <div
+            class="relative w-full bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center"
+          >
+            <video
+              class="w-full h-auto max-h-[70vh] object-contain"
+              controls
+              preload="metadata"
+            >
+              <source
+                src={`${BASE_URL}projects/motion/ufo.mp4`}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</Layout>
