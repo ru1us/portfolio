@@ -5,10 +5,6 @@ import "../styles/scroll-fade.css";
 import "../styles/article-layout.css";
 import "../styles/lightbox.css";
 const { title = "Portfolio" } = Astro.props;
-
-// GitHub Pages base path handling
-const isProduction = import.meta.env.PROD;
-const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -72,17 +68,17 @@ const BASE_URL = import.meta.env.BASE_URL;
           class="flex items-center justify-between backdrop-blur-md border rounded-full px-6 py-3"
         >
           <a
-            href={`${baseURL}/`}
+            href="/"
             class="font-extrabold font-heading text-2xl text-red-600">:RED</a
           >
           <nav class="space-x-6">
             <a
-              href={`${baseURL}/projects`}
+              href="/projects"
               class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               >All Projects</a
             >
             <a
-              href={`${baseURL}/about`}
+              href="/about"
               class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               >About Me</a
             >
@@ -215,12 +211,12 @@ const BASE_URL = import.meta.env.BASE_URL;
               >
               <span class="text-slate-300">•</span>
               <a
-                href={`${baseURL}/privacy`}
+                href="/privacy"
                 class="hover:text-slate-400 transition-colors">Privacy</a
               >
               <span class="text-slate-300">•</span>
               <a
-                href={`${baseURL}/imprint`}
+                href="/imprint"
                 class="hover:text-slate-400 transition-colors">Imprint</a
               >
             </div>
