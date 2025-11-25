@@ -1,4 +1,4 @@
-// Minimal scroll animation with page load effect
+/* // Minimal scroll animation with page load effect
 document.addEventListener('DOMContentLoaded', function() {
   // Find all elements that should animate on scroll
   const elements = document.querySelectorAll('.scroll-fade');
@@ -33,4 +33,4 @@ document.addEventListener('DOMContentLoaded', function() {
   elements.forEach(element => {
     observer.observe(element);
   });
-});
+}); */
