@@ -68,30 +68,27 @@ const baseURL = isProduction ? "/portp" : "";
       class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]"
     >
       <div class="">
-        <div class="flex items-center justify-between">
+        <div
+          class="flex items-center justify-between backdrop-blur-md border rounded-full px-6 py-3"
+        >
           <a
             href={`${baseURL}/`}
-            class="font-extrabold font-heading text-2xl text-red-600
-            backdrop-blur-md border rounded-full px-6 py-3"
-            >:RED</a
+            class="font-extrabold font-heading text-2xl text-red-600">:RED</a
           >
           <nav class="space-x-6">
             <a
               href={`${baseURL}/projects`}
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
-              backdrop-blur-md border rounded-full px-6 py-3"
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               >All Projects</a
             >
             <a
               href={`${baseURL}/about`}
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
-              backdrop-blur-md border rounded-full px-6 py-3"
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               >About Me</a
             >
             <a
               href="#"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium
-              backdrop-blur-md border rounded-full px-6 py-3"
+              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
               >Contact</a
             >

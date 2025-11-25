@@ -1,0 +1,285 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
+---
+
+<Layout title="SOULSGATE — Cinematic Environment">
+  <!-- Global Article Title - Left Aligned -->
+  <div class="w-full px-8 mb-8">
+    <h1 class="text-4xl font-heading font-bold text-left">
+      SOULSGATE — Cinematic Environment Flythrough
+    </h1>
+    <p class="text-sm text-slate-500 mt-2">2024</p>
+  </div>
+
+  <!-- Hero Image - Full Width -->
+  <div class="w-full mb-12">
+    <img
+      src={`${BASE_URL}projects/soulsgate/hero.png`}
+      alt="SOULSGATE Environment"
+      class="w-full h-[50vh] object-cover"
+    />
+  </div>
+
+  <!-- Article Content Table -->
+  <div class="w-full px-8">
+    <table class="article-table w-full">
+      <tr>
+        <td class="heading-cell">Challenge</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            The goal of the project was to create a fully realized 3D
+            environment that conveys a strong emotional atmosphere — mysterious,
+            unsettling, and cinematic. The task required designing a cohesive
+            scene centered around an abandoned chapel in a graveyard landscape,
+            brought to life through concept sketches, 3D modeling, detailed
+            shading & texturing, and finally an animated flythrough.
+          </p>
+          <p>
+            Beyond building the environment itself, the main challenge was to
+            craft a visual narrative: a location that tells a story through
+            architecture, lighting, and mood alone.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Concept</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            SOULSGATE is set in an eerie cemetery where a once-sealed portal has
+            been violently broken open. Through this shattered gate, lost souls
+            have escaped into the world, haunting the surroundings with their
+            restless presence.
+          </p>
+          <p>
+            A central chapel stands at the end of a long path — a structure
+            carved from dark, solid stone, covered in creeping vines. Its
+            windows emit an ominous red glow, pulsing like a heartbeat. The main
+            door is slightly ajar, as if recently disturbed, hinting at the
+            forces that have passed through.
+          </p>
+          <p>
+            The environment blends elements of gothic architecture, spiritual
+            symbolism, and horror-inspired lighting to evoke a sense of unease
+            and curiosity: a world where something powerful has been released,
+            and the viewer arrives just moments too late.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Sketching</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <img
+            src={`${BASE_URL}projects/soulsgate/sketch.jpeg`}
+            alt="SOULSGATE Sketching Process"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+          <p>
+            The project began with hand-drawn concept sketches defining
+            composition, camera movement, silhouette, and atmosphere. Early
+            drawings explored:
+          </p>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>
+              the broken, twisted gate as the primary storytelling element
+            </li>
+            <li>the chapel's shape, mass, and window geometry</li>
+            <li>lighting ideas for red, internal illumination</li>
+            <li>how fog, darkness, and structure guide the viewer's gaze</li>
+          </ul>
+          <p>
+            These sketches set the emotional tone and served as blueprints for
+            the entire 3D scene.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">3D Modeling</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <img
+            src={`${BASE_URL}projects/soulsgate/wire2.png`}
+            alt="SOULSGATE 3D Modeling Process"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+          <p>
+            The full environment was modeled in Blender, focusing on clean
+            topology and clear architectural forms. Key modeling elements
+            include:
+          </p>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>
+              the central chapel with thick stone walls and sculptural ornaments
+            </li>
+            <li>a damaged iron gate, bent outward as if forced open</li>
+            <li>gravestones arranged in repetitive, ritualistic patterns</li>
+            <li>environmental assets such as pathways and gravestones</li>
+          </ul>
+          <p>
+            The modeling phase translated the conceptual atmosphere into solid,
+            believable forms.
+          </p>
+          <img
+            src={`${BASE_URL}projects/soulsgate/solid.png`}
+            alt="SOULSGATE 3D Modeling Process"
+            class="w-full rounded-lg shadow-lg my-6"
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Shading & Texturing</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            To enhance realism and mood, each element received carefully crafted
+            materials:
+          </p>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>
+              dark, rough stone for the chapel, emphasizing age and weight
+            </li>
+            <li>
+              blackened vines blending organic detail with gothic expression
+            </li>
+            <li>rusted, broken metal on the gate to show violent impact</li>
+            <li>weathered gravestones with subtle surface variation</li>
+            <li>
+              glowing red emissive shaders inside the windows to create an
+              unnatural, supernatural presence
+            </li>
+          </ul>
+          <p>
+            Fog layers, volumetric lighting, and color grading intensified the
+            scene's eerie, ominous mood.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell"
+          >Cinematic Flythrough — Bringing the Scene to Life</td
+        >
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            The final deliverable is a fully animated flythrough, guiding the
+            viewer through the graveyard, under the shattered gate, and toward
+            the glowing chapel. The animation uses:
+          </p>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>slow, controlled camera movement for tension</li>
+            <li>depth-heavy composition and symmetrical framing</li>
+            <li>atmospheric volumetrics for mystery</li>
+            <li>soundless or minimal audio to reinforce the unsettling calm</li>
+          </ul>
+          <p>
+            The result is a short cinematic experience that feels like the
+            opening shot of a dark fantasy or horror game.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Result</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            SOULSGATE presents a complete environment built from concept to
+            final animation — a dark, atmospheric graveyard leading to a
+            supernatural chapel. It showcases skills in:
+          </p>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>atmospheric storytelling</li>
+            <li>concept sketching</li>
+            <li>environment modeling in Blender</li>
+            <li>shading & texturing</li>
+            <li>cinematic lighting and composition</li>
+            <li>camera animation and scene building</li>
+          </ul>
+          <p>
+            The project demonstrates how narrative, visual language, and
+            technical 3D skills can merge into a cohesive, emotionally engaging
+            digital world.
+          </p>
+
+          <!-- Video Player Section -->
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="mt-8">
+    <div
+      class="relative w-full aspect-video bg-slate-900 rounded-lg overflow-hidden group cursor-pointer"
+      id="video-container"
+    >
+      <!-- Thumbnail/Poster -->
+      <img
+        src={`${BASE_URL}projects/soulsgate/hero.png`}
+        alt="Play SOULSGATE Video"
+        class="absolute inset-0 w-full h-full object-cover"
+        id="video-thumbnail"
+      />
+
+      <!-- Actual Video Element (hidden initially) -->
+      <video
+        id="soulsgate-video"
+        class="w-full h-full hidden"
+        controls
+        preload="none"
+        poster={`${BASE_URL}projects/soulsgate/hero.png`}
+      >
+        <source
+          src={`${BASE_URL}projects/soulsgate/soulsgate.mp4`}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("video-container");
+    const thumbnail = document.getElementById("video-thumbnail");
+    const video = document.getElementById(
+      "soulsgate-video"
+    ) as HTMLVideoElement;
+
+    if (container && video) {
+      container.addEventListener("click", () => {
+        if (thumbnail) thumbnail.style.display = "none";
+        video.classList.remove("hidden");
+        video.play();
+      });
+    }
+  });
+</script>

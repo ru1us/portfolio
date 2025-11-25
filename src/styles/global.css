@@ -30,3 +30,18 @@ body {
   transition: color 0.3s ease;
   cursor: default;
 }
+
+/* Typing Animation */
+.typing-text {
+  color: #dc2626; /* red-600 */
+}
+
+.typing-cursor {
+  color: #dc2626; /* red-600 */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}

@@ -23,10 +23,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
       </h2> -->
       <h2 class="text-4xl mb-8">
-        The
-        <span class="text-red-600 font-bold">R</span>ufus <span
-          class="text-red-600 font-bold">E</span
-        >xperience <span class="text-red-600 font-bold">D</span>esign
+        I do <span class="text-red-600 typing-text"></span><span class="typing-cursor text-red-600">|</span>
       </h2>
       <h3 class="text-2xl font-heading font-light text-slate-500">
         Mediadesign Student (B.Sc.)
@@ -56,8 +53,7 @@ const BASE_URL = import.meta.env.BASE_URL;
             Design
           </li>
           <li class="flex items-center">
-            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Brand
-            Design
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Web Development
           </li>
         </ul>
       </div>
@@ -307,6 +303,51 @@ const BASE_URL = import.meta.env.BASE_URL;
     }
   }
 
+  // Typing Animation Effect
+  class TypingAnimation {
+    private element: HTMLElement;
+    private words: string[];
+    private currentWordIndex: number = 0;
+    private currentText: string = '';
+    private isDeleting: boolean = false;
+    private typingSpeed: number = 100;
+    private deletingSpeed: number = 50;
+    private pauseDuration: number = 1500;
+
+    constructor() {
+      this.element = document.querySelector('.typing-text') as HTMLElement;
+      this.words = ['3D Design', 'UI/UX Design', 'Brand Identity', 'Product Design', 'Web Design'];
+      if (this.element) {
+        this.type();
+      }
+    }
+
+    type() {
+      const currentWord = this.words[this.currentWordIndex];
+      
+      if (this.isDeleting) {
+        this.currentText = currentWord.substring(0, this.currentText.length - 1);
+      } else {
+        this.currentText = currentWord.substring(0, this.currentText.length + 1);
+      }
+
+      this.element.textContent = this.currentText;
+
+      let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
+
+      if (!this.isDeleting && this.currentText === currentWord) {
+        speed = this.pauseDuration;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.currentText === '') {
+        this.isDeleting = false;
+        this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
+        speed = 500;
+      }
+
+      setTimeout(() => this.type(), speed);
+    }
+  }
+
   // Mouse-tracked Gradient Effect
   class MouseGradientEffect {
     private gradientText: HTMLElement;
@@ -362,5 +403,6 @@ const BASE_URL = import.meta.env.BASE_URL;
   document.addEventListener("DOMContentLoaded", () => {
     new CardTiltEffect();
     new MouseGradientEffect();
+    new TypingAnimation();
   });
 </script>
