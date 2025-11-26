@@ -136,9 +136,32 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-  <!-- Case Study Section -->
-  <section id="case-study" class="py-16 container scroll-fade">
-    <h2 class="text-2xl font-semibold mb-4">Case Study — Project Name</h2>
+  <!-- Case Study Section with Scroll-Sync Video -->
+  <section id="case-study" class="py-16 scroll-fade">
+    <div class="container mb-8">
+      <h2 class="text-2xl font-semibold">Case Study — Project Name</h2>
+    </div>
+    
+    <!-- Scroll-Sync Video Container - Full Width Container -->
+    <div class="w-full overflow-hidden mb-12">
+      <canvas
+        id="scroll-canvas"
+        class="w-full h-auto block"
+        style="display: block; width: 100%; height: auto; background: transparent;"
+      ></canvas>
+      <video
+        id="scroll-video"
+        class="w-full h-auto block hidden"
+        muted
+        crossorigin="anonymous"
+        preload="auto"
+        style="display: none;"
+      >
+        <source src="/textures/Comp.mp4" type="video/mp4" />
+        <source src="/textures/Comp.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </section>
 
   <!-- More Projects Section -->
@@ -257,6 +280,9 @@ const BASE_URL = import.meta.env.BASE_URL;
 </Layout>
 
 <script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
   // Card Tilt Effect - Only for Index Page
   class CardTiltEffect {
     cards: any[] = [];
@@ -435,5 +461,71 @@ const BASE_URL = import.meta.env.BASE_URL;
     new CardTiltEffect();
     new MouseGradientEffect();
     new TypingAnimation();
+    
+    // Initialize GSAP ScrollTrigger for video with Canvas rendering
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const video = document.getElementById("scroll-video") as HTMLVideoElement;
+    const canvas = document.getElementById("scroll-canvas") as HTMLCanvasElement;
+    
+    if (video && canvas) {
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      
+      let animationFrameId: number;
+      
+      // Wait for video to load
+      video.addEventListener("loadedmetadata", () => {
+        console.log("Video duration:", video.duration);
+        
+        // Set canvas size to match video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        
+        // Draw initial frame
+        const drawFrame = () => {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        };
+        
+        // GSAP ScrollTrigger with canvas rendering
+        let targetTime = 0;
+        let currentTime = 0;
+        
+        ScrollTrigger.create({
+          trigger: canvas,
+          start: "top bottom",
+          end: "center center", // Video endet wenn Canvas die Mitte erreicht
+          scrub: 0.5,
+          onUpdate: (self) => {
+            targetTime = self.progress * video.duration;
+          }
+        });
+        
+        // Smooth animation loop
+        const animate = () => {
+          // Smooth interpolation - sehr aggressiv für maximale Smoothness
+          const diff = targetTime - currentTime;
+          currentTime += diff * 0.08; // Reduziert von 0.15 für smoothere Bewegung
+          
+          // Seek nur bei größeren Unterschieden
+          if (Math.abs(video.currentTime - currentTime) > 0.016) { // ~1 frame
+            video.currentTime = currentTime;
+          }
+          
+          // Always draw the current frame
+          drawFrame();
+          
+          animationFrameId = requestAnimationFrame(animate);
+        };
+        
+        // Start animation loop
+        animate();
+        
+        console.log("Canvas-based scroll video initialized!");
+      });
+      
+      video.load();
+    }
   });
+
 </script>
