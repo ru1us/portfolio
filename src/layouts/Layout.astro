@@ -66,7 +66,7 @@ const ogImage = new URL(image, Astro.site);
     <meta name="msapplication-TileColor" content="#dc2626" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%23dc2626'><path d='m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z'/></svg>" />
+    <link rel="icon" type="image/svg+xml" href="/red.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     
     <!-- Performance & SEO -->
@@ -138,30 +138,30 @@ const ogImage = new URL(image, Astro.site);
     </script>
     <!-- backdrop-blur-md border rounded-full px-6 py-3 -->
     <header
-      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]"
+      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] sm:w-[60%]"
     >
       <div class="">
         <div
-          class="flex items-center justify-between backdrop-blur-md border rounded-full px-6 py-3"
+          class="flex items-center justify-between backdrop-blur-md border rounded-full px-4 sm:px-6 py-3"
         >
           <a
             href="/"
-            class="font-extrabold font-heading text-2xl text-red-600">:RED</a
+            class="font-extrabold font-heading text-xl sm:text-2xl text-red-600">:RED</a
           >
-          <nav class="space-x-6">
+          <nav class="flex gap-2 sm:gap-6">
             <a
               href="/projects"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
-              >All Projects</a
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              ><span class="hidden sm:inline">All </span>Projects</a
             >
             <a
               href="/about"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
-              >About Me</a
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              >About<span class="hidden sm:inline"> Me</span></a
             >
             <a
               href="#"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
               >Contact</a
             >
