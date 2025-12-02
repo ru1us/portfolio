@@ -56,6 +56,14 @@ const BASE_URL = import.meta.env.BASE_URL;
           loop
           playsinline
           class="hidden"></video>
+        <video
+          id="wire-video"
+          src={`${BASE_URL}textures/wire.webm`}
+          autoplay
+          muted
+          loop
+          playsinline
+          class="hidden"></video>
         <img
           id="depth-map"
           src={`${BASE_URL}textures/depth2.png`}
@@ -197,6 +205,7 @@ const BASE_URL = import.meta.env.BASE_URL;
   class DepthIllusionVideo {
     private container: HTMLElement;
     private colorVideo: HTMLVideoElement;
+    private wireVideo: HTMLVideoElement;
     private depthMap: HTMLImageElement;
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
@@ -206,6 +215,12 @@ const BASE_URL = import.meta.env.BASE_URL;
     private animationFrameId: number | null = null;
     private currentOffsetX: number = 0;
     private currentOffsetY: number = 0;
+    private colorOpacity: number = 1;
+    private wireOpacity: number = 0;
+    private targetColorOpacity: number = 1;
+    private targetWireOpacity: number = 0;
+    private opacityTransitionSpeed: number = 0.15;
+    private BASE_URL: string = import.meta.env.BASE_URL;
 
     constructor() {
       this.container = document.getElementById(
@@ -214,16 +229,45 @@ const BASE_URL = import.meta.env.BASE_URL;
       this.colorVideo = document.getElementById(
         "color-video"
       ) as HTMLVideoElement;
+      this.wireVideo = document.getElementById(
+        "wire-video"
+      ) as HTMLVideoElement;
       this.depthMap = document.getElementById("depth-map") as HTMLImageElement;
 
-      if (this.container && this.colorVideo && this.depthMap) {
+      if (this.container && this.colorVideo && this.wireVideo && this.depthMap) {
         this.init();
+        this.setupHoverHandler();
       }
     }
 
+    setupHoverHandler() {
+      this.container.addEventListener("mouseenter", () => {
+        this.switchToWireframe();
+      });
+      
+      this.container.addEventListener("mouseleave", () => {
+        this.switchToNormal();
+      });
+    }
+
+    switchToWireframe() {
+      // Crossfade to wireframe
+      this.targetColorOpacity = 0;
+      this.targetWireOpacity = 1;
+    }
+
+    switchToNormal() {
+      // Crossfade to color
+      this.targetColorOpacity = 1;
+      this.targetWireOpacity = 0;
+    }
+
     async init() {
-      // Ensure video plays
+      // Ensure both videos play
       this.colorVideo
+        .play()
+        .catch((err) => console.log("Video autoplay prevented:", err));
+      this.wireVideo
         .play()
         .catch((err) => console.log("Video autoplay prevented:", err));
 
@@ -279,6 +323,10 @@ const BASE_URL = import.meta.env.BASE_URL;
 
       // Start animation loop
       const animate = () => {
+        // Smooth opacity transitions
+        this.colorOpacity += (this.targetColorOpacity - this.colorOpacity) * this.opacityTransitionSpeed;
+        this.wireOpacity += (this.targetWireOpacity - this.wireOpacity) * this.opacityTransitionSpeed;
+        
         this.render(this.currentOffsetX, this.currentOffsetY);
         this.animationFrameId = requestAnimationFrame(animate);
       };
@@ -320,13 +368,20 @@ const BASE_URL = import.meta.env.BASE_URL;
         this.depthCanvas.height
       );
 
-      // Draw current video frame to temporary canvas
-      const tempCanvas = document.createElement("canvas");
-      tempCanvas.width = width;
-      tempCanvas.height = height;
-      const tempCtx = tempCanvas.getContext("2d")!;
-      tempCtx.drawImage(this.colorVideo, 0, 0, width, height);
-      const colorData = tempCtx.getImageData(0, 0, width, height);
+      // Draw both video frames to temporary canvases
+      const tempCanvas1 = document.createElement("canvas");
+      tempCanvas1.width = width;
+      tempCanvas1.height = height;
+      const tempCtx1 = tempCanvas1.getContext("2d")!;
+      tempCtx1.drawImage(this.colorVideo, 0, 0, width, height);
+      const colorData = tempCtx1.getImageData(0, 0, width, height);
+
+      const tempCanvas2 = document.createElement("canvas");
+      tempCanvas2.width = width;
+      tempCanvas2.height = height;
+      const tempCtx2 = tempCanvas2.getContext("2d")!;
+      tempCtx2.drawImage(this.wireVideo, 0, 0, width, height);
+      const wireData = tempCtx2.getImageData(0, 0, width, height);
 
       // Create output image data
       const outputData = this.ctx.createImageData(width, height);
@@ -351,11 +406,16 @@ const BASE_URL = import.meta.env.BASE_URL;
           const sourceIndex = (sourceY * width + sourceX) * 4;
           const targetIndex = (y * width + x) * 4;
 
-          // Copy pixel
-          outputData.data[targetIndex] = colorData.data[sourceIndex];
-          outputData.data[targetIndex + 1] = colorData.data[sourceIndex + 1];
-          outputData.data[targetIndex + 2] = colorData.data[sourceIndex + 2];
-          outputData.data[targetIndex + 3] = colorData.data[sourceIndex + 3];
+          // Blend pixels from both videos
+          const r = colorData.data[sourceIndex] * this.colorOpacity + wireData.data[sourceIndex] * this.wireOpacity;
+          const g = colorData.data[sourceIndex + 1] * this.colorOpacity + wireData.data[sourceIndex + 1] * this.wireOpacity;
+          const b = colorData.data[sourceIndex + 2] * this.colorOpacity + wireData.data[sourceIndex + 2] * this.wireOpacity;
+          const a = Math.max(colorData.data[sourceIndex + 3], wireData.data[sourceIndex + 3]);
+
+          outputData.data[targetIndex] = r;
+          outputData.data[targetIndex + 1] = g;
+          outputData.data[targetIndex + 2] = b;
+          outputData.data[targetIndex + 3] = a;
         }
       }
 
