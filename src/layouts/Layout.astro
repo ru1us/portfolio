@@ -15,7 +15,7 @@ interface Props {
 const { 
   title = "Rufus Plaga — 3D Designer & UI/UX Creative", 
   description = "Portfolio of Rufus Plaga — Designer specializing in 3D visualization, industrial design, UI/UX, and motion design. Crafting digital experiences with precision and creativity.",
-  image = "/og-image.jpg",
+  image = "/red.png",
   type = "website"
 } = Astro.props;
 
@@ -67,7 +67,9 @@ const ogImage = new URL(image, Astro.site);
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/red.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/red.png" />
     
     <!-- Performance & SEO -->
     <meta name="format-detection" content="telephone=no" />
