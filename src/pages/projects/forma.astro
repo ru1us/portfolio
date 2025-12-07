@@ -3,22 +3,24 @@ import Layout from "../../layouts/Layout.astro";
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<Layout title="FORMA — Furniture Design Collections">
+<Layout title="FORMA | Furniture Design Collections">
   <!-- Global Article Title - Left Aligned -->
-  <div class="w-full px-8 mb-4">
-    <h1 class="text-4xl font-heading font-bold text-left">
-      FORMA — Three Furniture Collections
+  <div class="w-full px-4 sm:px-8 mb-4">
+    <h1
+      class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-left"
+    >
+      FORMA | Three Furniture Collections
     </h1>
     <p class="text-sm text-slate-500 mt-2">2025</p>
   </div>
 
   <!-- Call-to-Action Button - Right below title -->
-  <div class="w-full px-8 mb-8">
+  <div class="w-full px-4 sm:px-8 mb-8">
     <a
       href="https://ru1us.github.io/forma/"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium"
+      class="inline-flex items-center gap-2 bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm sm:text-base"
     >
       <span>Visit Live Website</span>
       <svg
@@ -37,19 +39,28 @@ const BASE_URL = import.meta.env.BASE_URL;
 
   <!-- Hero Video - Full Width -->
   <div class="w-full mb-12">
-    <video class="w-full h-[60vh] object-cover" autoplay muted loop playsinline>
-      <source src={`${BASE_URL}projects/forma/website-demo.mp4`} type="video/mp4" />
+    <video
+      class="w-full h-auto sm:h-[60vh] object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source
+        src={`${BASE_URL}projects/forma/website-demo.mp4`}
+        type="video/mp4"
+      />
       <!-- Fallback image if video doesn't load -->
       <img
         src={`${BASE_URL}projects/forma/chair1.png`}
         alt="FORMA Furniture Collections"
-        class="w-full h-[60vh] object-cover"
+        class="w-full h-auto sm:h-[60vh] object-cover"
       />
     </video>
   </div>
 
   <!-- Article Content Table -->
-  <div class="w-full px-8">
+  <div class="w-full">
     <table class="article-table w-full">
       <tr>
         <td class="heading-cell">Challenge</td>
@@ -66,7 +77,7 @@ const BASE_URL = import.meta.env.BASE_URL;
           <p>
             Beyond the furniture design itself, a key component of the project
             was building an interactive website that bridges traditional
-            furniture design with modern web technology — creating a digital
+            furniture design with modern web technology, creating a digital
             showroom that makes each collection's story and character
             accessible.
           </p>
@@ -86,7 +97,7 @@ const BASE_URL = import.meta.env.BASE_URL;
             class="w-full rounded-lg shadow-lg my-6"
           />
           <p>
-            <strong>Luce & Legno</strong> — Light and Wood. The Italian-inspired
+            <strong>Luce & Legno</strong> | Light and Wood. The Italian-inspired
             collection unites the tranquility of Apulian landscapes with the depth
             of the Mediterranean. Two material groups tell a story: "Olivo" features
             warm olive wood pieces with organic forms reminiscent of old trees and
@@ -100,7 +111,7 @@ const BASE_URL = import.meta.env.BASE_URL;
             class="w-full rounded-lg shadow-lg my-6"
           />
           <p>
-            <strong>RAWLINE</strong> — Raw. Honest. Precise. An uncompromising statement
+            <strong>RAWLINE</strong> | Raw. Honest. Precise. An uncompromising statement
             for authentic, functional living shaped by industrial directness. Black
             alloyed steel with visible welds, round constructions reminiscent of
             industrial pipe systems, and grid elements create a cohesive ensemble.
@@ -108,13 +119,13 @@ const BASE_URL = import.meta.env.BASE_URL;
             (lamp).
           </p>
 
-          <img
+          <!-- <img
             src="/textures/bg.webp"
             alt="DIS/COMFORT Collection"
             class="w-full rounded-lg shadow-lg my-6"
-          />
+          /> -->
           <p>
-            <strong>DIS/COMFORT</strong> — Rough. Direct. Unvarnished. This collection
+            <strong>DIS/COMFORT</strong> | Rough. Direct. Unvarnished. This collection
             plays with expectations by citing familiar forms from public everyday
             life: surveillance camera, park bench, school locker, trash bin, manhole
             cover. Instead of distance and functionality, these objects offer warmth,
@@ -199,7 +210,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         <td class="content-left"></td>
         <td class="content-right">
           <p>
-            Three complete furniture collections with distinct identities — from
+            Three complete furniture collections with distinct identities. From
             Mediterranean warmth to industrial precision to conceptual
             provocation.
           </p>

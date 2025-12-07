@@ -4,33 +4,33 @@ import Layout from "../layouts/Layout.astro";
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Portfolio — Overview">
+<Layout title="Portfolio | Rufus Plaga">
   <!-- Hero Section - Full Width, 80% Height -->
   <section
     id="hero"
-    class="w-full h-[80vh] flex flex-col justify-center mx-auto scroll-fade"
+    class="w-full h-auto sm:h-[80vh] flex flex-col justify-center mx-auto scroll-fade py-12 sm:py-0"
   >
     <!-- Header: Name & Title - Full Width -->
-    <div class="w-full text-center mb-20">
-      <h1 class="text-8xl font-heading font-bold mb-6">
+    <div class="w-full text-center mb-12 sm:mb-20">
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-heading font-bold mb-4 sm:mb-6">
         <span class="gradient-text">I'm Rufus</span>
-        <span class="text-sm font-normal italic">(Latin: "red")</span>
+        <span class="block sm:inline text-xs sm:text-sm font-normal italic">(Latin: "red")</span>
       </h1>
       <!-- <h2 class="text-4xl mb-8">
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
       </h2> -->
-      <h2 class="text-4xl mb-8">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8">
         I do <span class="text-red-600 typing-text"></span><span
           class="typing-cursor text-red-600">|</span
         >
       </h2>
-      <h3 class="text-2xl font-heading font-light text-slate-500">
+      <h3 class="text-lg sm:text-xl md:text-2xl font-heading font-light text-slate-500">
         Mediadesign Student (B.Sc.)
       </h3>
     </div>
 
     <!-- 4 Boxes in a Row - Full Width -->
-    <div class="w-full grid grid-cols-4 gap-6">
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       <!-- 1. Skills Box -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d"
@@ -136,6 +136,10 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
+  <!-- Case Study Section -->
+  <!-- <section id="case-study" class="py-16 container scroll-fade">
+    <h2 class="text-2xl font-semibold mb-4">Case Study — Project Name</h2>
+  </section> -->
   <!-- Case Study Section with Scroll-Sync Video -->
   <section id="case-study" class="py-16 scroll-fade">
     <div class="container mb-8">
@@ -173,7 +177,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       <h2
         class="text-2xl font-heading font-semibold group-hover:text-red-600 transition-colors"
       >
-        More Projects
+        Projects
       </h2>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +189,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         ></path>
       </svg>
     </div>
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       <!-- Project 1: FORMA -->
       <div
         class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
@@ -195,6 +199,9 @@ const BASE_URL = import.meta.env.BASE_URL;
           <img
             src={`${BASE_URL}projects/forma/chair1.webp`}
             alt="FORMA Furniture Collections"
+            loading="lazy"
+            width="400"
+            height="192"
             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
           />
         </div>
@@ -225,6 +232,9 @@ const BASE_URL = import.meta.env.BASE_URL;
           <img
             src={`${BASE_URL}projects/klapp/Aseite2.webp`}
             alt="KLAPP Product Design"
+            loading="lazy"
+            width="400"
+            height="192"
             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
           />
         </div>
@@ -255,6 +265,9 @@ const BASE_URL = import.meta.env.BASE_URL;
           <img
             src={`${BASE_URL}projects/UX/title.webp`}
             alt="FoodDecode UX/UI Design"
+            loading="lazy"
+            width="400"
+            height="192"
             class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-300"
           />
         </div>

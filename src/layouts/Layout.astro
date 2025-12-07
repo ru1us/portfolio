@@ -15,7 +15,7 @@ interface Props {
 const { 
   title = "Rufus Plaga — 3D Designer & UI/UX Creative", 
   description = "Portfolio of Rufus Plaga — Designer specializing in 3D visualization, industrial design, UI/UX, and motion design. Crafting digital experiences with precision and creativity.",
-  image = "/og-image.jpg",
+  image = "/og_image.png",
   type = "website"
 } = Astro.props;
 
@@ -66,8 +66,10 @@ const ogImage = new URL(image, Astro.site);
     <meta name="msapplication-TileColor" content="#dc2626" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%23dc2626'><path d='m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z'/></svg>" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/red.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/red.png" />
     
     <!-- Performance & SEO -->
     <meta name="format-detection" content="telephone=no" />
@@ -98,6 +100,86 @@ const ogImage = new URL(image, Astro.site);
     })} />
   </head>
   <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 shadow-2xl z-[100] p-6 hidden">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-slate-700 flex-1">
+          <p class="mb-2"><strong>This website uses cookies</strong></p>
+          <p>I use Google Analytics to analyze and improve the usage of this website. Your data is collected anonymously.</p>
+        </div>
+        <div class="flex gap-3 flex-shrink-0">
+          <button
+            id="cookie-accept"
+            class="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm whitespace-nowrap"
+          >
+            Accept
+          </button>
+          <button
+            id="cookie-decline"
+            class="border-2 border-slate-300 text-slate-700 px-6 py-2 rounded-full hover:bg-slate-100 transition-colors font-heading font-medium text-sm whitespace-nowrap"
+          >
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Consent Script -->
+    <script is:inline>
+      // Check if user has already made a choice
+      function getCookieConsent() {
+        return localStorage.getItem('cookieConsent');
+      }
+
+      function setCookieConsent(value) {
+        localStorage.setItem('cookieConsent', value);
+      }
+
+      // Load Google Analytics only if consent given
+      function loadGoogleAnalytics() {
+        if (getCookieConsent() === 'accepted') {
+          // Load gtag.js
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YMVG11GXL5';
+          document.head.appendChild(script);
+
+          // Initialize gtag
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-YMVG11GXL5', {
+            'anonymize_ip': true
+          });
+        }
+      }
+
+      // Show banner if no choice has been made
+      document.addEventListener('DOMContentLoaded', function() {
+        var consent = getCookieConsent();
+        var banner = document.getElementById('cookie-banner');
+
+        if (!consent) {
+          banner.classList.remove('hidden');
+        } else if (consent === 'accepted') {
+          loadGoogleAnalytics();
+        }
+
+        // Accept button
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+          setCookieConsent('accepted');
+          banner.classList.add('hidden');
+          loadGoogleAnalytics();
+        });
+
+        // Decline button
+        document.getElementById('cookie-decline').addEventListener('click', function() {
+          setCookieConsent('declined');
+          banner.classList.add('hidden');
+        });
+      });
+    </script>
+
     <script is:inline>
       // Minimal scroll animation with page load effect
       document.addEventListener("DOMContentLoaded", function () {
@@ -138,30 +220,30 @@ const ogImage = new URL(image, Astro.site);
     </script>
     <!-- backdrop-blur-md border rounded-full px-6 py-3 -->
     <header
-      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[60%]"
+      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] sm:w-[60%]"
     >
       <div class="">
         <div
-          class="flex items-center justify-between backdrop-blur-md border rounded-full px-6 py-3"
+          class="flex items-center justify-between backdrop-blur-md border rounded-full px-4 sm:px-6 py-3"
         >
           <a
             href="/"
-            class="font-extrabold font-heading text-2xl text-red-600">:RED</a
+            class="font-extrabold font-heading text-xl sm:text-2xl text-red-600">:RED</a
           >
-          <nav class="space-x-6">
+          <nav class="flex gap-2 sm:gap-6">
             <a
               href="/projects"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
-              >All Projects</a
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              ><span class="hidden sm:inline">All </span>Projects</a
             >
             <a
               href="/about"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
-              >About Me</a
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              >About<span class="hidden sm:inline"> Me</span></a
             >
             <a
               href="#"
-              class="text-l text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
               onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
               >Contact</a
             >
@@ -170,7 +252,7 @@ const ogImage = new URL(image, Astro.site);
       </div>
     </header>
 
-    <main class="w-full pt-24 px-[20%]">
+    <main class="w-full pt-24 px-[5%] sm:px-[10%] lg:px-[20%]">
       <slot />
     </main>
 
@@ -204,10 +286,19 @@ const ogImage = new URL(image, Astro.site);
     <!-- Contact Section -->
     <section class="bg-slate-50 border-t py-12 scroll-fade mt-24">
       <div class="container text-center">
-        <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">
-          Let's Get in Touch
-        </h2>
-        <p class="text-slate-600 mb-6">I'd love to hear from you.</p>
+        <div class="flex items-center justify-center gap-6 mb-6">
+          <img 
+            src={`${import.meta.env.BASE_URL}textures/about.jpg`}
+            alt="Rufus Plaga"
+            class="w-24 h-24 rounded-full object-cover border-2 border-red-600"
+          />
+          <div class="text-left">
+            <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">
+              Let's Get in Touch
+            </h2>
+            <p class="text-slate-600">I'd love to hear from you.</p>
+          </div>
+        </div>
 
         <div
           class="flex flex-col sm:flex-row justify-center items-center gap-6"
