@@ -139,6 +139,15 @@ const BASE_URL = import.meta.env.BASE_URL;
   
   <!-- Case Study Section - Scroll-driven Video -->
   <section id="case-study" class="relative h-[300vh]">
+    <!-- Preloader -->
+    <div id="video-loader" class="fixed inset-0 bg-slate-50 flex items-center justify-center z-50 transition-opacity duration-500" style="pointer-events: none;">
+      <div class="text-center">
+        <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"></div>
+        <p class="text-slate-600 font-heading">Loading video...</p>
+        <p id="load-progress" class="text-slate-400 text-sm mt-2">0%</p>
+      </div>
+    </div>
+    
     <div id="video-container" class="sticky top-0 h-screen overflow-hidden bg-slate-50 flex items-center justify-center">
       <video
         id="scroll-video"
@@ -448,100 +457,82 @@ const BASE_URL = import.meta.env.BASE_URL;
       });
     }
   }
-
-  // Scroll-driven Video Playback
-  class ScrollVideo {
-    private video: HTMLVideoElement;
-    private videoContainer: HTMLElement;
-    private section: HTMLElement;
-    private totalFrames: number = 92;
-    private currentTime: number = 0;
-    private targetTime: number = 0;
-    private animationFrame: number | null = null;
-
-    constructor() {
-      this.video = document.getElementById("scroll-video") as HTMLVideoElement;
-      this.videoContainer = document.getElementById("video-container") as HTMLElement;
-      this.section = document.getElementById("case-study") as HTMLElement;
-
-      if (this.video && this.section && this.videoContainer) {
-        this.init();
-      }
-    }
-
-    init() {
-      // Position video container to break out of padding
-      this.positionContainer();
-      window.addEventListener("resize", () => this.positionContainer());
-      
-      // Wait for video metadata to load
-      this.video.addEventListener("loadedmetadata", () => {
-        this.setupScrollListener();
-        this.startAnimation();
-      });
-    }
-
-    positionContainer() {
-      const rect = this.section.getBoundingClientRect();
-      const left = rect.left;
-      const viewportWidth = document.documentElement.clientWidth;
-      
-      this.videoContainer.style.marginLeft = `-${left}px`;
-      this.videoContainer.style.width = `${viewportWidth}px`;
-      this.videoContainer.style.maxWidth = `${viewportWidth}px`;
-    }
-
-    setupScrollListener() {
-      window.addEventListener("scroll", () => {
-        const sectionTop = this.section.offsetTop;
-        const sectionHeight = this.section.offsetHeight;
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        // Calculate scroll progress within the section
-        const scrollStart = sectionTop - windowHeight;
-        const scrollEnd = sectionTop + sectionHeight - windowHeight;
-        const scrollRange = scrollEnd - scrollStart;
-        
-        if (scrollPosition >= scrollStart && scrollPosition <= scrollEnd) {
-          // User is within the video section
-          const scrollProgress = (scrollPosition - scrollStart) / scrollRange;
-          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-          
-          // Set target time, actual update happens in animation loop
-          this.targetTime = clampedProgress * this.video.duration;
-        }
-      }, { passive: true });
-    }
-
-    startAnimation() {
-      const animate = () => {
-        // Smooth interpolation (lerp) between current and target time
-        const lerpFactor = 0.1; // Lower = smoother, higher = more responsive
-        this.currentTime += (this.targetTime - this.currentTime) * lerpFactor;
-        
-        // Only update if difference is significant (avoid micro-updates)
-        if (Math.abs(this.targetTime - this.currentTime) > 0.001) {
-          this.video.currentTime = this.currentTime;
-        }
-        
-        this.animationFrame = requestAnimationFrame(animate);
-      };
-      animate();
-    }
-
-    destroy() {
-      if (this.animationFrame) {
-        cancelAnimationFrame(this.animationFrame);
-      }
-    }
-  }
-
   // Initialize when DOM is loaded
   document.addEventListener("DOMContentLoaded", () => {
     new CardTiltEffect();
     new MouseGradientEffect();
     new TypingAnimation();
-    new ScrollVideo();
   });
+</script>
+
+<script is:inline>
+  // GSAP Video Scrubbing
+  const gsapScript = document.createElement('script');
+  gsapScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+  gsapScript.onload = () => {
+    const stScript = document.createElement('script');
+    stScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
+    stScript.onload = () => {
+      initVideoScroll();
+    };
+    document.head.appendChild(stScript);
+  };
+  document.head.appendChild(gsapScript);
+  
+  function initVideoScroll() {
+    const video = document.getElementById("scroll-video");
+    const videoContainer = document.getElementById("video-container");
+    const section = document.getElementById("case-study");
+    const loader = document.getElementById("video-loader");
+
+    // Hide loader
+    setTimeout(() => {
+      if (loader) {
+        loader.style.opacity = "0";
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 500);
+      }
+    }, 500);
+
+    if (!video || !videoContainer || !section) return;
+
+    // Position video container
+    const positionContainer = () => {
+      const rect = section.getBoundingClientRect();
+      const left = rect.left;
+      const viewportWidth = document.documentElement.clientWidth;
+      
+      videoContainer.style.marginLeft = `-${left}px`;
+      videoContainer.style.width = `${viewportWidth}px`;
+      videoContainer.style.maxWidth = `${viewportWidth}px`;
+    };
+
+    positionContainer();
+    window.addEventListener("resize", positionContainer);
+
+    // Setup ScrollTrigger
+    const setupScrollTrigger = () => {
+      if (!video.duration || isNaN(video.duration)) {
+        setTimeout(setupScrollTrigger, 200);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.5,
+        pin: videoContainer,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          video.currentTime = self.progress * video.duration;
+        },
+      });
+    };
+
+    setTimeout(setupScrollTrigger, 1000);
+  }
 </script>
