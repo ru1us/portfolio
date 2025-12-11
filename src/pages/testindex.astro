@@ -12,9 +12,13 @@ const BASE_URL = import.meta.env.BASE_URL;
   >
     <!-- Header: Name & Title - Full Width -->
     <div class="w-full text-center mb-12 sm:mb-20">
-      <h1 class="text-4xl sm:text-6xl md:text-8xl font-heading font-bold mb-4 sm:mb-6">
+      <h1
+        class="text-4xl sm:text-6xl md:text-8xl font-heading font-bold mb-4 sm:mb-6"
+      >
         <span class="gradient-text">I'm Rufus</span>
-        <span class="block sm:inline text-xs sm:text-sm font-normal italic">(Latin: "red")</span>
+        <span class="block sm:inline text-xs sm:text-sm font-normal italic"
+          >(Latin: "red")</span
+        >
       </h1>
       <!-- <h2 class="text-4xl mb-8">
         Red isn't just a color — it's my <span class="text-red-600">name.</span>
@@ -24,13 +28,18 @@ const BASE_URL = import.meta.env.BASE_URL;
           class="typing-cursor text-red-600">|</span
         >
       </h2>
-      <h3 class="text-lg sm:text-xl md:text-2xl font-heading font-light text-slate-500">
-        Mediadesign Student (B.Sc.)
+      <h3
+        class="text-lg sm:text-xl md:text-2xl font-heading font-light text-slate-500"
+      >
+        Media Design Student (B.Sc.)
       </h3>
     </div>
 
     <!-- 4 Boxes in a Row - Full Width -->
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    <div
+      id="hero-boxes"
+      class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 opacity-0 transition-opacity duration-700"
+    >
       <!-- 1. Skills Box -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d"
@@ -77,7 +86,8 @@ const BASE_URL = import.meta.env.BASE_URL;
             <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>SolidWorks
           </li>
           <li class="flex items-center">
-            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Java, JavaScript, HTML, CSS, Dart
+            <span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span>Java,
+            JavaScript, HTML, CSS, Dart
           </li>
         </ul>
       </div>
@@ -136,403 +146,538 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-  
-  <!-- Case Study Section - Scroll-driven Video -->
-  <section id="case-study" class="relative h-[300vh]">
-    <!-- Preloader -->
-    <div id="video-loader" class="fixed inset-0 bg-slate-50 flex items-center justify-center z-50 transition-opacity duration-500" style="pointer-events: none;">
-      <div class="text-center">
-        <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"></div>
-        <p class="text-slate-600 font-heading">Loading video...</p>
-        <p id="load-progress" class="text-slate-400 text-sm mt-2">0%</p>
-      </div>
-    </div>
-    
-    <div id="video-container" class="sticky top-0 h-screen overflow-hidden bg-slate-50 flex items-center justify-center">
-      <video
-        id="scroll-video"
-        src="/index/output1.mp4"
-        class="w-full h-full object-contain"
-        preload="auto"
-        muted
-        playsinline
-      ></video>
-    </div>
-  </section>
 
-  <!-- More Projects Section -->
-  <section id="more-projects" class="py-16 scroll-fade">
-    <div
-      class="flex items-center gap-3 mb-8 cursor-pointer group"
-      onclick={`window.location.href='${BASE_URL}projects'`}
+  <!-- Case Study Section - Video Background mit scrollbarem Text -->
+  <section id="case-study" class="relative min-h-[400vh] opacity-0 transition-opacity duration-700">
+    <h1
+      class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
     >
-      <h2
-        class="text-2xl font-heading font-semibold group-hover:text-red-600 transition-colors"
-      >
-        Projects
-      </h2>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 text-red-600 group-hover:translate-x-3 transition-transform"
-        viewBox="0 -960 960 960"
-        fill="currentColor"
-      >
-        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
-        ></path>
-      </svg>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <!-- Project 1: FORMA -->
+      Case Study: SOFA_01
+    </h1>
+    <p class="text-l text-slate-500 mb-16">
+      An art piece exploring the boundaries between digital and physical
+    </p>
+
+    <!-- Video + Text Container -->
+    <div class="relative h-full">
+      <!-- Video Container - Sticky Background -->
       <div
-        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
-        onclick={`window.location.href='${BASE_URL}projects/forma'`}
+        id="video-container"
+        class="sticky top-0 h-screen overflow-hidden bg-slate-50 -z-10"
       >
-        <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img
-            src={`${BASE_URL}projects/forma/chair1.webp`}
-            alt="FORMA Furniture Collections"
-            loading="lazy"
-            width="400"
-            height="192"
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-          />
-        </div>
-        <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">
-            FORMA | Furniture Collections
-          </h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Three distinct design philosophies in furniture
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >3D Design</span
-            >
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >Furniture</span
-            >
-          </div>
-        </div>
+        <video
+          id="scroll-video"
+          src="/index/output2.mp4"
+          class="w-full h-screen object-cover"
+          preload="auto"
+          muted
+          playsinline></video>
       </div>
 
-      <!-- Project 2: KLAPP -->
-      <div
-        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
-        onclick={`window.location.href='${BASE_URL}projects/klapp-hairdryer'`}
-      >
-        <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img
-            src={`${BASE_URL}projects/klapp/Aseite2.webp`}
-            alt="KLAPP Product Design"
-            loading="lazy"
-            width="400"
-            height="192"
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-          />
-        </div>
-        <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">
-            KLAPP | Product Design
-          </h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Innovative folding product design concept
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >Product Design</span
+      <!-- Scrollbarer Text - Overlay -->
+      <!-- TEXT_START: Ändere pt-XX um zu steuern wann Text erscheint -->
+      <div class="absolute top-0 left-0 right-0 pointer-events-none">
+        <div class="ml-auto w-full md:w-5/12 pointer-events-auto">
+          <div class="min-h-[300vh] flex items-start pt-[200vh] pb-20 px-0">
+            <div
+              class="backdrop-blur-md border border-slate-200 rounded-lg p-8 w-full"
             >
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >3D Modeling</span
-            >
-          </div>
-        </div>
-      </div>
+              <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
+                FORMA Collection
+              </h2>
 
-      <!-- Project 3: FoodDecode -->
-      <div
-        class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
-        onclick={`window.location.href='${BASE_URL}projects/fooddecode-ux'`}
-      >
-        <div class="w-full h-48 bg-slate-200 overflow-hidden">
-          <img
-            src={`${BASE_URL}projects/UX/title.webp`}
-            alt="FoodDecode UX/UI Design"
-            loading="lazy"
-            width="400"
-            height="192"
-            class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-300"
-          />
-        </div>
-        <div class="p-4">
-          <h3 class="font-heading font-bold text-base mb-2">
-            FoodDecode | UX/UI Design
-          </h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Digital platform for transparent food choices
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >UX/UI</span
-            >
-            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
-              >User Research</span
-            >
+              <div class="space-y-6 text-slate-700">
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Konzept
+                  </h3>
+                  <p class="leading-relaxed">
+                    Die FORMA Collection vereint drei unterschiedliche
+                    Design-Philosophien unter einem Dach. Jedes Möbelstück wurde
+                    mit Fokus auf Funktionalität und ästhetische Klarheit
+                    entwickelt.
+                  </p>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Design Process
+                  </h3>
+                  <p class="leading-relaxed mb-4">
+                    Von der ersten Skizze bis zum finalen 3D-Modell durchlief
+                    jedes Design mehrere Iterationen. Der Fokus lag dabei auf:
+                  </p>
+                  <ul class="space-y-2">
+                    <li class="flex items-start">
+                      <span
+                        class="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"
+                      ></span>
+                      <span>Ergonomische Optimierung für maximalen Komfort</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <span
+                        class="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"
+                      ></span>
+                      <span>Materialwahl mit Fokus auf Nachhaltigkeit</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span
+                        class="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"
+                      ></span>
+                      <span>Modulare Bauweise für flexible Raumgestaltung</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span
+                        class="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"
+                      ></span>
+                      <span>Zeitloses Design für langlebige Nutzung</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Technische Details
+                  </h3>
+                  <p class="leading-relaxed">
+                    Alle Modelle wurden in Blender erstellt und mit
+                    realistischen Materialien versehen. Die Rendering-Pipeline
+                    nutzt Cycles für fotorealistische Ergebnisse.
+                  </p>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Ergebnis
+                  </h3>
+                  <p class="leading-relaxed">
+                    Eine kohärente Möbelkollektion, die funktionale
+                    Anforderungen mit ästhetischem Anspruch vereint. Jedes Stück
+                    ist einzeln nutzbar oder als Teil der Gesamtkollektion.
+                  </p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-300">
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >Blender</span
+                    >
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >3D Modeling</span
+                    >
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >Product Design</span
+                    >
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >Rendering</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- More Projects Section -->
+    <section id="more-projects" class="py-16 scroll-fade">
+      <div
+        class="flex items-center gap-3 mb-8 cursor-pointer group"
+        onclick={`window.location.href='${BASE_URL}projects'`}
+      >
+        <h2
+          class="text-2xl font-heading font-semibold group-hover:text-red-600 transition-colors"
+        >
+          Projects
+        </h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-red-600 group-hover:translate-x-3 transition-transform"
+          viewBox="0 -960 960 960"
+          fill="currentColor"
+        >
+          <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+          ></path>
+        </svg>
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+      >
+        <!-- Project 1: FORMA -->
+        <div
+          class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
+          onclick={`window.location.href='${BASE_URL}projects/forma'`}
+        >
+          <div class="w-full h-48 bg-slate-200 overflow-hidden">
+            <img
+              src={`${BASE_URL}projects/forma/chair1.webp`}
+              alt="FORMA Furniture Collections"
+              loading="lazy"
+              width="400"
+              height="192"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-heading font-bold text-base mb-2">
+              FORMA | Furniture Collections
+            </h3>
+            <p class="text-sm text-slate-600 mb-3">
+              Three distinct design philosophies in furniture
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >3D Design</span
+              >
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >Furniture</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: KLAPP -->
+        <div
+          class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
+          onclick={`window.location.href='${BASE_URL}projects/klapp-hairdryer'`}
+        >
+          <div class="w-full h-48 bg-slate-200 overflow-hidden">
+            <img
+              src={`${BASE_URL}projects/klapp/Aseite2.webp`}
+              alt="KLAPP Product Design"
+              loading="lazy"
+              width="400"
+              height="192"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-heading font-bold text-base mb-2">
+              KLAPP | Product Design
+            </h3>
+            <p class="text-sm text-slate-600 mb-3">
+              Innovative folding product design concept
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >Product Design</span
+              >
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >3D Modeling</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: FoodDecode -->
+        <div
+          class="border border-slate-400 hover:border-slate-500 transition-colors cursor-pointer group"
+          onclick={`window.location.href='${BASE_URL}projects/fooddecode-ux'`}
+        >
+          <div class="w-full h-48 bg-slate-200 overflow-hidden">
+            <img
+              src={`${BASE_URL}projects/UX/title.webp`}
+              alt="FoodDecode UX/UI Design"
+              loading="lazy"
+              width="400"
+              height="192"
+              class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-heading font-bold text-base mb-2">
+              FoodDecode | UX/UI Design
+            </h3>
+            <p class="text-sm text-slate-600 mb-3">
+              Digital platform for transparent food choices
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >UX/UI</span
+              >
+              <span
+                class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                >User Research</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </section>
-</Layout>
 
-<script>
-  // Card Tilt Effect - Only for Index Page
-  class CardTiltEffect {
-    cards: any[] = [];
+  <script>
+    // Card Tilt Effect - Only for Index Page
+    class CardTiltEffect {
+      cards: any[] = [];
 
-    constructor() {
-      this.init();
-    }
+      constructor() {
+        this.init();
+      }
 
-    init() {
-      const cardElements = document.querySelectorAll(".card-3d");
+      init() {
+        const cardElements = document.querySelectorAll(".card-3d");
 
-      cardElements.forEach((card) => {
-        this.setupCard(card as HTMLElement);
-      });
-    }
+        cardElements.forEach((card) => {
+          this.setupCard(card as HTMLElement);
+        });
+      }
 
-    setupCard(cardElement: HTMLElement) {
-      const cardData = {
-        element: cardElement,
-        maxTilt: 8, // Subtle effect
-      };
+      setupCard(cardElement: HTMLElement) {
+        const cardData = {
+          element: cardElement,
+          maxTilt: 8, // Subtle effect
+        };
 
-      this.cards.push(cardData);
+        this.cards.push(cardData);
 
-      // Add event listeners
-      cardElement.addEventListener("mousemove", (e: MouseEvent) =>
-        this.onMouseMove(e, cardData)
-      );
-      cardElement.addEventListener("mouseleave", (e: MouseEvent) =>
-        this.onMouseLeave(e, cardData)
-      );
-    }
+        // Add event listeners
+        cardElement.addEventListener("mousemove", (e: MouseEvent) =>
+          this.onMouseMove(e, cardData)
+        );
+        cardElement.addEventListener("mouseleave", (e: MouseEvent) =>
+          this.onMouseLeave(e, cardData)
+        );
+      }
 
-    onMouseMove(event: MouseEvent, cardData: any) {
-      const card = cardData.element;
-      const rect = card.getBoundingClientRect();
+      onMouseMove(event: MouseEvent, cardData: any) {
+        const card = cardData.element;
+        const rect = card.getBoundingClientRect();
 
-      // Calculate mouse position relative to card (0 to 1)
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
+        // Calculate mouse position relative to card (0 to 1)
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
 
-      // Convert to rotation values (-1 to 1, then to degrees)
-      const rotateY = (x - 0.5) * 2 * cardData.maxTilt;
-      const rotateX = (y - 0.5) * -2 * cardData.maxTilt;
+        // Convert to rotation values (-1 to 1, then to degrees)
+        const rotateY = (x - 0.5) * 2 * cardData.maxTilt;
+        const rotateX = (y - 0.5) * -2 * cardData.maxTilt;
 
-      // Apply subtle rotation
-      card.style.transform = `
+        // Apply subtle rotation
+        card.style.transform = `
         perspective(1000px) 
         rotateX(${rotateX}deg) 
         rotateY(${rotateY}deg) 
         scale3d(1.02, 1.02, 1.02)
       `;
-    }
+      }
 
-    onMouseLeave(event: MouseEvent, cardData: any) {
-      // Return to original position
-      cardData.element.style.transform = `
+      onMouseLeave(event: MouseEvent, cardData: any) {
+        // Return to original position
+        cardData.element.style.transform = `
         perspective(1000px) 
         rotateX(0deg) 
         rotateY(0deg) 
         scale3d(1, 1, 1)
       `;
-    }
-  }
-
-  // Typing Animation Effect
-  class TypingAnimation {
-    private element: HTMLElement;
-    private words: string[];
-    private currentWordIndex: number = 0;
-    private currentText: string = "";
-    private isDeleting: boolean = false;
-    private typingSpeed: number = 100;
-    private deletingSpeed: number = 50;
-    private pauseDuration: number = 1500;
-
-    constructor() {
-      this.element = document.querySelector(".typing-text") as HTMLElement;
-      this.words = [
-        "3D Design",
-        "UI/UX Design",
-        "Brand Identity",
-        "Product Design",
-        "Web Design",
-      ];
-      if (this.element) {
-        this.type();
       }
     }
 
-    type() {
-      const currentWord = this.words[this.currentWordIndex];
+    // Typing Animation Effect
+    class TypingAnimation {
+      private element: HTMLElement;
+      private words: string[];
+      private currentWordIndex: number = 0;
+      private currentText: string = "";
+      private isDeleting: boolean = false;
+      private typingSpeed: number = 100;
+      private deletingSpeed: number = 50;
+      private pauseDuration: number = 1500;
 
-      if (this.isDeleting) {
-        this.currentText = currentWord.substring(
-          0,
-          this.currentText.length - 1
-        );
-      } else {
-        this.currentText = currentWord.substring(
-          0,
-          this.currentText.length + 1
-        );
+      constructor() {
+        this.element = document.querySelector(".typing-text") as HTMLElement;
+        this.words = [
+          "3D Design",
+          "UI/UX Design",
+          "Brand Identity",
+          "Product Design",
+          "Web Design",
+        ];
+        if (this.element) {
+          this.type();
+        }
       }
 
-      this.element.textContent = this.currentText;
+      type() {
+        const currentWord = this.words[this.currentWordIndex];
 
-      let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
-
-      if (!this.isDeleting && this.currentText === currentWord) {
-        speed = this.pauseDuration;
-        this.isDeleting = true;
-      } else if (this.isDeleting && this.currentText === "") {
-        this.isDeleting = false;
-        this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
-        speed = 500;
-      }
-
-      setTimeout(() => this.type(), speed);
-    }
-  }
-
-  // Mouse-tracked Gradient Effect
-  class MouseGradientEffect {
-    private gradientText: HTMLElement;
-
-    constructor() {
-      this.gradientText = document.querySelector(
-        ".gradient-text"
-      ) as HTMLElement;
-      if (this.gradientText) {
-        this.init();
-      }
-    }
-
-    init() {
-      // Track mouse movement across the entire viewport
-      document.addEventListener("mousemove", (e: MouseEvent) => {
-        const mouseX = e.clientX;
-        const windowWidth = window.innerWidth;
-
-        // Map mouse position to a ratio (0 to 1)
-        const ratio = mouseX / windowWidth;
-
-        // Create a bell curve effect - maximum red at center (0.5), black at edges (0 and 1)
-        // Using a parabolic function: intensity peaks at center
-        let intensity;
-        if (ratio <= 0.5) {
-          // Left half: goes from 0 (at 0) to 1 (at 0.5)
-          intensity = ratio * 2;
+        if (this.isDeleting) {
+          this.currentText = currentWord.substring(
+            0,
+            this.currentText.length - 1
+          );
         } else {
-          // Right half: goes from 1 (at 0.5) to 0 (at 1)
-          intensity = 2 - ratio * 2;
+          this.currentText = currentWord.substring(
+            0,
+            this.currentText.length + 1
+          );
         }
 
-        // Square the intensity for sharper curve (more black, only center is red)
-        intensity = Math.pow(intensity, 2);
+        this.element.textContent = this.currentText;
 
-        // Interpolate from black to red based on intensity
-        const r = Math.round(220 * intensity);
-        const g = Math.round(38 * intensity);
-        const b = Math.round(38 * intensity);
+        let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
 
-        this.gradientText.style.color = `rgb(${r}, ${g}, ${b})`;
-      });
+        if (!this.isDeleting && this.currentText === currentWord) {
+          speed = this.pauseDuration;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.currentText === "") {
+          this.isDeleting = false;
+          this.currentWordIndex =
+            (this.currentWordIndex + 1) % this.words.length;
+          speed = 500;
+        }
 
-      // Reset to black on mouse leave
-      document.addEventListener("mouseleave", () => {
-        this.gradientText.style.color = "#000000";
-      });
+        setTimeout(() => this.type(), speed);
+      }
     }
-  }
-  // Initialize when DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    new CardTiltEffect();
-    new MouseGradientEffect();
-    new TypingAnimation();
-  });
-</script>
 
-<script is:inline>
-  // GSAP Video Scrubbing
-  const gsapScript = document.createElement('script');
-  gsapScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
-  gsapScript.onload = () => {
-    const stScript = document.createElement('script');
-    stScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
-    stScript.onload = () => {
-      initVideoScroll();
-    };
-    document.head.appendChild(stScript);
-  };
-  document.head.appendChild(gsapScript);
-  
-  function initVideoScroll() {
-    const video = document.getElementById("scroll-video");
-    const videoContainer = document.getElementById("video-container");
-    const section = document.getElementById("case-study");
-    const loader = document.getElementById("video-loader");
+    // Mouse-tracked Gradient Effect
+    class MouseGradientEffect {
+      private gradientText: HTMLElement;
 
-    // Hide loader
-    setTimeout(() => {
-      if (loader) {
-        loader.style.opacity = "0";
-        setTimeout(() => {
-          loader.style.display = "none";
-        }, 500);
-      }
-    }, 500);
-
-    if (!video || !videoContainer || !section) return;
-
-    // Position video container
-    const positionContainer = () => {
-      const rect = section.getBoundingClientRect();
-      const left = rect.left;
-      const viewportWidth = document.documentElement.clientWidth;
-      
-      videoContainer.style.marginLeft = `-${left}px`;
-      videoContainer.style.width = `${viewportWidth}px`;
-      videoContainer.style.maxWidth = `${viewportWidth}px`;
-    };
-
-    positionContainer();
-    window.addEventListener("resize", positionContainer);
-
-    // Setup ScrollTrigger
-    const setupScrollTrigger = () => {
-      if (!video.duration || isNaN(video.duration)) {
-        setTimeout(setupScrollTrigger, 200);
-        return;
+      constructor() {
+        this.gradientText = document.querySelector(
+          ".gradient-text"
+        ) as HTMLElement;
+        if (this.gradientText) {
+          this.init();
+        }
       }
 
-      gsap.registerPlugin(ScrollTrigger);
+      init() {
+        // Track mouse movement across the entire viewport
+        document.addEventListener("mousemove", (e: MouseEvent) => {
+          const mouseX = e.clientX;
+          const windowWidth = window.innerWidth;
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.5,
-        pin: videoContainer,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          video.currentTime = self.progress * video.duration;
-        },
-      });
+          // Map mouse position to a ratio (0 to 1)
+          const ratio = mouseX / windowWidth;
+
+          // Create a bell curve effect - maximum red at center (0.5), black at edges (0 and 1)
+          // Using a parabolic function: intensity peaks at center
+          let intensity;
+          if (ratio <= 0.5) {
+            // Left half: goes from 0 (at 0) to 1 (at 0.5)
+            intensity = ratio * 2;
+          } else {
+            // Right half: goes from 1 (at 0.5) to 0 (at 1)
+            intensity = 2 - ratio * 2;
+          }
+
+          // Square the intensity for sharper curve (more black, only center is red)
+          intensity = Math.pow(intensity, 2);
+
+          // Interpolate from black to red based on intensity
+          const r = Math.round(220 * intensity);
+          const g = Math.round(38 * intensity);
+          const b = Math.round(38 * intensity);
+
+          this.gradientText.style.color = `rgb(${r}, ${g}, ${b})`;
+        });
+
+        // Reset to black on mouse leave
+        document.addEventListener("mouseleave", () => {
+          this.gradientText.style.color = "#000000";
+        });
+      }
+    }
+    // Initialize when DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      new CardTiltEffect();
+      new MouseGradientEffect();
+      new TypingAnimation();
+    });
+  </script>
+
+  <script is:inline>
+    // GSAP Video Scrubbing
+    const gsapScript = document.createElement("script");
+    gsapScript.src =
+      "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
+    gsapScript.onload = () => {
+      const stScript = document.createElement("script");
+      stScript.src =
+        "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js";
+      stScript.onload = () => {
+        initVideoScroll();
+      };
+      document.head.appendChild(stScript);
     };
+    document.head.appendChild(gsapScript);
 
-    setTimeout(setupScrollTrigger, 1000);
-  }
-</script>
+    function initVideoScroll() {
+      const video = document.getElementById("scroll-video");
+      const videoContainer = document.getElementById("video-container");
+      const section = document.getElementById("case-study");
+      const heroBoxes = document.getElementById("hero-boxes");
+
+      // Fade in content after load
+      setTimeout(() => {
+        if (heroBoxes) {
+          heroBoxes.style.opacity = "1";
+        }
+        if (section) {
+          section.style.opacity = "1";
+        }
+      }, 500);
+
+      if (!video || !videoContainer || !section) return;
+
+      // Position video container
+      const positionContainer = () => {
+        const rect = section.getBoundingClientRect();
+        const left = rect.left;
+        const viewportWidth = document.documentElement.clientWidth;
+
+        videoContainer.style.marginLeft = `-${left}px`;
+        videoContainer.style.width = `${viewportWidth}px`;
+        videoContainer.style.maxWidth = `${viewportWidth}px`;
+      };
+
+      positionContainer();
+      window.addEventListener("resize", positionContainer);
+
+      // Setup ScrollTrigger
+      const setupScrollTrigger = () => {
+        if (!video.duration || isNaN(video.duration)) {
+          setTimeout(setupScrollTrigger, 200);
+          return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.create({
+          trigger: videoContainer,
+          start: "top top",
+          end: () => `+=${section.offsetHeight - videoContainer.offsetHeight}`,
+          scrub: 0.5,
+          pin: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            video.currentTime = self.progress * video.duration;
+          },
+        });
+      };
+
+      setTimeout(setupScrollTrigger, 1000);
+    }
+  </script>
+</Layout>

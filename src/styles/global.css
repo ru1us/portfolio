@@ -15,6 +15,16 @@ body {
   @apply bg-slate-50 text-slate-900 antialiased font-heading;
 }
 
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
 /* All elements use font-heading by default */
 * {
   @apply font-heading;

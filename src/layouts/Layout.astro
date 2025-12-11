@@ -100,6 +100,11 @@ const ogImage = new URL(image, Astro.site);
     })} />
   </head>
   <body>
+    <!-- Custom Scroll Progress Indicator -->
+    <div class="fixed right-0 top-0 h-screen w-1 bg-transparent z-50 pointer-events-none">
+      <div id="scroll-indicator" class="w-full bg-red-600 transition-all duration-100 ease-out shadow-[0_0_10px_rgba(220,38,38,0.5)]" style="height: 0%;"></div>
+    </div>
+
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 shadow-2xl z-[100] p-6 hidden">
       <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -181,8 +186,26 @@ const ogImage = new URL(image, Astro.site);
     </script>
 
     <script is:inline>
+      // Custom Scroll Indicator
+      function initScrollIndicator() {
+        const indicator = document.getElementById("scroll-indicator");
+        if (!indicator) return;
+
+        function updateIndicator() {
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const scrollTop = window.scrollY;
+          const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+          indicator.style.height = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
+        }
+
+        window.addEventListener("scroll", updateIndicator);
+        window.addEventListener("resize", updateIndicator);
+      }
+
       // Minimal scroll animation with page load effect
       document.addEventListener("DOMContentLoaded", function () {
+        initScrollIndicator();
         const elements = document.querySelectorAll(".scroll-fade");
 
         elements.forEach((element, index) => {
