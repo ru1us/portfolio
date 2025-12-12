@@ -174,7 +174,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       >
         <video
           id="scroll-video"
-          src="/index/output2.mp4"
+          src="/index/output3.mp4"
           class="w-full h-screen object-cover"
           preload="auto"
           muted
@@ -185,12 +185,89 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- TEXT_START: Ändere pt-XX um zu steuern wann Text erscheint -->
       <div class="absolute top-0 left-0 right-0 pointer-events-none">
         <div class="ml-auto w-full md:w-5/12 pointer-events-auto">
-          <div class="min-h-[300vh] flex items-start pt-[200vh] pb-20 px-0">
+          <div class="min-h-[300vh] items-start pt-[175vh] pb-20 px-0">
             <div
               class="backdrop-blur-md border border-slate-200 rounded-lg p-8 w-full"
             >
               <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
                 Sketches & Early Development
+              </h2>
+
+              <div class="space-y-6 text-slate-700">
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Idea
+                  </h3>
+                  <p class="leading-relaxed">
+                    The idea for this concept emerged unexpectedly while I was
+                    working on another project called <a
+                      class="font-bold text-red-600"
+                      href="/projects/forma">Forma</a
+                    >. During that process, I started thinking about how I could
+                    borrow the visual language of public spaces and translate it
+                    into the context of a home. Among the different ideas that
+                    emerged, the sofa concept quickly became my favorite so I
+                    had to continue developing it. It combined the clarity of
+                    urban furniture with the intimacy of domestic comfort in a
+                    way that felt both unusual and promising.
+                  </p>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Design Process
+                  </h3>
+                  <p class="leading-relaxed mb-4">
+                    I began sketching different silhouettes for the metal legs
+                    and frame, experimenting with how two single bent lines
+                    could define both the support and the backrest. These early
+                    drawings focused on capturing the character of a park bench
+                    while still allowing the piece to feel warm, soft, and
+                    clearly domestic.
+                  </p>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                  >
+                    Result
+                  </h3>
+                  <p class="leading-relaxed">
+                    As the sketches evolved, the form started to communicate a
+                    subtle duality. The rigid, continuous metal frame gives the
+                    object a sense of durability and public robustness, while
+                    the cushioned plank brings a contrasting softness—suggesting
+                    a private, personal moment within a familiar public
+                    silhouette. The result is a piece that feels both inviting
+                    and slightly surprising, encouraging the user to reconsider
+                    where comfort can be found.
+                  </p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-300">
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >Sketching</span
+                    >
+                    <span
+                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
+                      >Concept Development</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="backdrop-blur-md border border-slate-200 mt-6 rounded-lg p-8 w-full"
+            >
+              <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
+                Technical
               </h2>
 
               <div class="space-y-6 text-slate-700">
@@ -643,7 +720,7 @@ const BASE_URL = import.meta.env.BASE_URL;
           trigger: videoContainer,
           start: "top top",
           end: () => `+=${section.offsetHeight - videoContainer.offsetHeight}`,
-          scrub: 0.5,
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
           onUpdate: (self) => {
