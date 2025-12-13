@@ -153,11 +153,11 @@ const BASE_URL = import.meta.env.BASE_URL;
     class="relative min-h-[400vh] opacity-0 transition-opacity duration-700"
   >
     <h1
-      class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
+      class="hidden md:block text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
     >
       Have a seat!
     </h1>
-    <p class="text-l text-slate-500 mb-16">
+    <p class="hidden md:block text-l text-slate-500 mb-16">
       A playful twist on comfort in public space. This concept explores the
       tension between public and private. A sofa shaped like a park bench. It
       invites you to sit, rest, and experience an unexpected blend of outdoor
@@ -165,8 +165,17 @@ const BASE_URL = import.meta.env.BASE_URL;
       the piece challenges where and how we expect to feel at ease.
     </p>
 
+    <!-- Mobile Desktop Notice -->
+    <div
+      class="md:hidden flex items-center justify-center min-h-screen px-6 text-center"
+    >
+      <p class="text-xl text-slate-700 leading-relaxed">
+        For the full experience, please view on desktop.
+      </p>
+    </div>
+
     <!-- Video + Text Container -->
-    <div class="relative h-full">
+    <div class="hidden md:block relative h-full">
       <!-- Video Container - Sticky Background -->
       <div
         id="video-container"
@@ -184,64 +193,68 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Scrollbarer Text - Overlay -->
       <!-- TEXT_START: Ändere pt-XX um zu steuern wann Text erscheint -->
       <div class="absolute top-0 left-0 right-0 pointer-events-none">
-        <div class="ml-auto w-full md:w-7/12 lg:w-6/12 xl:w-5/12 pointer-events-auto">
+        <div
+          class="ml-auto md:w-[76.92%] lg:w-[53.85%] 2xl:w-[38.46%] pointer-events-auto"
+        >
           <div class="min-h-[300vh] items-start pt-[175vh] pb-20 px-0">
-            <div
-              class="backdrop-blur-md border border-slate-200 rounded-lg p-8 w-full max-h-[80vh] overflow-y-auto"
-            >
-              <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
-                Sketches & Early Development
-              </h2>
+            <div class="min-h-[85vh] flex flex-col justify-center gap-8">
+              <div
+                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full"
+              >
+                <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
+                  Sketches & Early Development
+                </h2>
 
-              <div class="space-y-6 text-slate-700">
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Idea
-                  </h3>
-                  <p class="leading-relaxed">
-                    The idea for this concept emerged unexpectedly while I was
-                    working on another project called <a
-                      class="font-bold text-red-600"
-                      href="/projects/forma">Forma</a
-                    >. During that process, I started thinking about how I could
-                    borrow the visual language of public spaces and translate it
-                    into the context of a home. Among the different ideas that
-                    emerged, the sofa concept quickly became my favorite so I
-                    had to continue developing it.
-                  </p>
-                </div>
+                <div class="space-y-6 text-slate-700">
+                  <div>
+                    <h3
+                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                    >
+                      Idea
+                    </h3>
+                    <p class="leading-relaxed">
+                      The idea for this concept emerged unexpectedly while I was
+                      working on another project called <a
+                        class="font-bold text-red-600"
+                        href="/projects/forma">Forma</a
+                      >. During that process, I started thinking about how I
+                      could borrow the visual language of public spaces and
+                      translate it into the context of a home. Among the
+                      different ideas that emerged, the sofa concept quickly
+                      became my favorite so I had to continue developing it.
+                    </p>
+                  </div>
 
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Design Process
-                  </h3>
-                  <p class="leading-relaxed mb-4">
-                    I began sketching different silhouettes for the metal legs
-                    and frame, experimenting with how two single bent lines
-                    could define both the support and the backrest.
-                  </p>
-                </div>
+                  <div>
+                    <h3
+                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                    >
+                      Design Process
+                    </h3>
+                    <p class="leading-relaxed mb-4">
+                      I began sketching different silhouettes for the metal legs
+                      and frame, experimenting with how two single bent lines
+                      could define both the support and the backrest.
+                    </p>
+                  </div>
 
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Result
-                  </h3>
-                  <p class="leading-relaxed">
-                    As the sketches evolved, the form started to communicate a
-                    subtle duality. The rigid, continuous metal frame gives the
-                    object a sense of durability and public robustness, while
-                    the cushioned plank brings a contrasting softness—suggesting
-                    a private, personal moment within a familiar public
-                    silhouette. The result is a piece that feels both inviting
-                    and slightly surprising, encouraging the user to reconsider
-                    where comfort can be found.
-                  </p>
+                  <div>
+                    <h3
+                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                    >
+                      Result
+                    </h3>
+                    <p class="leading-relaxed">
+                      As the sketches evolved, the form started to communicate a
+                      subtle duality. The rigid, continuous metal frame gives
+                      the object a sense of durability and public robustness,
+                      while the cushioned plank brings a contrasting
+                      softness—suggesting a private, personal moment within a
+                      familiar public silhouette. The result is a piece that
+                      feels both inviting and slightly surprising, encouraging
+                      the user to reconsider where comfort can be found.
+                    </p>
+                  </div>
                 </div>
 
                 <div class="pt-4 border-t border-slate-300">
@@ -259,7 +272,7 @@ const BASE_URL = import.meta.env.BASE_URL;
               </div>
             </div>
             <div
-              class="backdrop-blur-md border border-slate-200 mt-6 rounded-lg p-8 w-full"
+              class="backdrop-blur-md bg-slate-50/40 border border-slate-200 mt-6 rounded-lg p-8 w-full"
             >
               <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
                 Technical
