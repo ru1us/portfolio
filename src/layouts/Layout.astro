@@ -29,6 +29,9 @@ const ogImage = new URL(image, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Force HTTPS -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
