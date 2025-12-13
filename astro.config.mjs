@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ru1us.github.io',
+  site: 'https://plshireme.de',
   base: '/',
   trailingSlash: 'ignore',
   integrations: [solid(), tailwind()]
