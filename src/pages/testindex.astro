@@ -1,10 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import FullWidthLayout from "../layouts/FullWidthLayout.astro";
 
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Portfolio | Rufus Plaga">
+<FullWidthLayout title="Portfolio | Rufus Plaga">
+  <main class="w-full pt-24 px-[5%] sm:px-[10%] lg:px-[20%]">
   <!-- Hero Section - Full Width, 80% Height -->
   <section
     id="hero"
@@ -152,18 +153,21 @@ const BASE_URL = import.meta.env.BASE_URL;
     id="case-study"
     class="relative min-h-[400vh] opacity-0 transition-opacity duration-700"
   >
-    <h1
-      class="hidden md:block text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
-    >
-      Have a seat!
-    </h1>
-    <p class="hidden md:block text-l text-slate-500 mb-16">
-      A playful twist on comfort in public space. This concept explores the
-      tension between public and private. A sofa shaped like a park bench. It
-      invites you to sit, rest, and experience an unexpected blend of outdoor
-      familiarity and indoor comfort. By reimagining a classic urban element,
-      the piece challenges where and how we expect to feel at ease.
-    </p>
+    <!-- Heading und Text mit Padding -->
+    <div class="">
+      <h1
+        class="hidden md:block text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
+      >
+        Have a seat!
+      </h1>
+      <p class="hidden md:block text-l text-slate-500 mb-16">
+        A playful twist on comfort in public space. This concept explores the
+        tension between public and private. A sofa shaped like a park bench. It
+        invites you to sit, rest, and experience an unexpected blend of outdoor
+        familiarity and indoor comfort. By reimagining a classic urban element,
+        the piece challenges where and how we expect to feel at ease.
+      </p>
+    </div>
 
     <!-- Mobile Desktop Notice -->
     <div
@@ -174,7 +178,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       </p>
     </div>
 
-    <!-- Video + Text Container -->
+    <!-- Video + Text Container - FULL WIDTH -->
     <div class="hidden md:block relative h-full">
       <!-- Video Container - Sticky Background -->
       <div
@@ -222,19 +226,6 @@ const BASE_URL = import.meta.env.BASE_URL;
                       translate it into the context of a home. Among the
                       different ideas that emerged, the sofa concept quickly
                       became my favorite so I had to continue developing it.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3
-                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                    >
-                      Design Process
-                    </h3>
-                    <p class="leading-relaxed mb-4">
-                      I began sketching different silhouettes for the metal legs
-                      and frame, experimenting with how two single bent lines
-                      could define both the support and the backrest.
                     </p>
                   </div>
 
@@ -347,7 +338,32 @@ const BASE_URL = import.meta.env.BASE_URL;
         </div>
       </div>
     </div>
+  </section>
+  </main>
 
+    <!-- Full Width Video Section with Mouse-Controlled Playback -->
+    <section id="interactive-video-section" class="w-screen h-screen flex items-center justify-center overflow-hidden">
+      <video
+        id="interactive-video"
+        class="w-full h-full object-cover"
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="/index/th2.mp4" type="video/mp4" />
+      </video>
+      
+      <!-- Interactive Area Overlay (300px height) -->
+      <div id="interactive-area" class="absolute w-full flex justify-center items-center pointer-events-auto" style="height: 300px;">
+        <div class="w-full h-full flex" style="padding-left: 20%; padding-right: 20%;">
+          <div data-zone="left" class="flex-1 h-full cursor-pointer"></div>
+          <div data-zone="center" class="flex-1 h-full cursor-pointer"></div>
+          <div data-zone="right" class="flex-1 h-full cursor-pointer"></div>
+        </div>
+      </div>
+    </section>
+
+  <main class="w-full px-[5%] sm:px-[10%] lg:px-[20%]">
     <!-- More Projects Section -->
     <section id="more-projects" class="py-16 scroll-fade">
       <div
@@ -735,4 +751,177 @@ const BASE_URL = import.meta.env.BASE_URL;
       setTimeout(setupScrollTrigger, 1000);
     }
   </script>
-</Layout>
+
+  <!-- Interactive Video Control Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('interactive-video');
+      const interactiveArea = document.getElementById('interactive-area');
+      const zones = document.querySelectorAll('[data-zone]');
+      
+      if (!video || !interactiveArea || zones.length === 0) return;
+
+      // Video parameters
+      const FPS = 24;
+      const TOTAL_FRAMES = 95;
+      
+      // Target frames based on zone
+      const FRAME_LEFT = 25;
+      const FRAME_CENTER = 48;
+      const FRAME_RIGHT = 73;
+      const FRAME_START = 0;
+      const FRAME_END = 95;
+      
+      // Current state
+      let currentTargetFrame = FRAME_START;
+      let lastKnownZone = null; // Track last zone before leaving
+      let isAnimating = false;
+      let animationFrame = null;
+      let isInsideArea = false;
+      
+      // Convert frame to time
+      const frameToTime = (frame) => (frame / FPS);
+      
+      // Interpolate video to target frame
+      const animateToFrame = (targetFrame, speed = 1) => {
+        if (isAnimating) {
+          cancelAnimationFrame(animationFrame);
+        }
+        
+        currentTargetFrame = targetFrame;
+        const targetTime = frameToTime(targetFrame);
+        const currentTime = video.currentTime;
+        const difference = targetTime - currentTime;
+        
+        // Don't animate if already at target
+        if (Math.abs(difference) < 0.01) {
+          video.currentTime = targetTime;
+          return;
+        }
+        
+        isAnimating = true;
+        const startTime = performance.now();
+        const duration = Math.abs(difference) * 200 * speed; // Adjustable speed
+        
+        const animate = (currentTimeStamp) => {
+          const elapsed = currentTimeStamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Linear interpolation (no easing)
+          const easeProgress = progress;
+          
+          video.currentTime = currentTime + (difference * easeProgress);
+          
+          if (progress < 1) {
+            animationFrame = requestAnimationFrame(animate);
+          } else {
+            isAnimating = false;
+            video.currentTime = targetTime;
+          }
+        };
+        
+        animationFrame = requestAnimationFrame(animate);
+      };
+      
+      // Determine which zone the mouse is in
+      const getZoneFromEvent = (e) => {
+        const target = e.target.closest('[data-zone]');
+        return target ? target.dataset.zone : null;
+      };
+      
+      // Mouse move handler
+      const handleMouseMove = (e) => {
+        const zone = getZoneFromEvent(e);
+        
+        if (!zone) return;
+        
+        lastKnownZone = zone;
+        
+        let targetFrame;
+        
+        switch(zone) {
+          case 'left':
+            targetFrame = FRAME_LEFT;
+            break;
+          case 'center':
+            targetFrame = FRAME_CENTER;
+            break;
+          case 'right':
+            targetFrame = FRAME_RIGHT;
+            break;
+        }
+        
+        // Only animate if target changed
+        if (targetFrame !== currentTargetFrame) {
+          animateToFrame(targetFrame);
+        }
+      };
+      
+      // Mouse enter handler for interactive area
+      const handleMouseEnter = (e) => {
+        isInsideArea = true;
+        const zone = getZoneFromEvent(e);
+        
+        if (!zone) return;
+        
+        // Determine starting frame based on entry zone
+        let startFrame;
+        let targetFrame;
+        
+        switch(zone) {
+          case 'left':
+            startFrame = FRAME_START; // Enter left from 0
+            targetFrame = FRAME_LEFT;
+            break;
+          case 'center':
+            // Enter center from closest end
+            startFrame = currentTargetFrame <= FRAME_CENTER ? FRAME_START : FRAME_END;
+            targetFrame = FRAME_CENTER;
+            break;
+          case 'right':
+            startFrame = FRAME_END; // Enter right from 95
+            targetFrame = FRAME_RIGHT;
+            break;
+        }
+        
+        // Set starting position
+        video.currentTime = frameToTime(startFrame);
+        currentTargetFrame = startFrame;
+        
+        // Animate to target
+        animateToFrame(targetFrame);
+        lastKnownZone = zone;
+      };
+      
+      // Mouse leave handler
+      const handleMouseLeave = () => {
+        isInsideArea = false;
+        
+        // Go to nearest end based on last known zone
+        let targetFrame;
+        
+        if (lastKnownZone === 'left') {
+          targetFrame = FRAME_START;
+        } else if (lastKnownZone === 'right') {
+          targetFrame = FRAME_END;
+        } else {
+          // Center - go to closest end
+          targetFrame = currentTargetFrame <= FRAME_CENTER ? FRAME_START : FRAME_END;
+        }
+        
+        animateToFrame(targetFrame, 0.8); // Slightly faster exit animation
+      };
+      
+      // Ensure video is loaded
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = frameToTime(FRAME_START);
+      });
+      
+      // Add event listeners to interactive area
+      interactiveArea.addEventListener('mouseenter', handleMouseEnter);
+      interactiveArea.addEventListener('mouseleave', handleMouseLeave);
+      interactiveArea.addEventListener('mousemove', handleMouseMove);
+    });
+  </script>
+  </main>
+</FullWidthLayout>

@@ -1,0 +1,454 @@
+---
+import "../styles/global.css";
+import "../styles/3d-hover.css";
+import "../styles/scroll-fade.css";
+import "../styles/article-layout.css";
+import "../styles/lightbox.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const { 
+  title = "Rufus Plaga | 3D Designer & UI/UX Creative", 
+  description = "Portfolio of Rufus Plaga | Designer specializing in 3D visualization, industrial design, UI/UX, and motion design. Crafting digital experiences with precision and creativity.",
+  image = "/og_image.png",
+  type = "website"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Force HTTPS -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Rufus Plaga" />
+    <meta name="keywords" content="3D Designer, UI/UX Designer, Product Designer, Industrial Design, Motion Design, Portfolio, Furniture Design, FORMA, KLAPP, FoodDecode, Blender, Cinema 4D, Figma, Web Design" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Rufus Plaga Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:creator" content="@rufusplaga" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="msapplication-TileColor" content="#dc2626" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/red.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/red.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/red.png" />
+    
+    <!-- Performance & SEO -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rufus Plaga",
+      "url": Astro.site,
+      "jobTitle": "3D Designer & UI/UX Creative",
+      "description": description,
+      "email": "plagarufus@gmail.com",
+      "telephone": "+49 1520 4770 398",
+      "sameAs": [
+        "https://www.linkedin.com/in/rufusplaga",
+        "https://github.com/ru1us"
+      ]
+    })} />
+  </head>
+  <body>
+    <!-- Custom Scroll Progress Indicator -->
+    <div class="fixed right-0 top-0 h-screen w-1 bg-transparent z-50 pointer-events-none">
+      <div id="scroll-indicator" class="w-full bg-red-600 transition-all duration-100 ease-out shadow-[0_0_10px_rgba(220,38,38,0.5)]" style="height: 0%;"></div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 shadow-2xl z-[100] p-6 hidden">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-slate-700 flex-1">
+          <p class="mb-2"><strong>This website uses cookies</strong></p>
+          <p>I use Google Analytics to analyze and improve the usage of this website. Your data is collected anonymously.</p>
+        </div>
+        <div class="flex gap-3 flex-shrink-0">
+          <button
+            id="cookie-accept"
+            class="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm whitespace-nowrap"
+          >
+            Accept
+          </button>
+          <button
+            id="cookie-decline"
+            class="border-2 border-slate-300 text-slate-700 px-6 py-2 rounded-full hover:bg-slate-100 transition-colors font-heading font-medium text-sm whitespace-nowrap"
+          >
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Consent Script -->
+    <script is:inline>
+      // Check if user has already made a choice
+      function getCookieConsent() {
+        return localStorage.getItem('cookieConsent');
+      }
+
+      function setCookieConsent(value) {
+        localStorage.setItem('cookieConsent', value);
+      }
+
+      // Load Google Analytics only if consent given
+      function loadGoogleAnalytics() {
+        if (getCookieConsent() === 'accepted') {
+          // Load gtag.js
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YMVG11GXL5';
+          document.head.appendChild(script);
+
+          // Initialize gtag
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-YMVG11GXL5', {
+            'anonymize_ip': true
+          });
+        }
+      }
+
+      // Show banner if no choice has been made
+      document.addEventListener('DOMContentLoaded', function() {
+        var consent = getCookieConsent();
+        var banner = document.getElementById('cookie-banner');
+
+        if (!consent) {
+          banner.classList.remove('hidden');
+        } else if (consent === 'accepted') {
+          loadGoogleAnalytics();
+        }
+
+        // Accept button
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+          setCookieConsent('accepted');
+          banner.classList.add('hidden');
+          loadGoogleAnalytics();
+        });
+
+        // Decline button
+        document.getElementById('cookie-decline').addEventListener('click', function() {
+          setCookieConsent('declined');
+          banner.classList.add('hidden');
+        });
+      });
+    </script>
+
+    <script is:inline>
+      // Custom Scroll Indicator
+      function initScrollIndicator() {
+        const indicator = document.getElementById("scroll-indicator");
+        if (!indicator) return;
+
+        function updateIndicator() {
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const scrollTop = window.scrollY;
+          const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+          indicator.style.height = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
+        }
+
+        window.addEventListener("scroll", updateIndicator);
+        window.addEventListener("resize", updateIndicator);
+      }
+
+      // Minimal scroll animation with page load effect
+      document.addEventListener("DOMContentLoaded", function () {
+        initScrollIndicator();
+        const elements = document.querySelectorAll(".scroll-fade");
+
+        elements.forEach((element, index) => {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible) {
+            setTimeout(
+              () => {
+                element.classList.add("visible");
+              },
+              200 + index * 100
+            );
+          }
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        elements.forEach((element) => {
+          observer.observe(element);
+        });
+      });
+    </script>
+    <!-- backdrop-blur-md border rounded-full px-6 py-3 -->
+    <header
+      class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] sm:w-[60%]"
+    >
+      <div class="">
+        <div
+          class="flex items-center justify-between backdrop-blur-md border rounded-full px-4 sm:px-6 py-3"
+        >
+          <a
+            href="/"
+            class="font-extrabold font-heading text-xl sm:text-2xl text-red-600">:RED</a
+          >
+          <nav class="flex gap-2 sm:gap-6">
+            <a
+              href="/projects"
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              ><span class="hidden sm:inline">All </span>Projects</a
+            >
+            <a
+              href="/about"
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium whitespace-nowrap"
+              >About<span class="hidden sm:inline"> Me</span></a
+            >
+            <a
+              href="#"
+              class="text-xs sm:text-base text-slate-700 hover:text-red-600 transition-colors font-heading hover:font-medium"
+              onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <slot />
+
+    <!-- Fixed Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        class="backdrop-blur-md border rounded-full transition-all duration-300 cursor-pointer relative grou px-6 py-3 hover:text-red-600 hover:scale-110"
+        onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); return false;"
+      >
+        <div class="flex items-center gap-3">
+          <span class="font-heading font-medium text-sm">Contact</span>
+          <!-- Arrow Icon -->
+          <div
+            class="w-4 h-4 text-red-500 group-hover:text-red-400 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16px"
+              viewBox="0 -960 960 960"
+              width="16px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="bg-slate-50 border-t py-12 scroll-fade mt-24">
+      <div class="container text-center">
+        <div class="flex items-center justify-center gap-6 mb-6">
+          <img 
+            src={`${import.meta.env.BASE_URL}textures/about.jpg`}
+            alt="Rufus Plaga"
+            class="w-24 h-24 rounded-full object-cover border-2 border-red-600"
+          />
+          <div class="text-left">
+            <h2 class="text-2xl font-heading font-semibold text-red-600 mb-2">
+              Let's Get in Touch
+            </h2>
+            <p class="text-slate-600">I'd love to hear from you.</p>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row justify-center items-center gap-6"
+        >
+          <!-- Email -->
+          <a
+            href="mailto:plagarufus@gmail.com"
+            class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center"
+          >
+            <div class="flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+                class="text-slate-600"
+              >
+                <path
+                  d="M168-192q-29.7 0-50.85-21.15Q96-234.3 96-264v-432q0-29.7 21.15-50.85Q138.3-768 168-768h624q29.7 0 50.85 21.15Q864-725.7 864-696v432q0 29.7-21.15 50.85Q821.7-192 792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179ZM168-611v-85 432-347Z"
+                ></path>
+              </svg>
+              <div>
+                <div class="font-heading font-bold text-base text-slate-900">
+                  Send Email
+                </div>
+                <div class="text-sm text-slate-600">plagarufus@gmail.com</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Phone -->
+          <a
+            href="tel:+4915204770398"
+            class="border border-slate-400 p-6 bg-white hover:border-slate-500 transition-colors rounded-none w-full sm:w-64 flex justify-center"
+          >
+            <div class="flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+                class="text-slate-600"
+              >
+                <path
+                  d="M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.286 12.857-32.143T165-840h140q14 0 24 10t14 25l27 126q2 14-.5 25.5T359-634L259-533q56 93 125.5 162T542-254l95-98q10-11 23-15t26-1l119 26q15 4 25 16.286T840-300v135q0 19.286-12.857 32.143T795-120Z"
+                ></path>
+              </svg>
+              <div>
+                <div class="font-heading font-bold text-base text-slate-900">
+                  Call Me
+                </div>
+                <div class="text-sm text-slate-600">+49 1520 4770 398</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t py-8 text-center text-slate-500">
+      <div class="container">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <!-- Copyright -->
+          <div class="text-xs">
+            © {new Date().getFullYear()} Rufus Plaga
+          </div>
+
+          <!-- Contact & Legal -->
+          <div class="flex flex-col md:flex-row items-center gap-4 text-xs">
+            <div class="flex gap-4">
+              <a
+                href="mailto:plagarufus@gmail.com"
+                class="hover:text-red-400 transition-colors">Contact</a
+              >
+              <span class="text-slate-300">•</span>
+              <a
+                href="/privacy"
+                class="hover:text-slate-400 transition-colors">Privacy</a
+              >
+              <span class="text-slate-300">•</span>
+              <a
+                href="/imprint"
+                class="hover:text-slate-400 transition-colors">Imprint</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="Enlarged image" />
+    </div>
+
+    <!-- Lightbox Script -->
+    <script is:inline>
+      function openLightbox(imgSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Add click handler to all images in .content-right
+      document.addEventListener("DOMContentLoaded", function () {
+        const contentImages = document.querySelectorAll(".content-right img");
+        contentImages.forEach((img) => {
+          img.classList.add("lightbox-image");
+          img.onclick = function (e) {
+            e.stopPropagation();
+            openLightbox(this.src);
+          };
+        });
+      });
+    </script>
+  </body>
+</html>
