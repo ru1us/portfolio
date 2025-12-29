@@ -161,11 +161,10 @@ const BASE_URL = import.meta.env.BASE_URL;
         Have a seat!
       </h1>
       <p class="hidden md:block text-l text-slate-500 mb-16">
-        A playful twist on comfort in public space. This concept explores the
-        tension between public and private. A sofa shaped like a park bench. It
-        invites you to sit, rest, and experience an unexpected blend of outdoor
-        familiarity and indoor comfort. By reimagining a classic urban element,
-        the piece challenges where and how we expect to feel at ease.
+        This project mixes public and private design. It takes the shape of a
+        park bench and turns it into a comfortable sofa for your home. The
+        result is a piece of furniture that looks like it belongs outside but
+        feels cozy enough for your living room.
       </p>
     </div>
 
@@ -196,142 +195,83 @@ const BASE_URL = import.meta.env.BASE_URL;
 
       <!-- Scrollbarer Text - Overlay -->
       <!-- TEXT_START: Ändere pt-XX um zu steuern wann Text erscheint -->
-      <div class="absolute top-0 left-0 right-0 pointer-events-none">
+      <div class="absolute top-[-25vh] left-0 right-0 pointer-events-none">
         <div
           class="ml-auto md:w-[76.92%] lg:w-[53.85%] 2xl:w-[38.46%] pointer-events-auto"
         >
           <div class="min-h-[300vh] items-start pt-[175vh] pb-20 px-0">
-            <div class="min-h-[85vh] flex flex-col justify-center gap-8">
+            <div class="min-h-[85vh] flex flex-col justify-center gap-6">
+              <!-- Card 1: Idea -->
               <div
-                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full"
+                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full fly-in-card opacity-0 translate-x-20 transition-all duration-1000 ease-out"
               >
-                <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
-                  Sketches & Early Development
-                </h2>
-
-                <div class="space-y-6 text-slate-700">
-                  <div>
-                    <h3
-                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                    >
-                      Idea
-                    </h3>
-                    <p class="leading-relaxed">
-                      The idea for this concept emerged unexpectedly while I was
-                      working on another project called <a
-                        class="font-bold text-red-600"
-                        href="/projects/forma">Forma</a
-                      >. During that process, I started thinking about how I
-                      could borrow the visual language of public spaces and
-                      translate it into the context of a home. Among the
-                      different ideas that emerged, the sofa concept quickly
-                      became my favorite so I had to continue developing it.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3
-                      class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                    >
-                      Result
-                    </h3>
-                    <p class="leading-relaxed">
-                      As the sketches evolved, the form started to communicate a
-                      subtle duality. The rigid, continuous metal frame gives
-                      the object a sense of durability and public robustness,
-                      while the cushioned plank brings a contrasting
-                      softness—suggesting a private, personal moment within a
-                      familiar public silhouette. The result is a piece that
-                      feels both inviting and slightly surprising, encouraging
-                      the user to reconsider where comfort can be found.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="pt-4 border-t border-slate-300">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
-                      >Sketching</span
-                    >
-                    <span
-                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
-                      >Concept Development</span
-                    >
-                  </div>
-                </div>
+                <h3
+                  class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                >
+                  Idea
+                </h3>
+                <p class="leading-relaxed text-slate-700">
+                  The idea came up while I was working on my <a
+                    class="font-bold text-red-600"
+                    href="/projects/forma">Forma</a
+                  > project. I wanted to bring the look of public seating into a
+                  home environment. A park bench is something everyone knows, so
+                  I used it as a starting point to create something new for
+                  indoor use.
+                </p>
               </div>
-            </div>
-            <div
-              class="backdrop-blur-md bg-slate-50/40 border border-slate-200 mt-6 rounded-lg p-8 w-full"
-            >
-              <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900">
-                Technical
-              </h2>
 
-              <div class="space-y-6 text-slate-700">
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Idea
-                  </h3>
-                  <p class="leading-relaxed">
-                    The idea for this concept emerged unexpectedly while I was
-                    working on another project called <a
-                      class="font-bold text-red-600"
-                      href="/projects/forma">Forma</a
-                    >. During that process, I started thinking about how I could
-                    borrow the visual language of public spaces and translate it
-                    into the context of a home. Among the different ideas that
-                    emerged, the sofa concept quickly became my favorite so I
-                    had to continue developing it.
-                  </p>
-                </div>
+              <!-- Card 2: Result -->
+              <div
+                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full fly-in-card opacity-0 translate-x-20 transition-all duration-1000 ease-out"
+              >
+                <h3
+                  class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                >
+                  Result
+                </h3>
+                <p class="leading-relaxed text-slate-700">
+                  The final design combines two opposites. A strong steel frame
+                  gives it a solid shape and an industrial look. Inside this
+                  frame sits a soft, upholstered seat that makes it comfortable.
+                  This mix of hard metal and soft fabric creates an interesting
+                  contrast.
+                </p>
+              </div>
 
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Design Process
-                  </h3>
-                  <p class="leading-relaxed mb-4">
-                    I began sketching different silhouettes for the metal legs
-                    and frame, experimenting with how two single bent lines
-                    could define both the support and the backrest.
-                  </p>
-                </div>
+              <!-- Card 3: Process -->
+              <div
+                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full fly-in-card opacity-0 translate-x-20 transition-all duration-1000 ease-out"
+              >
+                <h3
+                  class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                >
+                  Process
+                </h3>
+                <p class="leading-relaxed text-slate-700">
+                  After drawing the first sketches, I built the entire model in
+                  SolidWorks to get the dimensions right. Once the technical
+                  part was done, I moved the model to Blender to create the
+                  realistic renderings.
+                </p>
+              </div>
 
-                <div>
-                  <h3
-                    class="text-xl font-heading font-semibold mb-3 text-slate-900"
-                  >
-                    Result
-                  </h3>
-                  <p class="leading-relaxed">
-                    As the sketches evolved, the form started to communicate a
-                    subtle duality. The rigid, continuous metal frame gives the
-                    object a sense of durability and public robustness, while
-                    the cushioned plank brings a contrasting softness—suggesting
-                    a private, personal moment within a familiar public
-                    silhouette. The result is a piece that feels both inviting
-                    and slightly surprising, encouraging the user to reconsider
-                    where comfort can be found.
-                  </p>
-                </div>
-
-                <div class="pt-4 border-t border-slate-300">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
-                      >Sketching</span
-                    >
-                    <span
-                      class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
-                      >Concept Development</span
-                    >
-                  </div>
-                </div>
+              <!-- Card 4: Industrial Details -->
+              <div
+                class="backdrop-blur-md bg-slate-50/40 border border-slate-200 rounded-lg p-8 w-full fly-in-card opacity-0 translate-x-20 transition-all duration-1000 ease-out"
+              >
+                <h3
+                  class="text-xl font-heading font-semibold mb-3 text-slate-900"
+                >
+                  Industrial Details
+                </h3>
+                <p class="leading-relaxed text-slate-700">
+                  The construction is easy to understand. Large screws are used
+                  not just to hold it together, but also as a design feature.
+                  Nothing is hidden. These visible details show how the piece is
+                  built and give it a raw, mechanical look that stands out
+                  against the soft fabric.
+                </p>
               </div>
             </div>
           </div>
@@ -342,7 +282,7 @@ const BASE_URL = import.meta.env.BASE_URL;
   </main>
 
     <!-- Full Width Video Section with Mouse-Controlled Playback -->
-    <section id="interactive-video-section" class="w-screen h-screen flex items-center justify-center overflow-hidden">
+    <section id="interactive-video-section" class="w-screen h-screen flex items-center justify-center overflow-hidden relative mt-[-30%]">
       <video
         id="interactive-video"
         class="w-full h-full object-cover"
@@ -353,12 +293,57 @@ const BASE_URL = import.meta.env.BASE_URL;
         <source src="/index/th2.mp4" type="video/mp4" />
       </video>
       
+      <!-- Text Container (appears on right hover) -->
+      <div id="screw-info-container" class="absolute left-[20%] top-1/2 -translate-y-1/2 max-w-md opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="backdrop-blur-md bg-slate-50/50 border border-slate-200 rounded-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-4 text-slate-900">
+            Exposed Fastener System
+          </h3>
+          
+          <div class="space-y-3 mb-4">
+            <div>
+              <h4 class="font-heading font-semibold text-slate-900 mb-1">The Assembly</h4>
+              <p class="text-sm text-slate-900 leading-relaxed">
+                Bolts go through the plywood structure and the steel bar below.
+                The fabric is pulled tight and stapled directly into the plywood
+                core. This keeps the upholstery secure while the bolts hold the
+                main structure together.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="font-heading font-semibold text-slate-900 mb-1">The Connection</h4>
+              <p class="text-sm text-slate-900 leading-relaxed">
+                The structure rests on curved steel legs, drilled to align with
+                the screw path. A nut secures everything from below, creating a
+                strong connection that emphasizes the robust, structural
+                character.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- Interactive Area Overlay (300px height) -->
       <div id="interactive-area" class="absolute w-full flex justify-center items-center pointer-events-auto" style="height: 300px;">
         <div class="w-full h-full flex" style="padding-left: 20%; padding-right: 20%;">
           <div data-zone="left" class="flex-1 h-full cursor-pointer"></div>
           <div data-zone="center" class="flex-1 h-full cursor-pointer"></div>
           <div data-zone="right" class="flex-1 h-full cursor-pointer"></div>
+        </div>
+      </div>
+
+      <!-- Hover Instruction Overlay -->
+      <div id="hover-instruction" class="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 z-20">
+        <div class="bg-slate-50/10 backdrop-blur-sm border px-64 py-10 rounded-3xl shadow-xl flex flex-col items-center gap-6">
+          <div class="flex items-center gap-4 text-white/90">
+            <!-- Mouse Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-horizontal">
+              <rect x="8" y="2" width="8" height="12" rx="4" />
+              <path d="M12 6v2" />
+            </svg>
+          </div>
+          <span class="font-heading font-medium text-white text-xl tracking-widest">Hover me</span>
         </div>
       </div>
     </section>
@@ -758,6 +743,8 @@ const BASE_URL = import.meta.env.BASE_URL;
       const video = document.getElementById('interactive-video');
       const interactiveArea = document.getElementById('interactive-area');
       const zones = document.querySelectorAll('[data-zone]');
+      const screwInfoContainer = document.getElementById('screw-info-container');
+      const hoverInstruction = document.getElementById('hover-instruction');
       
       if (!video || !interactiveArea || zones.length === 0) return;
 
@@ -829,6 +816,15 @@ const BASE_URL = import.meta.env.BASE_URL;
         return target ? target.dataset.zone : null;
       };
       
+      // Show/hide info container based on zone
+      const updateInfoContainer = (zone) => {
+        if (zone === 'right' && screwInfoContainer) {
+          screwInfoContainer.style.opacity = '1';
+        } else if (screwInfoContainer) {
+          screwInfoContainer.style.opacity = '0';
+        }
+      };
+      
       // Mouse move handler
       const handleMouseMove = (e) => {
         const zone = getZoneFromEvent(e);
@@ -836,6 +832,9 @@ const BASE_URL = import.meta.env.BASE_URL;
         if (!zone) return;
         
         lastKnownZone = zone;
+        
+        // Update info container visibility
+        updateInfoContainer(zone);
         
         let targetFrame;
         
@@ -860,6 +859,17 @@ const BASE_URL = import.meta.env.BASE_URL;
       // Mouse enter handler for interactive area
       const handleMouseEnter = (e) => {
         isInsideArea = true;
+        
+        // Hide hover instruction on first interaction
+        if (hoverInstruction && hoverInstruction.style.opacity !== '0') {
+          hoverInstruction.style.opacity = '0';
+          setTimeout(() => {
+            if (hoverInstruction.parentNode) {
+              hoverInstruction.parentNode.removeChild(hoverInstruction);
+            }
+          }, 500);
+        }
+
         const zone = getZoneFromEvent(e);
         
         if (!zone) return;
@@ -897,6 +907,11 @@ const BASE_URL = import.meta.env.BASE_URL;
       const handleMouseLeave = () => {
         isInsideArea = false;
         
+        // Hide info container
+        if (screwInfoContainer) {
+          screwInfoContainer.style.opacity = '0';
+        }
+        
         // Go to nearest end based on last known zone
         let targetFrame;
         
@@ -923,5 +938,41 @@ const BASE_URL = import.meta.env.BASE_URL;
       interactiveArea.addEventListener('mousemove', handleMouseMove);
     });
   </script>
+
+  <script>
+    // Fly-in Animation on Scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-x-20");
+            entry.target.classList.add("opacity-100", "translate-x-0");
+          } else {
+            entry.target.classList.remove("opacity-100", "translate-x-0");
+            entry.target.classList.add("opacity-0", "translate-x-20");
+          }
+        });
+      }, observerOptions);
+
+      const cards = document.querySelectorAll(".fly-in-card");
+      cards.forEach(card => observer.observe(card));
+    });
+  </script>
+
+<style>
+  @keyframes moveHorizontal {
+    0%, 100% { transform: translateX(20px); }
+    50% { transform: translateX(-20px); }
+  }
+  .animate-horizontal {
+    animation: moveHorizontal 2s ease-in-out infinite;
+  }
+</style>
   </main>
 </FullWidthLayout>
