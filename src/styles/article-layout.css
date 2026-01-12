@@ -50,6 +50,10 @@
   margin-bottom: 1rem;
 }
 
+.content-right ul li {
+  color: #475569;
+}
+
 .content-right img {
   width: 100%;
   border-radius: 0.5rem;
