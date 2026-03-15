@@ -6,11 +6,68 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 <Layout title="Projects | Overview">
   <div class="w-full mx-auto pt-8">
-    <h1 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left">
+    <h1
+      class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-8 sm:mb-12 text-left"
+    >
       All Projects
     </h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 w-full">
+      <!-- Project 2: LanceAlot Furniture Collections -->
+      <div
+        class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
+        onclick={`window.location.href='${BASE_URL}projects/lanceAlot'`}
+      >
+        <!-- Project Image -->
+        <div class="w-full h-48 bg-slate-200 rounded mb-4 overflow-hidden">
+          <img
+            src={`${BASE_URL}projects/lanceAlot/thumbnail.png`}
+            alt="LanceAlot Project Management & Time Tracking"
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
+
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="font-heading font-bold text-lg text-slate-900 flex-grow">
+            LanceAlot | Project Management & Time Tracking
+          </h3>
+          <!-- Arrow Icon - aligned with heading -->
+          <div
+            class="w-5 h-5 text-red-600 hover:text-red-700 transition-colors ml-2 flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="currentColor"
+            >
+              <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded"
+            >Web App</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >iOS App</span
+          >
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+            >Product Design</span
+          >
+        </div>
+
+        <p class="text-sm text-slate-700 flex-grow">
+          Comprehensive time tracking and project management platform for
+          freelancers. Precise tracking, analytics, and financial insights in
+          one powerful app.
+        </p>
+      </div>
+
       <!-- Project 1: FORMA Furniture Collections -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
@@ -65,7 +122,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         </p>
       </div>
 
-      <!-- Project 2: KLAPP Hairdryer -->
+      <!-- Project 3: KLAPP Hairdryer -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
         onclick={`window.location.href='${BASE_URL}projects/klapp-hairdryer'`}
@@ -119,7 +176,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         </p>
       </div>
 
-      <!-- Project 3: FoodDecode UX/UI -->
+      <!-- Project 4: FoodDecode UX/UI -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
         onclick={`window.location.href='${BASE_URL}projects/fooddecode-ux'`}
@@ -173,7 +230,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         </p>
       </div>
 
-      <!-- Project 4: SOULSGATE -->
+      <!-- Project 5: SOULSGATE -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
         onclick={`window.location.href='${BASE_URL}projects/soulsgate'`}
@@ -222,12 +279,12 @@ const BASE_URL = import.meta.env.BASE_URL;
         </div>
 
         <p class="text-sm text-slate-700 flex-grow">
-          Dark atmospheric graveyard environment with cinematic flythrough.
-          From concept sketches to final 3D animation.
+          Dark atmospheric graveyard environment with cinematic flythrough. From
+          concept sketches to final 3D animation.
         </p>
       </div>
 
-      <!-- Project 5: Motion Design -->
+      <!-- Project 6: Motion Design -->
       <div
         class="border border-slate-400 p-6 w-full h-full flex flex-col justify-start card-3d cursor-pointer hover:border-slate-500 transition-colors relative scroll-fade group"
         onclick={`window.location.href='${BASE_URL}projects/motion-design'`}
@@ -276,7 +333,8 @@ const BASE_URL = import.meta.env.BASE_URL;
         </div>
 
         <p class="text-sm text-slate-700 flex-grow">
-          A collection of motion design projects showcasing various animation styles and techniques.
+          A collection of motion design projects showcasing various animation
+          styles and techniques.
         </p>
       </div>
     </div>

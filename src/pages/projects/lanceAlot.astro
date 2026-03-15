@@ -1,0 +1,502 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const BASE_URL = import.meta.env.BASE_URL;
+---
+
+<Layout title="LanceAlot | Project Management & Time Tracking">
+  <!-- Global Article Title - Left Aligned -->
+  <div class="w-full mb-4">
+    <h1
+      class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-left"
+    >
+      LanceAlot | Project Management & Time Tracking
+    </h1>
+    <p class="text-sm text-slate-500 mt-2">2025</p>
+    <p class="text-sm text-slate-600 mt-1">Team: Felix Abmeyer, Rufus Plaga</p>
+  </div>
+
+  <!-- Call-to-Action Button - Right below title -->
+  <div class="w-full mb-8 flex flex-wrap gap-3">
+    <a
+      href="https://lancealot.online/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm sm:text-base"
+    >
+      <span>Visit Live Website</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="currentColor"
+      >
+        <path
+          d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+        ></path>
+      </svg>
+    </a>
+    <a
+      href="https://testflight.apple.com/join/h4jTJX3J"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-slate-800 transition-colors font-heading font-medium text-sm sm:text-base"
+    >
+      <span>iOS Beta (TestFlight)</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="currentColor"
+      >
+        <path
+          d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+        ></path>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Hero Video - Full Width -->
+  <div class="w-full mb-12 relative group cursor-pointer">
+    <video
+      id="heroVideo"
+      class="w-full h-auto sm:h-[60vh] object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source
+        src={`${BASE_URL}projects/lanceAlot/Render1.mp4`}
+        type="video/mp4"
+      />
+      <!-- Fallback image if video doesn't load -->
+      <img
+        src={`${BASE_URL}projects/lanceAlot/chair1.png`}
+        alt="LanceAlot Project Management & Time Tracking"
+        class="w-full h-auto sm:h-[60vh] object-cover"
+      />
+    </video>
+    
+    <!-- Sound Toggle Button -->
+    <button
+      id="soundToggle"
+      class="absolute bottom-4 right-4 bg-white/80 hover:bg-white px-4 py-2 rounded-full shadow-lg transition-all duration-200 text-slate-900 text-sm font-heading font-medium"
+      aria-label="Toggle video sound"
+    >
+      <!-- Text labels for sound state -->
+      <span id="soundOffLabel" class="hidden">Sound Off</span>
+      <span id="soundOnLabel">Sound On</span>
+    </button>
+  </div>
+
+  <!-- Article Content Table -->
+  <div class="w-full">
+    <table class="article-table w-full">
+      <tr>
+        <td class="heading-cell">Overview</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            LanceAlot is a comprehensive project management and time tracking
+            platform designed for freelancers, consultants, and team leads. The
+            application combines precise time tracking with intelligent project
+            organization and detailed financial analytics.
+          </p>
+          <p>
+            Built as both a web application and native mobile app (iOS),
+            LanceAlot enables users to streamline their workflow, monitor
+            productivity patterns, and maintain complete control over earnings,
+            expenses, and project profitability.
+          </p>
+
+          <!-- Quick Screenshot Grid - Login & Timer Off -->
+          <div class="flex flex-row gap-4 my-8">
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/home.png`}
+                alt="Home Screen"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">HomeScreen</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/login.png`}
+                alt="Login Screen"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">Login</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/off.png`}
+                alt="Timer Off Default Screen"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Default Screen
+              </p>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Core Features</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            <strong>Precise Time Tracking</strong> | Track time with millisecond precision.
+            Start, pause, and stop timers with ease. Get detailed insights into individual
+            work sessions and understand how time is distributed across projects.
+          </p>
+
+          <p>
+            <strong>Project Management</strong> | Organize work into structured projects.
+            Set hourly rates, define project budgets, and manage multiple projects
+            simultaneously. Each project maintains its own timeline, budget constraints,
+            and financial metrics.
+          </p>
+
+          <p>
+            <strong>Financial Overview</strong> | Comprehensive tracking of earnings
+            and expenses. Monitor income from billable hours, manage project costs,
+            and maintain a clear financial overview. Tools for calculating profitability
+            and managing budgets across all active projects.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">In-App Experience</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <!-- Screenshot Grid - 5 App Screens -->
+          <div class="my-8 gap-4 w-full flex flex-row">
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/edit.png`}
+                alt="Edit Recording"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Edit Recording
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/export.png`}
+                alt="Export"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">Export</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/move.png`}
+                alt="Motion Detection Popup"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Motion Detection
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/settings.png`}
+                alt="Setting"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">Settings</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Platform</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            LanceAlot provides a seamless experience across multiple platforms:
+            a modern web application for desktop users and a native iOS mobile
+            app for on-the-go access. Both platforms synchronize in real-time,
+            ensuring data consistency regardless of where you log your time or
+            manage projects.
+          </p>
+          <p>
+            The web application offers a comprehensive dashboard with detailed
+            analytics, project management tools, and financial reporting. For
+            mobile users, the iOS app provides quick time tracking, project
+            access, and essential features optimized for mobile workflows.
+          </p>
+          <p>
+            Users can export detailed project reports as PDF files, making it
+            easy to share comprehensive time tracking data and earnings
+            summaries with clients or team members.
+          </p>
+
+          <p class="bg-slate-50 border-l-4 border-red-600 p-4 my-6">
+            <strong>Try the Demo:</strong><br />
+            Email: <code class="bg-slate-100 px-2 py-1 rounded"
+              >demonutzer@test1234</code
+            ><br />
+            Password: <code class="bg-slate-100 px-2 py-1 rounded"
+              >test1234</code
+            >
+          </p>
+
+          <!-- CTA Button within content -->
+          <div class="my-6">
+            <a
+              href="https://lancealot.online/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 border-2 border-red-600 text-red-600 px-6 py-3 rounded-full hover:bg-red-600 hover:text-white transition-colors font-heading font-medium"
+            >
+              <span>Explore the Full Website</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+              >
+                <path
+                  d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://testflight.apple.com/join/h4jTJX3J"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-slate-800 transition-colors font-heading font-medium text-sm sm:text-base"
+            >
+              <span>iOS Beta (TestFlight)</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="currentColor"
+              >
+                <path
+                  d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Innovative Timer Interface</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            The core innovation of LanceAlot lies in its unique timer interface
+            design. Rather than traditional buttons for saving and deleting time
+            entries, users interact with the timer through intuitive drag
+            gestures. This approach eliminates accidental button presses and
+            creates a more satisfying user experience.
+          </p>
+
+          <p class="font-semibold text-slate-900 my-4">
+            Drag to Save • Drag to Delete • Haptic Feedback
+          </p>
+
+          <p>
+            <strong>Gesture-Based Interaction</strong> | Users can swipe or drag the
+            timer element left to delete or right to save, providing clear directional
+            feedback for each action. This intuitive mapping reduces cognitive load
+            and prevents accidental data loss.
+          </p>
+
+          <p>
+            <strong>Haptic Feedback Integration</strong> | When users interact with
+            the timer, subtle device vibrations provide tactile confirmation of their
+            actions. These haptic cues reinforce successful gestures and add a layer
+            of polish to the user experience that traditional UI elements cannot match.
+          </p>
+
+          <p>
+            <strong>Error Prevention</strong> | By replacing traditional tap targets
+            with drag gestures, the interface naturally prevents accidental deletions
+            while still making intentional actions quick and easy. The gesture requirement
+            acts as a gentle confirmation mechanism.
+          </p>
+
+          <!-- Image Grid - 3 Screenshots Side by Side -->
+          <div class="grid grid-cols-3 gap-4 my-8">
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/default.png`}
+                alt="Timer Active State"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Active Timer
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/save.png`}
+                alt="Timer Drag to Save"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Drag to Save
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src={`${BASE_URL}projects/lanceAlot/delete.png`}
+                alt="Timer Drag to Delete"
+                style="border-radius: 0 !important; box-shadow: none !important;"
+              />
+              <p class="text-sm text-slate-600 mt-2 text-center">
+                Drag to Delete
+              </p>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Technology Stack</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            <strong>Backend & Database</strong> | Supabase provides the complete backend
+            infrastructure, including PostgreSQL database, real-time data synchronization,
+            and authentication services. This allows for seamless data consistency
+            across web and mobile platforms.
+          </p>
+
+          <p>
+            <strong>Mobile Development</strong> | The iOS native app is built with
+            Swift for optimal performance and native user experience. Flutter components
+            handle cross-platform logic and real-time functionality, ensuring smooth
+            synchronization with the backend.
+          </p>
+
+          <p>
+            <strong>Web Application</strong> | The web platform leverages Astro for
+            fast, optimized static site generation with dynamic components. Solid.js
+            powers interactive UI elements and real-time updates, providing a responsive
+            and performant user interface.
+          </p>
+
+          <p>
+            This modern tech stack ensures reliability, real-time
+            synchronization, and an excellent user experience across all
+            platforms while maintaining code efficiency and scalability.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            Detailed analytics provide comprehensive reports on productivity
+            patterns and work distribution. Visualize how time is spent across
+            projects, identify productivity trends, and optimize your workflow
+            based on actionable data insights.
+          </p>
+          <p>
+            Earnings reports show billable hours, project revenues, and expense
+            tracking. Understand profitability at a glance and make informed
+            decisions about project pricing and resource allocation.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="heading-cell">Result</td>
+        <td class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td class="content-left"></td>
+        <td class="content-right">
+          <p>
+            A complete, full-featured project management and time tracking
+            solution that addresses the needs of modern freelancers and
+            consultants. LanceAlot eliminates the friction of managing multiple
+            tools by consolidating time tracking, project management, and
+            financial analysis in one platform.
+          </p>
+          <p>
+            The application demonstrates thoughtful design that prioritizes
+            usability, data accuracy, and real-time synchronization. The
+            combination of web and mobile platforms ensures productivity is
+            supported whether users are at their desk or working remotely.
+          </p>
+          <p>
+            With precise time tracking, intelligent analytics, and comprehensive
+            financial reporting, LanceAlot empowers users to work smarter,
+            understand their productivity, and optimize their business
+            performance.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("heroVideo");
+    const soundToggle = document.getElementById("soundToggle");
+    const soundOnLabel = document.getElementById("soundOnLabel");
+    const soundOffLabel = document.getElementById("soundOffLabel");
+
+    if (soundToggle && video) {
+      // Update label based on initial muted state
+      updateLabel();
+
+      // Toggle muted state on button click
+      soundToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        updateLabel();
+      });
+
+      // Also toggle on video click
+      video.addEventListener("click", () => {
+        video.muted = !video.muted;
+        updateLabel();
+      });
+
+      function updateLabel() {
+        if (video.muted) {
+          soundOnLabel.classList.add("hidden");
+          soundOffLabel.classList.remove("hidden");
+        } else {
+          soundOffLabel.classList.add("hidden");
+          soundOnLabel.classList.remove("hidden");
+        }
+      }
+    }
+  });
+</script>
