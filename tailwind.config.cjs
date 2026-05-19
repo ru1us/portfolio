@@ -7,6 +7,7 @@ module.exports = {
       fontFamily: {
         'sans': ['Barlow', 'system-ui', 'sans-serif'],
         'heading': ['Space Grotesk', 'system-ui', 'sans-serif'],
+        'doto': ['Doto', 'monospace'],
       },
     },
   },

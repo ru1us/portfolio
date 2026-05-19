@@ -6,7 +6,6 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 <FullWidthLayout title="Portfolio | Rufus Plaga">
   <main class="w-full pt-24 px-[5%] sm:px-[10%] lg:px-[20%]">
-    <!-- Hero Section - Full Width, 80% Height -->
     <section
       id="hero"
       class="w-full h-auto sm:h-[80vh] flex flex-col justify-center mx-auto scroll-fade py-12 sm:py-0"
@@ -149,48 +148,135 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
     </section>
 
+    <!-- Scroll Hint -->
+    <div class="flex justify-center py-8">
+      <button
+        id="scroll-down-btn"
+        class="flex flex-col items-center gap-2 text-slate-500 hover:text-red-600 transition-colors duration-300 cursor-pointer"
+      >
+        <span class="text-sm font-medium tracking-widest">SCROLL</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="animate-bounce"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Current Project Section -->
+    <section
+      id="current-project"
+      class="w-full sm:py-24 scroll-fade"
+    >
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const scrollBtn = document.getElementById("scroll-down-btn");
+        if (scrollBtn) {
+          scrollBtn.addEventListener("click", () => {
+            window.scrollBy({ top: 1000, behavior: "smooth" });
+          });
+        }
+      });
+    </script>
+      <!-- Main Card -->
+      <div class="border border-slate-400 p-8 sm:p-12 w-full relative">
+        <!-- Header -->
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3">
+          <span class="font-doto" style="font-variation-settings: 'ROND' 1">LAYER<span class="text-slate-900 font-doto" style="font-variation-settings: 'ROND' 1">_3</span></span><span class="text-slate-900 font-heading font-normal text-xl sm:text-2xl md:text-3xl"> | 3D Web Experience</span>
+        </h2>
+        <div class="flex items-center gap-2 mt-2 mb-1">
+          <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse flex-shrink-0"></span>
+          <p class="text-sm font-semibold text-amber-600 tracking-wide">In Progress</p>
+        </div>
+        <p class="text-sm text-slate-600 mb-6">Team: Rufus Plaga</p>
+
+        <!-- View Project Button -->
+        <a
+          href="https://layer-3-smoky.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm sm:text-base mb-8"
+        >
+          <span>View Live Project</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="currentColor"
+          >
+            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"></path>
+          </svg>
+        </a>
+
+        <a
+          href="https://layer-3-smoky.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full mb-6 hover:opacity-90 transition-opacity"
+        >
+          <div id="layer3-media" class="w-full">
+            <img
+              id="layer3-img"
+              src="/layer_3.png"
+              alt="Layer_3 — Inverse Kinematics in the Web"
+              class="w-full h-auto border border-slate-200"
+            />
+          </div>
+        </a>
+
+        <script>
+          window.addEventListener("load", () => {
+            const container = document.getElementById("layer3-media");
+            const img = document.getElementById("layer3-img");
+            if (!container || !img) return;
+
+            const video = document.createElement("video");
+            video.src = "/layer_3.webm";
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.className = "w-full h-auto border border-slate-200";
+
+            video.addEventListener("canplay", () => {
+              container.replaceChild(video, img);
+            }, { once: true });
+          });
+        </script>
+
+        <!-- Description -->
+        <p class="text-slate-600 leading-relaxed mb-4 text-sm sm:text-base max-w-xl">
+          An interactive website exploring Inverse Kinematics, rendered
+          in real-time using Three.js directly in the browser. This project is still a work in progress.
+        </p>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-red-100 text-red-600 text-xs px-2 py-1">Three.js</span>
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1">WebGL</span>
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1">Inverse Kinematics</span>
+          <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1">Web</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Case Study Section - Video Background mit scrollbarem Text -->
     <section
       id="case-study"
       class="relative hidden md:block min-h-[400vh] opacity-0 transition-opacity duration-700"
     >
       <!-- Heading und Text mit Padding -->
-      <div class="flex justify-center mt-8 mb-8">
-        <button
-          id="scroll-down-btn"
-          class="flex flex-col items-center gap-2 text-slate-500 hover:text-red-600 transition-colors duration-300 cursor-pointer"
-        >
-          <span class="text-sm font-medium tracking-widest">SCROLL</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="animate-bounce"
-          >
-            <path d="M12 5v14M19 12l-7 7-7-7"></path>
-          </svg>
-        </button>
-      </div>
-
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const scrollBtn = document.getElementById("scroll-down-btn");
-          if (scrollBtn) {
-            scrollBtn.addEventListener("click", () => {
-              window.scrollBy({
-                top: 1000,
-                behavior: "smooth",
-              });
-            });
-          }
-        });
-      </script>
       <div class="w-full text-center mb-12 sm:mb-20">
         <h1
           class="hidden md:block text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6"
