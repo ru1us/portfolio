@@ -47,7 +47,10 @@ const BASE_URL = import.meta.env.BASE_URL;
         </a>
       </div>
 
-      <div class="p-8 relative overflow-hidden h-96 hidden sm:block" id="depth-container">
+      <div
+        class="p-8 relative overflow-hidden h-96 hidden sm:block"
+        id="depth-container"
+      >
         <video
           id="color-video"
           src={`${BASE_URL}textures/bright.webm`}
@@ -73,16 +76,24 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
 
       <div class="mt-12 space-y-6 mb-24">
-        <div class="border-l-4 border-red-600 pl-6 py-2 hover:bg-slate-50 transition-colors">
+        <div
+          class="border-l-4 border-red-600 pl-6 py-2 hover:bg-slate-50 transition-colors"
+        >
           <h3 class="text-red-600 font-semibold text-lg mb-2">Why :RED?</h3>
           <p class="text-slate-600 text-base leading-relaxed">
-            Rufus means "red" in Latin. Red represents energy, passion, and focus. Bold, memorable, and perfectly aligned with my design approach.
+            Rufus means "red" in Latin. Red represents energy, passion, and
+            focus. Bold, memorable, and perfectly aligned with my design
+            approach.
           </p>
         </div>
-        <div class="border-l-4 border-red-600 pl-6 py-2 hover:bg-slate-50 transition-colors">
+        <div
+          class="border-l-4 border-red-600 pl-6 py-2 hover:bg-slate-50 transition-colors"
+        >
           <h3 class="text-red-600 font-semibold text-lg mb-2">Why LEGO?</h3>
           <p class="text-slate-600 text-base leading-relaxed">
-            I approach design with a modular mindset, building complex solutions from simple, well-crafted components that fit precisely and work together seamlessly.
+            I approach design with a modular mindset, building complex solutions
+            from simple, well-crafted components that fit precisely and work
+            together seamlessly.
           </p>
         </div>
       </div>
@@ -100,10 +111,18 @@ const BASE_URL = import.meta.env.BASE_URL;
           Web Design & Development
         </h3>
         <p class="text-slate-600 mb-4">
-          Front end web design and development using HTML, CSS, JavaScript, and
-          modern frameworks.
+          Web development & interactive 3D for the browser.
         </p>
         <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-slate-100 px-3 py-1 rounded-full"
+            >Three.js</span
+          >
+          <span class="text-xs bg-slate-100 px-3 py-1 rounded-full"
+            >WebGL</span
+          >
+          <span class="text-xs bg-slate-100 px-3 py-1 rounded-full"
+            >React</span
+          >
           <span class="text-xs bg-slate-100 px-3 py-1 rounded-full"
             >JavaScript</span
           >
@@ -224,17 +243,22 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     constructor() {
       this.container = document.getElementById(
-        "depth-container"
+        "depth-container",
       ) as HTMLElement;
       this.colorVideo = document.getElementById(
-        "color-video"
+        "color-video",
       ) as HTMLVideoElement;
       this.wireVideo = document.getElementById(
-        "wire-video"
+        "wire-video",
       ) as HTMLVideoElement;
       this.depthMap = document.getElementById("depth-map") as HTMLImageElement;
 
-      if (this.container && this.colorVideo && this.wireVideo && this.depthMap) {
+      if (
+        this.container &&
+        this.colorVideo &&
+        this.wireVideo &&
+        this.depthMap
+      ) {
         this.init();
         this.setupHoverHandler();
       }
@@ -244,7 +268,7 @@ const BASE_URL = import.meta.env.BASE_URL;
       this.container.addEventListener("mouseenter", () => {
         this.switchToWireframe();
       });
-      
+
       this.container.addEventListener("mouseleave", () => {
         this.switchToNormal();
       });
@@ -324,9 +348,13 @@ const BASE_URL = import.meta.env.BASE_URL;
       // Start animation loop
       const animate = () => {
         // Smooth opacity transitions
-        this.colorOpacity += (this.targetColorOpacity - this.colorOpacity) * this.opacityTransitionSpeed;
-        this.wireOpacity += (this.targetWireOpacity - this.wireOpacity) * this.opacityTransitionSpeed;
-        
+        this.colorOpacity +=
+          (this.targetColorOpacity - this.colorOpacity) *
+          this.opacityTransitionSpeed;
+        this.wireOpacity +=
+          (this.targetWireOpacity - this.wireOpacity) *
+          this.opacityTransitionSpeed;
+
         this.render(this.currentOffsetX, this.currentOffsetY);
         this.animationFrameId = requestAnimationFrame(animate);
       };
@@ -365,7 +393,7 @@ const BASE_URL = import.meta.env.BASE_URL;
         0,
         0,
         this.depthCanvas.width,
-        this.depthCanvas.height
+        this.depthCanvas.height,
       );
 
       // Draw both video frames to temporary canvases
@@ -407,10 +435,19 @@ const BASE_URL = import.meta.env.BASE_URL;
           const targetIndex = (y * width + x) * 4;
 
           // Blend pixels from both videos
-          const r = colorData.data[sourceIndex] * this.colorOpacity + wireData.data[sourceIndex] * this.wireOpacity;
-          const g = colorData.data[sourceIndex + 1] * this.colorOpacity + wireData.data[sourceIndex + 1] * this.wireOpacity;
-          const b = colorData.data[sourceIndex + 2] * this.colorOpacity + wireData.data[sourceIndex + 2] * this.wireOpacity;
-          const a = Math.max(colorData.data[sourceIndex + 3], wireData.data[sourceIndex + 3]);
+          const r =
+            colorData.data[sourceIndex] * this.colorOpacity +
+            wireData.data[sourceIndex] * this.wireOpacity;
+          const g =
+            colorData.data[sourceIndex + 1] * this.colorOpacity +
+            wireData.data[sourceIndex + 1] * this.wireOpacity;
+          const b =
+            colorData.data[sourceIndex + 2] * this.colorOpacity +
+            wireData.data[sourceIndex + 2] * this.wireOpacity;
+          const a = Math.max(
+            colorData.data[sourceIndex + 3],
+            wireData.data[sourceIndex + 3],
+          );
 
           outputData.data[targetIndex] = r;
           outputData.data[targetIndex + 1] = g;
