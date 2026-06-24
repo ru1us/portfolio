@@ -113,11 +113,16 @@ import Layout from '../layouts/Layout.astro';
       
       <h4 class="text-lg font-semibold mt-4 mb-2">Withdraw consent:</h4>
       <p class="mb-4">
-        You can withdraw your consent at any time by:
+        You can withdraw your consent at any time by opening the cookie settings and selecting "Decline / Revoke".
+      </p>
+      <p class="mb-4">
+        <button type="button" onclick="window.openCookieSettings && window.openCookieSettings()" class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm">
+          Open Cookie Settings
+        </button>
       </p>
       <ul class="list-disc pl-6 mb-4">
-        <li>Deleting your browser cookies</li>
-        <li>Declining the cookie banner when it appears again</li>
+        <li>Using the "Cookie Settings" link in the footer</li>
+        <li>Deleting your browser cookies and local website data</li>
         <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" class="text-red-600 hover:text-red-700">Google Analytics Opt-out Browser Add-on</a></li>
       </ul>
       <p class="mb-4">
@@ -126,15 +131,15 @@ import Layout from '../layouts/Layout.astro';
 
       <h2 class="text-2xl font-semibold mt-8 mb-4">4. Cookies</h2>
       
-      <h3 class="text-xl font-semibold mt-6 mb-3">4.1 Technically Necessary Cookie (No Consent Required)</h3>
+      <h3 class="text-xl font-semibold mt-6 mb-3">4.1 Technically Necessary Local Storage (No Consent Required)</h3>
       <p class="mb-4">
-        <strong>Consent Cookie:</strong> This website stores one cookie to remember your cookie consent choice.
+        <strong>Consent setting:</strong> This website stores one local setting to remember your cookie consent choice.
       </p>
       <ul class="list-disc pl-6 mb-4">
         <li><strong>Name:</strong> cookieConsent</li>
         <li><strong>Purpose:</strong> Remember whether you accepted or declined cookies</li>
         <li><strong>Content:</strong> Only "accepted" or "declined" - no personal data</li>
-        <li><strong>Retention:</strong> 365 days</li>
+        <li><strong>Storage location:</strong> Browser localStorage</li>
         <li><strong>Legal basis:</strong> Art. 6 para. 1 lit. f GDPR (necessary for consent management)</li>
       </ul>
       

@@ -112,21 +112,21 @@ const ogImage = new URL(image, Astro.site);
     <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 shadow-2xl z-[100] p-6 hidden">
       <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="text-sm text-slate-700 flex-1">
-          <p class="mb-2"><strong>This website uses cookies</strong></p>
-          <p>I use Google Analytics to analyze and improve the usage of this website. Your data is collected anonymously.</p>
+          <p class="mb-2"><strong>Cookie Settings</strong></p>
+          <p>This website uses technically necessary storage for your choice. Google Analytics is only loaded with your voluntary consent. You can withdraw your consent at any time.</p>
         </div>
-        <div class="flex gap-3 flex-shrink-0">
+        <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full sm:w-auto">
           <button
             id="cookie-accept"
             class="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors font-heading font-medium text-sm whitespace-nowrap"
           >
-            Accept
+            Accept Analytics
           </button>
           <button
             id="cookie-decline"
             class="border-2 border-slate-300 text-slate-700 px-6 py-2 rounded-full hover:bg-slate-100 transition-colors font-heading font-medium text-sm whitespace-nowrap"
           >
-            Decline
+            Decline / Revoke
           </button>
         </div>
       </div>
@@ -134,7 +134,8 @@ const ogImage = new URL(image, Astro.site);
 
     <!-- Cookie Consent Script -->
     <script is:inline>
-      // Check if user has already made a choice
+      var GA_MEASUREMENT_ID = 'G-YMVG11GXL5';
+
       function getCookieConsent() {
         return localStorage.getItem('cookieConsent');
       }
@@ -143,47 +144,75 @@ const ogImage = new URL(image, Astro.site);
         localStorage.setItem('cookieConsent', value);
       }
 
-      // Load Google Analytics only if consent given
-      function loadGoogleAnalytics() {
-        if (getCookieConsent() === 'accepted') {
-          // Load gtag.js
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YMVG11GXL5';
-          document.head.appendChild(script);
-
-          // Initialize gtag
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-YMVG11GXL5', {
-            'anonymize_ip': true
-          });
-        }
+      function deleteCookie(name) {
+        var hostname = window.location.hostname;
+        var domains = ['', hostname, '.' + hostname, hostname.replace(/^www\./, ''), '.' + hostname.replace(/^www\./, '')];
+        domains.forEach(function(domain) {
+          document.cookie = name + '=; Max-Age=0; path=/; SameSite=Lax' + (domain ? '; domain=' + domain : '');
+        });
       }
 
-      // Show banner if no choice has been made
+      function revokeGoogleAnalytics() {
+        window['ga-disable-' + GA_MEASUREMENT_ID] = true;
+        deleteCookie('_ga');
+        deleteCookie('_ga_YMVG11GXL5');
+        deleteCookie('_gid');
+        deleteCookie('_gat');
+      }
+
+      function loadGoogleAnalytics() {
+        if (getCookieConsent() !== 'accepted' || window.googleAnalyticsLoaded) return;
+        window['ga-disable-' + GA_MEASUREMENT_ID] = false;
+        window.googleAnalyticsLoaded = true;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, {
+          'anonymize_ip': true
+        });
+      }
+
+      function hideCookieBanner() {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.classList.add('hidden');
+      }
+
+      function showCookieBanner() {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.classList.remove('hidden');
+      }
+
+      window.openCookieSettings = function() {
+        showCookieBanner();
+      };
+
       document.addEventListener('DOMContentLoaded', function() {
         var consent = getCookieConsent();
-        var banner = document.getElementById('cookie-banner');
 
         if (!consent) {
-          banner.classList.remove('hidden');
+          showCookieBanner();
         } else if (consent === 'accepted') {
           loadGoogleAnalytics();
+        } else {
+          revokeGoogleAnalytics();
         }
 
-        // Accept button
         document.getElementById('cookie-accept').addEventListener('click', function() {
           setCookieConsent('accepted');
-          banner.classList.add('hidden');
+          hideCookieBanner();
           loadGoogleAnalytics();
         });
 
-        // Decline button
         document.getElementById('cookie-decline').addEventListener('click', function() {
           setCookieConsent('declined');
-          banner.classList.add('hidden');
+          revokeGoogleAnalytics();
+          hideCookieBanner();
         });
       });
     </script>
@@ -406,6 +435,11 @@ const ogImage = new URL(image, Astro.site);
                 href="/privacy"
                 class="hover:text-slate-400 transition-colors">Privacy</a
               >
+              <span class="text-slate-300">•</span>
+              <button
+                type="button"
+                onclick="window.openCookieSettings && window.openCookieSettings()"
+                class="hover:text-slate-400 transition-colors">Cookie Settings</button>
               <span class="text-slate-300">•</span>
               <a
                 href="/imprint"
