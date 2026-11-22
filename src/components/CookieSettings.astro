@@ -1,0 +1,115 @@
+---
+const buttonStyle = 'border-2 border-slate-600 bg-white text-slate-900 px-5 py-2 rounded-full hover:bg-slate-100 focus-visible:outline-2 font-heading font-medium text-sm';
+---
+
+<section id="cookie-banner" aria-labelledby="cookie-title" hidden
+  class="fixed bottom-0 inset-x-0 z-[100] max-h-[80vh] overflow-auto border-t-2 border-slate-200 bg-white p-5 shadow-2xl">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center gap-4">
+    <div class="flex-1 text-sm text-slate-700">
+      <h2 id="cookie-title" class="font-bold mb-1">Allow Google Analytics?</h2>
+      <p>With your permission, Google Ireland uses cookies to measure which pages people visit and how long they stay.
+        You can change your choice in Cookie Settings at any time.
+        <a href="/privacy#analytics" class="underline">Privacy policy</a></p>
+    </div>
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" id="cookie-decline" class={buttonStyle}>Decline analytics</button>
+      <button type="button" id="cookie-accept" class={buttonStyle}>Accept analytics</button>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const id = 'G-YMVG11GXL5';
+    const key = 'cookieConsent';
+    const noticeVersion = '2026-11-22-analytics-v1';
+    const disableFlag = 'ga-disable-' + id;
+    const banner = document.getElementById('cookie-banner');
+    const decline = document.getElementById('cookie-decline');
+    let tagLoaded = false;
+    let choiceOnPage = null;
+    let opener;
+
+    function readChoice() {
+      let saved;
+      try { saved = localStorage.getItem(key); }
+      catch { return choiceOnPage; }
+      if (!saved) return choiceOnPage;
+      // Ask again when the notice changes or an older, undated acceptance is found.
+      if (saved === 'declined') return 'declined';
+      try {
+        const record = JSON.parse(saved);
+        if (record.choice === 'declined') return 'declined';
+        if (record.choice === 'accepted' && record.noticeVersion === noticeVersion &&
+            !isNaN(Date.parse(record.decidedAt))) return 'accepted';
+      } catch { /* An older choice has no verifiable date. */ }
+      return null;
+    }
+
+    function clearAnalyticsCookies() {
+      const domain = location.hostname.replace(/^www\./, '');
+      for (const name of ['_ga', '_ga_' + id.slice(2), '_gid', '_gat']) {
+        for (const scope of ['', '; Domain=' + location.hostname, '; Domain=' + domain]) {
+          document.cookie = name + '=; Max-Age=0; Path=/' + scope;
+        }
+      }
+    }
+
+    function applyChoice(choice) {
+      const accepted = choice === 'accepted';
+      window[disableFlag] = !accepted;
+      banner.hidden = accepted || choice === 'declined';
+      if (!accepted) {
+        if (choice === 'declined' || tagLoaded) clearAnalyticsCookies();
+        // Unload the running tag and its event listeners after withdrawal.
+        if (tagLoaded) location.reload();
+        return;
+      }
+      if (tagLoaded) return;
+      tagLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        analytics_storage: 'granted', ad_storage: 'denied',
+        ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', id, { allow_google_signals: false, allow_ad_personalization_signals: false });
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(script);
+    }
+
+    function choose(value) {
+      choiceOnPage = value;
+      const record = {
+        choice: value,
+        decidedAt: new Date().toISOString(),
+        noticeVersion
+      };
+      try { localStorage.setItem(key, JSON.stringify(record)); }
+      catch { /* Use this choice for this page only. */ }
+      applyChoice(value);
+      opener?.focus();
+    }
+
+    window.openCookieSettings = () => {
+      opener = document.activeElement;
+      banner.hidden = false;
+      decline.focus();
+    };
+    decline.addEventListener('click', () => choose('declined'));
+    document.getElementById('cookie-accept').addEventListener('click', () => choose('accepted'));
+    window.addEventListener('storage', (event) => {
+      if (event.key === key || event.key === null) {
+        choiceOnPage = null;
+        applyChoice(readChoice());
+      }
+    });
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) applyChoice(readChoice());
+    });
+    applyChoice(readChoice());
+  })();
+</script>

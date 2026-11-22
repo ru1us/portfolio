@@ -871,24 +871,14 @@ const BASE_URL = import.meta.env.BASE_URL;
     });
   </script>
 
-  <script is:inline>
-    // GSAP Video Scrubbing
-    const gsapScript = document.createElement("script");
-    gsapScript.src =
-      "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
-    gsapScript.onload = () => {
-      const stScript = document.createElement("script");
-      stScript.src =
-        "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js";
-      stScript.onload = () => {
-        initVideoScroll();
-      };
-      document.head.appendChild(stScript);
-    };
-    document.head.appendChild(gsapScript);
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    initVideoScroll();
 
     function initVideoScroll() {
-      const video = document.getElementById("scroll-video");
+      const video = document.querySelector<HTMLVideoElement>("#scroll-video");
       const videoContainer = document.getElementById("video-container");
       const section = document.getElementById("case-study");
       const sectionMobile = document.getElementById("case-study-mobile");
